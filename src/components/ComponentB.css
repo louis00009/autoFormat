@@ -1,0 +1,52 @@
+/* General Styles */
+div {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+}
+
+input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Specific Styles */
+h2 {
+  margin-top: 0;
+}
+
+p {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.copied {
+  color: red;
+  transition: color 0.2s ease-in-out;
+}
+
+.container {
+  margin: 5%;
+}
