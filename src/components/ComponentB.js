@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
+// this is Towing company
 const ComponentB = () => {
   const [vendorInvoiceNumber, setVendorInvoiceNumber] = useState("");
   const [vendorName, setvendorName] = useState("");
@@ -19,41 +20,103 @@ const ComponentB = () => {
     return parseFloat(price).toFixed(2);
   };
 
-  const unsecuredCopyToClipboard = (text) => {
-    const textArea = document.createElement('textarea');
-    textArea.value = componentInfo;
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    try {
-      document.execCommand('copy');
-      setIsCopied(true);
-    } catch (err) {
-      console.error('Unable to copy to clipboard', err);
+  // const unsecuredCopyToClipboard = (text) => {
+  //   const textArea = document.createElement("textarea");
+  //   textArea.value = componentInfo;
+  //   document.body.appendChild(textArea);
+  //   textArea.focus();
+  //   textArea.select();
+  //   try {
+  //     document.execCommand("copy");
+  //     setIsCopied(true);
+  //   } catch (err) {
+  //     console.error("Unable to copy to clipboard", err);
+  //   }
+  //   document.body.removeChild(textArea);
+  //   setTimeout(() => {
+  //     setIsCopied(false);
+  //   }, 2000);
+  // };
+
+  const unsecuredCopyToClipboard = () => {
+    if (purchaseOrderNumber.slice(0, 3).toLowerCase() === "kin") {
+      console.log("Po number is correct");
+    } else {
+      alert("Wrong PO number, Start from 'Kin'.");
+      return;
     }
-    document.body.removeChild(textArea);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
-  };
-  const unsecuredCopyToClipboard2 = (text) => {
-    const textArea = document.createElement('textarea');
-    textArea.value = componentInfo2;
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    try {
-      document.execCommand('copy');
-      setIsCopied(true);
-    } catch (err) {
-      console.error('Unable to copy to clipboard', err);
+    // 验证前三位字母是否为 "Kin"
+    if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
+      // 如果是 "Kin",则复制到剪贴板
+      const textArea = document.createElement("textarea");
+      textArea.value = componentInfo;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        setIsCopied(true);
+      } catch (err) {
+        console.error("Unable to copy to clipboard", err);
+      }
+      document.body.removeChild(textArea);
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } else {
+      // 如果不是 "Kin",则提示用户输入有误
+      alert("Wrong Raised invoice number, Start from 'AAU'.");
     }
-    document.body.removeChild(textArea);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
   };
 
+  const unsecuredCopyToClipboard2 = () => {
+    if (purchaseOrderNumber.slice(0, 3).toLowerCase() === "kin") {
+      console.log("Po number is correct");
+    } else {
+      alert("Wrong PO number, Start from 'Kin'.");
+      return;
+    }
+    // 验证前三位字母是否为 "Kin"
+    if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
+      // 如果是 "Kin",则复制到剪贴板
+      const textArea = document.createElement("textarea");
+      textArea.value = componentInfo2;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        setIsCopied(true);
+      } catch (err) {
+        console.error("Unable to copy to clipboard", err);
+      }
+      document.body.removeChild(textArea);
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } else {
+      // 如果不是 "Kin",则提示用户输入有误
+      alert("Wrong Raised invoice number, Start from 'AAU'.");
+    }
+  };
+
+  // const unsecuredCopyToClipboard2 = (text) => {
+  //   const textArea = document.createElement("textarea");
+  //   textArea.value = componentInfo2;
+  //   document.body.appendChild(textArea);
+  //   textArea.focus();
+  //   textArea.select();
+  //   try {
+  //     document.execCommand("copy");
+  //     setIsCopied(true);
+  //   } catch (err) {
+  //     console.error("Unable to copy to clipboard", err);
+  //   }
+  //   document.body.removeChild(textArea);
+  //   setTimeout(() => {
+  //     setIsCopied(false);
+  //   }, 2000);
+  // };
 
   useEffect(() => {
     const info = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(
@@ -61,7 +124,6 @@ const ComponentB = () => {
     )}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
-
 
     const oldinfo = `Vendor Invoice Number: ${vendorInvoiceNumber}Vendor Total Price: ${formatPrice(
       vendorTotalPrice
@@ -77,7 +139,6 @@ const ComponentB = () => {
 
     setComponentInfo(info);
     setComponentInfo2(info2);
-
   }, [
     vendorInvoiceNumber,
     vendorName,
@@ -92,7 +153,7 @@ const ComponentB = () => {
 
   const handleReset = () => {
     setVendorInvoiceNumber("");
-    setvendorName("")
+    setvendorName("");
     setVendorTotalPrice("");
     setVendorInvoicePurpose("");
     setPurchaseOrderNumber("");
@@ -123,26 +184,30 @@ const ComponentB = () => {
   return (
     <div className="container">
       <h2>Invoice Note Helper</h2>
-      <p
-        style={{
-          color: isCopied ? "red" : "inherit",
-          transition: "color 0.2s ease-in-out",
-        }}
-      >
-        {isCopied
-          ? "Information successfully copied to the clipboard"
-          : componentInfo}
-      </p>
-      <p
-        style={{
-          color: isCopied ? "red" : "inherit",
-          transition: "color 0.2s ease-in-out",
-        }}
-      >
-        {isCopied
-          ? "Information successfully copied to the clipboard"
-          : componentInfo2}
-      </p>
+      <div className="text-container">
+        <p
+          style={{
+            color: isCopied ? "red" : "inherit",
+            transition: "color 0.2s ease-in-out",
+          }}
+        >
+          {isCopied
+            ? "Information successfully copied to the clipboard"
+            : componentInfo}
+        </p>
+
+        <p
+          style={{
+            color: isCopied ? "red" : "inherit",
+            transition: "color 0.2s ease-in-out",
+          }}
+        >
+          {isCopied
+            ? "Information successfully copied to the clipboard"
+            : componentInfo2}
+        </p>
+      </div>
+
       <div>
         <label>Vendor Invoice Number:</label>
         <input
@@ -176,7 +241,7 @@ const ComponentB = () => {
           onChange={(e) => setVendorTotalPrice(e.target.value)}
         />
       </div>
-      
+
       <div>
         <label>Purchase Order Number:</label>
         <input
@@ -185,6 +250,7 @@ const ComponentB = () => {
           onChange={(e) => setPurchaseOrderNumber(e.target.value)}
         />
       </div>
+
       <div>
         <label>Raised Invoice Number:</label>
         <input
@@ -193,6 +259,7 @@ const ComponentB = () => {
           onChange={(e) => setRaisedInvoiceNumber(e.target.value)}
         />
       </div>
+
       <div>
         <label>Raised Invoice Purpose:</label>
         <input

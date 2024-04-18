@@ -5,11 +5,7 @@ import ComponentC from "./components/ComponentC";
 import ComponentWOVR from "./components/ComponentWOVR";
 
 // import { useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-
-
-
-
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const formatPrice = (price) => {
   return parseFloat(price).toFixed(2);
@@ -24,8 +20,10 @@ const FormatAComponent = () => {
 
   useEffect(() => {
     // const info = `Hi, my name is ${studentLastName}, my last name is ${studentFirstName}, this is my student id: ${studentId}`;
-    const info = `***Raised YARD PHOTO $${formatPrice(studentLastName)}, to vendor ${studentFirstName}***, SO: ${studentId} ***invoice not sent will SD after vehicle sold***  `;
-    
+    const info = `***Raised YARD PHOTO $${formatPrice(
+      studentLastName
+    )}, to vendor ${studentFirstName}***, SO: ${studentId} ***invoice not sent will SD after vehicle sold***  `;
+
     setStudentInfo(info);
   }, [studentLastName, studentFirstName, studentId]);
 
@@ -45,22 +43,44 @@ const FormatAComponent = () => {
   // };
 
   //added to fix
-  const unsecuredCopyToClipboard = (text) => {
-    const textArea = document.createElement('textarea');
-    textArea.value = studentInfo;
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    try {
-      document.execCommand('copy');
-      setIsCopied(true);
-    } catch (err) {
-      console.error('Unable to copy to clipboard', err);
+  // const unsecuredCopyToClipboard = (text) => {
+  //   const textArea = document.createElement("textarea");
+  //   textArea.value = studentInfo;
+  //   document.body.appendChild(textArea);
+  //   textArea.focus();
+  //   textArea.select();
+  //   try {
+  //     document.execCommand("copy");
+  //     setIsCopied(true);
+  //   } catch (err) {
+  //     console.error("Unable to copy to clipboard", err);
+  //   }
+  //   document.body.removeChild(textArea);
+  //   setTimeout(() => {
+  //     setIsCopied(false);
+  //   }, 2000);
+  // };
+
+  const unsecuredCopyToClipboard = () => {
+    if (studentFirstName.slice(0, 3).toLowerCase() === "aau") {
+      const textArea = document.createElement("textarea");
+      textArea.value = studentInfo;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        setIsCopied(true);
+      } catch (err) {
+        console.error("Unable to copy to clipboard", err);
+      }
+      document.body.removeChild(textArea);
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } else {
+      alert("Wrong Raised invoice number, Start from 'AAU'.");
     }
-    document.body.removeChild(textArea);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
   };
 
   // Main copyToClipboard function
@@ -84,32 +104,36 @@ const FormatAComponent = () => {
     }, 2000);
   };
 
-  
-
   return (
-    <div>
-      <p
-        style={{
-          color: isCopied ? "red" : "inherit",
-          transition: "color 0.2s ease-in-out",
-        }}
-      >
-        {isCopied
-          ? "Information successfully copied to the clipboard"
-          : studentInfo}
-      </p>
-      <b style={{color:"red"}}>Note! default prices for Photo is 35.75(32.5 put this in system) 
-      NO Autorola Fee Apply!</b> <br></br><br></br>
+    <div className="container">
+      <h2>Invoice Note Helper</h2>
+      <div className="text-container">
+        <p
+          style={{
+            color: isCopied ? "red" : "inherit",
+            transition: "color 0.2s ease-in-out",
+          }}
+        >
+          {isCopied
+            ? "Information successfully copied to the clipboard"
+            : studentInfo}
+        </p>
+      </div>
+      <b style={{ color: "red" }}>
+        Note! default prices for Photo is 35.75(32.5 put this in system) NO
+        Autorola Fee Apply!
+      </b>{" "}
+      <br></br>
+      <br></br>
       <div>
         <label>YARD PHOTO Prices:</label>
         <input
-        
-        type="number"
-        // placeholder="YARD PHOTO Prices"
-        // defaultValue="37.50"
-        value={studentLastName}
-        onChange={(e) => setStudentLastName(e.target.value)}
-      />
+          type="number"
+          // placeholder="YARD PHOTO Prices"
+          // defaultValue="37.50"
+          value={studentLastName}
+          onChange={(e) => setStudentLastName(e.target.value)}
+        />
       </div>
       {/* <input
         type="text"
@@ -120,23 +144,21 @@ const FormatAComponent = () => {
       <div>
         <label>Raised Invoice Number:</label>
         <input
-        type="text"
-        placeholder="Raised Invoice Number"
-        value={studentFirstName}
-        onChange={(e) => setStudentFirstName(e.target.value)}
-      />
+          type="text"
+          placeholder="Raised Invoice Number"
+          value={studentFirstName}
+          onChange={(e) => setStudentFirstName(e.target.value)}
+        />
       </div>
-
       <div>
         <label>Sales Order Number:</label>
         <input
-        type="text"
-        placeholder="Sales Order Number"
-        value={studentId}
-        onChange={(e) => setStudentId(e.target.value)}
-      />
+          type="text"
+          placeholder="Sales Order Number"
+          value={studentId}
+          onChange={(e) => setStudentId(e.target.value)}
+        />
       </div>
-      
       {/* <input
         type="text"
         placeholder="Raised Invoice Number"
@@ -155,17 +177,13 @@ const FormatAComponent = () => {
         {/* <button onClick={handleCopy}>Copy</button> */}
         <button onClick={unsecuredCopyToClipboard}>Copy</button>
       </div>
-
       {/* <div>
         <b>Template:</b>
 
       </div> */}
-
     </div>
   );
 };
-
-
 
 const FormatBComponent = () => {
   const [courseName, setCourseName] = useState("");
@@ -182,8 +200,6 @@ const formats = [
   { name: "Photo Note", content: <FormatAComponent /> },
   { name: "MD", content: <ComponentC /> },
   { name: "WOVR", content: <ComponentWOVR /> },
-
-  
 ];
 
 const App = () => {

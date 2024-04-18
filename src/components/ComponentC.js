@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
+// This is MD
 const ComponentB = () => {
   const [vendorInvoiceNumber, setVendorInvoiceNumber] = useState("");
   const [vendorName, setvendorName] = useState("");
@@ -19,46 +20,72 @@ const ComponentB = () => {
     return parseFloat(price).toFixed(2);
   };
 
-  const unsecuredCopyToClipboard = (text) => {
-    const textArea = document.createElement('textarea');
-    textArea.value = componentInfo;
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    try {
-      document.execCommand('copy');
-      setIsCopied(true);
-    } catch (err) {
-      console.error('Unable to copy to clipboard', err);
+  const unsecuredCopyToClipboard = () => {
+    if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
+      const textArea = document.createElement("textarea");
+      textArea.value = componentInfo;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        setIsCopied(true);
+      } catch (err) {
+        console.error("Unable to copy to clipboard", err);
+      }
+      document.body.removeChild(textArea);
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } else {
+      alert("Wrong Raised invoice number, Start from 'AAU'.");
     }
-    document.body.removeChild(textArea);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
   };
-  const unsecuredCopyToClipboard2 = (text) => {
-    const textArea = document.createElement('textarea');
-    textArea.value = componentInfo2;
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    try {
-      document.execCommand('copy');
-      setIsCopied(true);
-    } catch (err) {
-      console.error('Unable to copy to clipboard', err);
+
+  const unsecuredCopyToClipboard2 = () => {
+    if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
+      const textArea = document.createElement("textarea");
+      textArea.value = componentInfo2;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        setIsCopied(true);
+      } catch (err) {
+        console.error("Unable to copy to clipboard", err);
+      }
+      document.body.removeChild(textArea);
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } else {
+      alert("Wrong Raised invoice number, Start from 'AAU'.");
     }
-    document.body.removeChild(textArea);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
   };
+
+  // const unsecuredCopyToClipboard2 = (text) => {
+  //   const textArea = document.createElement("textarea");
+  //   textArea.value = componentInfo2;
+  //   document.body.appendChild(textArea);
+  //   textArea.focus();
+  //   textArea.select();
+  //   try {
+  //     document.execCommand("copy");
+  //     setIsCopied(true);
+  //   } catch (err) {
+  //     console.error("Unable to copy to clipboard", err);
+  //   }
+  //   document.body.removeChild(textArea);
+  //   setTimeout(() => {
+  //     setIsCopied(false);
+  //   }, 2000);
+  // };
 
   useEffect(() => {
     const info = `***Raised invoice: ${raisedInvoiceNumber} to vendor for ${raisedInvoicePurpose}: $${formatPrice(
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
-
 
     const oldinfo = `Vendor Invoice Number: ${vendorInvoiceNumber}Vendor Total Price: ${formatPrice(
       vendorTotalPrice
@@ -72,7 +99,6 @@ const ComponentB = () => {
 
     setComponentInfo(info);
     setComponentInfo2(info2);
-
   }, [
     vendorInvoiceNumber,
     vendorName,
@@ -87,7 +113,7 @@ const ComponentB = () => {
 
   const handleReset = () => {
     setVendorInvoiceNumber("");
-    setvendorName("")
+    setvendorName("");
     setVendorTotalPrice("");
     setVendorInvoicePurpose("");
     setPurchaseOrderNumber("");
@@ -118,30 +144,41 @@ const ComponentB = () => {
   return (
     <div className="container">
       <h2>Invoice Note Helper</h2>
-      <p
+      <div className="text-container">
+        <p
+          style={{
+            color: isCopied ? "red" : "inherit",
+            transition: "color 0.2s ease-in-out",
+          }}
+        >
+          {isCopied
+            ? "Information successfully copied to the clipboard"
+            : componentInfo}
+        </p>
+
+        <p
+          style={{
+            color: isCopied ? "red" : "inherit",
+            transition: "color 0.2s ease-in-out",
+          }}
+        >
+          {isCopied
+            ? "Information successfully copied to the clipboard"
+            : componentInfo2}
+        </p>
+      </div>
+      <b>For Storage, you should have 3 records in one SO</b>
+      <br></br>
+      <b
         style={{
-          color: isCopied ? "red" : "inherit",
-          transition: "color 0.2s ease-in-out",
-        }}
-      >
-        {isCopied
-          ? "Information successfully copied to the clipboard"
-          : componentInfo}
-      </p>
-      <p
-        style={{
-          color: isCopied ? "red" : "inherit",
-          transition: "color 0.2s ease-in-out",
-        }}
-      >
-        {isCopied
-          ? "Information successfully copied to the clipboard"
-          : componentInfo2}
-      </p>
-      <b>For Storage, you should have 3 records in one SO</b><br></br>
-      <b style={{
           color: "red",
-        }}>1. Storage Fee - Day Rate*Days 2. Admin Fees  3. Autorola management Fees (1+2)*0.05 </b> <br></br><br></br>
+        }}
+      >
+        1. Storage Fee - Day Rate*Days 2. Admin Fees 3. Autorola management Fees
+        (1+2)*0.05{" "}
+      </b>{" "}
+      <br></br>
+      <br></br>
       {/* <div>
         <label>Vendor Invoice Number:</label>
         <input
@@ -192,7 +229,6 @@ const ComponentB = () => {
           onChange={(e) => setRaisedInvoiceNumber(e.target.value)}
         />
       </div>
-
       <div>
         <label>Raised Invoice Purpose:</label>
         <input
@@ -201,7 +237,6 @@ const ComponentB = () => {
           onChange={(e) => setRaisedInvoicePurpose(e.target.value)}
         />
       </div>
-      
       <div>
         <label>Raised Invoice Price:</label>
         <input

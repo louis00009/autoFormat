@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../components/Navformater.css";
 
 const TabComponent = ({ formats }) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -8,7 +9,7 @@ const TabComponent = ({ formats }) => {
   };
 
   return (
-    <div>
+    <div className="tab-container">
       <div>
         {formats.map((format, index) => (
           <button

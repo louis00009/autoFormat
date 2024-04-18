@@ -50,3 +50,8 @@ p {
 .container {
   margin: 5%;
 }
+
+.text-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
