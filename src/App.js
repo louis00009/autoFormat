@@ -4,8 +4,10 @@ import ComponentB from "./components/ComponentB";
 import ComponentC from "./components/ComponentC";
 import ComponentWOVR from "./components/ComponentWOVR";
 
+import { Col, Row, Button } from "antd";
+
 // import { useState } from 'react';
-import { CopyToClipboard } from "react-copy-to-clipboard";
+// import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const formatPrice = (price) => {
   return parseFloat(price).toFixed(2);
@@ -32,34 +34,6 @@ const FormatAComponent = () => {
     setStudentFirstName("");
     setStudentId("");
   };
-
-  // const handleCopy = () => {
-  //   navigator.clipboard.writeText(studentInfo);
-  //   setIsCopied(true);
-  //   const timer = setTimeout(() => {
-  //     setIsCopied(false);
-  //   }, 2000);
-  //   return () => clearTimeout(timer);
-  // };
-
-  //added to fix
-  // const unsecuredCopyToClipboard = (text) => {
-  //   const textArea = document.createElement("textarea");
-  //   textArea.value = studentInfo;
-  //   document.body.appendChild(textArea);
-  //   textArea.focus();
-  //   textArea.select();
-  //   try {
-  //     document.execCommand("copy");
-  //     setIsCopied(true);
-  //   } catch (err) {
-  //     console.error("Unable to copy to clipboard", err);
-  //   }
-  //   document.body.removeChild(textArea);
-  //   setTimeout(() => {
-  //     setIsCopied(false);
-  //   }, 2000);
-  // };
 
   const unsecuredCopyToClipboard = () => {
     if (studentFirstName.slice(0, 3).toLowerCase() === "aau") {
@@ -125,62 +99,78 @@ const FormatAComponent = () => {
       </b>{" "}
       <br></br>
       <br></br>
-      <div>
-        <label>YARD PHOTO Prices:</label>
-        <input
-          type="number"
-          // placeholder="YARD PHOTO Prices"
-          // defaultValue="37.50"
-          value={studentLastName}
-          onChange={(e) => setStudentLastName(e.target.value)}
-        />
-      </div>
-      {/* <input
-        type="text"
-        placeholder="YARD PHOTO Prices"
-        value={studentLastName}
-        onChange={(e) => setStudentLastName(e.target.value)}
-      /> */}
-      <div>
-        <label>Raised Invoice Number:</label>
-        <input
-          type="text"
-          placeholder="Raised Invoice Number"
-          value={studentFirstName}
-          onChange={(e) => setStudentFirstName(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Sales Order Number:</label>
-        <input
-          type="text"
-          placeholder="Sales Order Number"
-          value={studentId}
-          onChange={(e) => setStudentId(e.target.value)}
-        />
-      </div>
-      {/* <input
-        type="text"
-        placeholder="Raised Invoice Number"
-        value={studentFirstName}
-        onChange={(e) => setStudentFirstName(e.target.value)}
-      /> */}
-      {/* <input
-        type="text"
-        placeholder="Sales Order Number"
-        value={studentId}
-        onChange={(e) => setStudentId(e.target.value)}
-      /> */}
-      <br></br>
-      <div className="button-container">
-        <button onClick={handleReset}>Reset</button>
-        {/* <button onClick={handleCopy}>Copy</button> */}
-        <button onClick={unsecuredCopyToClipboard}>Copy</button>
-      </div>
-      {/* <div>
-        <b>Template:</b>
+      {/* <div className="input-container">
+        <div>
+          <label>YARD PHOTO Prices:</label>
+          <input
+            type="number"
+            value={studentLastName}
+            onChange={(e) => setStudentLastName(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Raised Invoice Number:</label>
+          <input
+            type="text"
+            placeholder="Raised Invoice Number"
+            value={studentFirstName}
+            onChange={(e) => setStudentFirstName(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Sales Order Number:</label>
+          <input
+            type="text"
+            placeholder="Sales Order Number"
+            value={studentId}
+            onChange={(e) => setStudentId(e.target.value)}
+          />
+        </div>
+
+        
+        <br></br>
+
+
+
+        <div className="button-container">
+          <button onClick={handleReset}>Reset</button>
+          {/* <button onClick={handleCopy}>Copy</button> */}
+      {/* <button onClick={unsecuredCopyToClipboard}>Copy</button>
+        </div>
 
       </div> */}
+      <div className="input-container">
+        <div className="input-row">
+          <label>YARD PHOTO Prices:</label>
+          <input
+            type="number"
+            value={studentLastName}
+            onChange={(e) => setStudentLastName(e.target.value)}
+          />
+        </div>
+        <div className="input-row">
+          <label>Raised Invoice Number:</label>
+          <input
+            type="text"
+            placeholder="Raised Invoice Number"
+            value={studentFirstName}
+            onChange={(e) => setStudentFirstName(e.target.value)}
+          />
+        </div>
+        <div className="input-row">
+          <label>Sales Order Number:</label>
+          <input
+            type="text"
+            placeholder="Sales Order Number"
+            value={studentId}
+            onChange={(e) => setStudentId(e.target.value)}
+          />
+        </div>
+        <div className="button-container">
+          <button onClick={handleReset}>Reset</button>
+          <button onClick={unsecuredCopyToClipboard}>Copy</button>
+        </div>
+      </div>
     </div>
   );
 };

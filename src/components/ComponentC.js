@@ -221,7 +221,7 @@ const ComponentB = () => {
           onChange={(e) => setPurchaseOrderNumber(e.target.value)}
         />
       </div> */}
-      <div>
+      <div className="input-row">
         <label>Raised Invoice Number:</label>
         <input
           type="text"
@@ -229,7 +229,7 @@ const ComponentB = () => {
           onChange={(e) => setRaisedInvoiceNumber(e.target.value)}
         />
       </div>
-      <div>
+      <div className="input-row">
         <label>Raised Invoice Purpose:</label>
         <input
           type="text"
@@ -237,7 +237,7 @@ const ComponentB = () => {
           onChange={(e) => setRaisedInvoicePurpose(e.target.value)}
         />
       </div>
-      <div>
+      <div className="input-row">
         <label>Raised Invoice Price:</label>
         <input
           type="number"
@@ -245,7 +245,7 @@ const ComponentB = () => {
           onChange={(e) => setRaisedInvoicePrice(e.target.value)}
         />
       </div>
-      <div>
+      <div className="input-row">
         <label>Sales Order Number:</label>
         <input
           type="text"

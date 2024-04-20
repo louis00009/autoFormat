@@ -14,6 +14,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
+  width: auto;
 }
 
 button {
@@ -54,4 +55,40 @@ p {
 .text-container {
   border: 1px solid #ccc;
   padding: 10px;
+}
+
+/* 
+flex for app.js
+*/
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input-row label {
+  flex-basis: 200px;
+}
+
+.input-row input {
+  max-width: 40%;
+  min-width: 100px;
+  flex: 1;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.table {
+  margin-top: 25px;
 }

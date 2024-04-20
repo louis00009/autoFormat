@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
+
+import { Table, Button, message } from "antd";
+
 // this is Towing company
 const ComponentB = () => {
   const [vendorInvoiceNumber, setVendorInvoiceNumber] = useState("");
@@ -15,6 +18,100 @@ const ComponentB = () => {
   const [componentInfo2, setComponentInfo2] = useState("");
 
   const [isCopied, setIsCopied] = useState(false);
+
+  //for calculator
+  // 计算 vendorTotalPrice(NO GST), Profit(5%) 和 Profit(10%)
+
+  const vendorTotalPriceNoGst = vendorTotalPrice * 0.9;
+  const profit5Percent = vendorTotalPriceNoGst * 0.05;
+  const profit10Percent = vendorTotalPriceNoGst * 0.1;
+  const columns = [
+    {
+      title: "Vendor Total Price",
+      dataIndex: "vendorTotalPrice",
+      key: "vendorTotalPrice",
+      render: (value) => (
+        <div>
+          {value}
+          <Button
+            onClick={() => {
+              navigator.clipboard.writeText(formatPrice(value));
+              message.success("Copied to clipboard!");
+            }}
+          >
+            Copy
+          </Button>
+        </div>
+      ),
+    },
+    {
+      title: "Vendor Total Price (NO GST)",
+      dataIndex: "vendorTotalPriceNoGst",
+      key: "vendorTotalPriceNoGst",
+      render: (value) => (
+        <div>
+          {formatPrice(value)}
+          <Button
+            onClick={() => {
+              navigator.clipboard.writeText(formatPrice(value));
+              message.success("Copied to clipboard!");
+            }}
+          >
+            Copy
+          </Button>
+        </div>
+      ),
+    },
+    {
+      title: "MarkUp (5%)",
+      dataIndex: "profit5Percent",
+      key: "profit5Percent",
+      render: (value) => (
+        <div>
+          {formatPrice(value)}
+          <Button
+            onClick={() => {
+              navigator.clipboard.writeText(formatPrice(value));
+              message.success("Copied to clipboard!");
+            }}
+          >
+            Copy
+          </Button>
+        </div>
+      ),
+    },
+    {
+      title: "MarkUp (10%)",
+      dataIndex: "profit10Percent",
+      key: "profit10Percent",
+      render: (value) => (
+        <div>
+          {formatPrice(value)}
+          <Button
+            onClick={() => {
+              navigator.clipboard.writeText(formatPrice(value));
+              message.success("Copied to clipboard!");
+            }}
+          >
+            Copy
+          </Button>
+        </div>
+      ),
+    },
+  ];
+
+  // 准备 Table 的数据
+  const data = [
+    {
+      key: "1",
+      vendorTotalPrice: vendorTotalPrice,
+      vendorTotalPriceNoGst: vendorTotalPriceNoGst.toFixed(2),
+      profit5Percent: profit5Percent.toFixed(2),
+      profit10Percent: profit10Percent.toFixed(2),
+    },
+  ];
+
+  //
 
   const formatPrice = (price) => {
     return parseFloat(price).toFixed(2);
@@ -208,7 +305,7 @@ const ComponentB = () => {
         </p>
       </div>
 
-      <div>
+      <div className="input-row">
         <label>Vendor Invoice Number:</label>
         <input
           type="text"
@@ -216,7 +313,7 @@ const ComponentB = () => {
           onChange={(e) => setVendorInvoiceNumber(e.target.value)}
         />
       </div>
-      <div>
+      <div className="input-row">
         <label>Vendor name:</label>
         <input
           type="text"
@@ -224,7 +321,7 @@ const ComponentB = () => {
           onChange={(e) => setvendorName(e.target.value)}
         />
       </div>
-      <div>
+      <div className="input-row">
         <label>Vendor Invoice Purpose:</label>
         <input
           type="text"
@@ -233,7 +330,7 @@ const ComponentB = () => {
         />
       </div>
 
-      <div>
+      <div className="input-row">
         <label>Vendor Total Price:</label>
         <input
           type="number"
@@ -242,7 +339,7 @@ const ComponentB = () => {
         />
       </div>
 
-      <div>
+      <div className="input-row">
         <label>Purchase Order Number:</label>
         <input
           type="text"
@@ -251,7 +348,7 @@ const ComponentB = () => {
         />
       </div>
 
-      <div>
+      <div className="input-row">
         <label>Raised Invoice Number:</label>
         <input
           type="text"
@@ -260,7 +357,7 @@ const ComponentB = () => {
         />
       </div>
 
-      <div>
+      <div className="input-row">
         <label>Raised Invoice Purpose:</label>
         <input
           type="text"
@@ -268,7 +365,7 @@ const ComponentB = () => {
           onChange={(e) => setRaisedInvoicePurpose(e.target.value)}
         />
       </div>
-      <div>
+      <div className="input-row">
         <label>Raised Invoice Price:</label>
         <input
           type="number"
@@ -276,7 +373,7 @@ const ComponentB = () => {
           onChange={(e) => setRaisedInvoicePrice(e.target.value)}
         />
       </div>
-      <div>
+      <div className="input-row">
         <label>Sales Order Number:</label>
         <input
           type="text"
@@ -289,6 +386,13 @@ const ComponentB = () => {
       <button onClick={handleCopy2}>Copy(Invoice Sent)</button> */}
       <button onClick={unsecuredCopyToClipboard}>Copy</button>
       <button onClick={unsecuredCopyToClipboard2}>Copy(Invoice Sent)</button>
+
+      <Table
+        style={{ marginTop: "20px" }}
+        columns={columns}
+        dataSource={data}
+        pagination={false}
+      />
     </div>
   );
 };

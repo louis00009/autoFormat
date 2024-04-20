@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
+
 const ComponentB = () => {
   const [vendorInvoiceNumber, setVendorInvoiceNumber] = useState("");
   const [vendorName, setvendorName] = useState("");
@@ -226,7 +227,7 @@ const ComponentB = () => {
           onChange={(e) => setPurchaseOrderNumber(e.target.value)}
         />
       </div> */}
-      <div>
+      <div className="input-row">
         <label>Raised Invoice Number:</label>
         <input
           type="text"
@@ -244,7 +245,7 @@ const ComponentB = () => {
         />
       </div> */}
 
-      <div>
+      <div className="input-row">
         <label>Raised Invoice Price:</label>
         <input
           type="number"
@@ -252,7 +253,7 @@ const ComponentB = () => {
           onChange={(e) => setRaisedInvoicePrice(e.target.value)}
         />
       </div>
-      <div>
+      <div className="input-row">
         <label>Sales Order Number:</label>
         <input
           type="text"
