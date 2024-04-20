@@ -35,8 +35,20 @@ const ComponentB = () => {
           {value}
           <Button
             onClick={() => {
-              navigator.clipboard.writeText(formatPrice(value));
-              message.success("Copied to clipboard!");
+              // navigator.clipboard.writeText(formatPrice(value));
+              const textArea = document.createElement("textarea");
+              textArea.value = value;
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              try {
+                document.execCommand("copy");
+                // setIsCopied(true);
+                message.success("Copied to clipboard!");
+              } catch (err) {
+                console.error("Unable to copy to clipboard", err);
+              }
+              document.body.removeChild(textArea);
             }}
           >
             Copy
@@ -53,8 +65,20 @@ const ComponentB = () => {
           {formatPrice(value)}
           <Button
             onClick={() => {
-              navigator.clipboard.writeText(formatPrice(value));
-              message.success("Copied to clipboard!");
+              // navigator.clipboard.writeText(formatPrice(value));
+              const textArea = document.createElement("textarea");
+              textArea.value = value;
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              try {
+                document.execCommand("copy");
+                // setIsCopied(true);
+                message.success("Copied to clipboard!");
+              } catch (err) {
+                console.error("Unable to copy to clipboard", err);
+              }
+              document.body.removeChild(textArea);
             }}
           >
             Copy
@@ -71,8 +95,20 @@ const ComponentB = () => {
           {formatPrice(value)}
           <Button
             onClick={() => {
-              navigator.clipboard.writeText(formatPrice(value));
-              message.success("Copied to clipboard!");
+              // navigator.clipboard.writeText(formatPrice(value));
+              const textArea = document.createElement("textarea");
+              textArea.value = value;
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              try {
+                document.execCommand("copy");
+                // setIsCopied(true);
+                message.success("Copied to clipboard!");
+              } catch (err) {
+                console.error("Unable to copy to clipboard", err);
+              }
+              document.body.removeChild(textArea);
             }}
           >
             Copy
@@ -89,8 +125,20 @@ const ComponentB = () => {
           {formatPrice(value)}
           <Button
             onClick={() => {
-              navigator.clipboard.writeText(formatPrice(value));
-              message.success("Copied to clipboard!");
+              // navigator.clipboard.writeText(formatPrice(value));
+              const textArea = document.createElement("textarea");
+              textArea.value = value;
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              try {
+                document.execCommand("copy");
+                // setIsCopied(true);
+                message.success("Copied to clipboard!");
+              } catch (err) {
+                console.error("Unable to copy to clipboard", err);
+              }
+              document.body.removeChild(textArea);
             }}
           >
             Copy
