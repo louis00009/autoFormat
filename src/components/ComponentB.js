@@ -22,7 +22,7 @@ const ComponentB = () => {
   //for calculator
   // 计算 vendorTotalPrice(NO GST), Profit(5%) 和 Profit(10%)
 
-  const vendorTotalPriceNoGst = vendorTotalPrice * 0.9;
+  const vendorTotalPriceNoGst = vendorTotalPrice / 1.1;
   const profit5Percent = vendorTotalPriceNoGst * 0.05;
   const profit10Percent = vendorTotalPriceNoGst * 0.1;
   const columns = [
