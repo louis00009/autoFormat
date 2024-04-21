@@ -190,6 +190,13 @@ const ComponentB = () => {
       alert("Wrong PO number, Start from 'Kin'.");
       return;
     }
+    //So validation 6 numbers
+    if (/[a-zA-Z]/.test(salesOrderNumber)) {
+      alert("SO should Only contain Numbers!");
+      return;
+    } else {
+      console.log("SO check pass");
+    }
     // 验证前三位字母是否为 "Kin"
     if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
       // 如果是 "Kin",则复制到剪贴板
@@ -426,6 +433,8 @@ const ComponentB = () => {
         <input
           type="text"
           value={salesOrderNumber}
+          maxLength="6"
+          pattern="\d*"
           onChange={(e) => setSalesOrderNumber(e.target.value)}
         />
       </div>
@@ -435,12 +444,14 @@ const ComponentB = () => {
       <button onClick={unsecuredCopyToClipboard}>Copy</button>
       <button onClick={unsecuredCopyToClipboard2}>Copy(Invoice Sent)</button>
 
-      <Table
-        style={{ marginTop: "20px" }}
-        columns={columns}
-        dataSource={data}
-        pagination={false}
-      />
+      <div className="container">
+        <Table
+          style={{ marginTop: "20px" }}
+          columns={columns}
+          dataSource={data}
+          pagination={false}
+        />
+      </div>
     </div>
   );
 };

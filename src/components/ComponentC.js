@@ -21,6 +21,13 @@ const ComponentB = () => {
   };
 
   const unsecuredCopyToClipboard = () => {
+    //So validation 6 numbers
+    if (/[a-zA-Z]/.test(salesOrderNumber)) {
+      alert("SO should Only contain Numbers!");
+      return;
+    } else {
+      console.log("SO check pass");
+    }
     if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
       const textArea = document.createElement("textarea");
       textArea.value = componentInfo;
@@ -43,6 +50,13 @@ const ComponentB = () => {
   };
 
   const unsecuredCopyToClipboard2 = () => {
+    //So validation 6 numbers
+    if (/[a-zA-Z]/.test(salesOrderNumber)) {
+      alert("SO should Only contain Numbers!");
+      return;
+    } else {
+      console.log("SO check pass");
+    }
     if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
       const textArea = document.createElement("textarea");
       textArea.value = componentInfo2;
@@ -250,6 +264,8 @@ const ComponentB = () => {
         <input
           type="text"
           value={salesOrderNumber}
+          maxLength="6"
+          pattern="\d*"
           onChange={(e) => setSalesOrderNumber(e.target.value)}
         />
       </div>

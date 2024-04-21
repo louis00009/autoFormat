@@ -36,6 +36,12 @@ const FormatAComponent = () => {
   };
 
   const unsecuredCopyToClipboard = () => {
+    if (/[a-zA-Z]/.test(studentId)) {
+      alert("SO should Only contain Numbers!");
+      return;
+    } else {
+      console.log("SO check pass");
+    }
     if (studentFirstName.slice(0, 3).toLowerCase() === "aau") {
       const textArea = document.createElement("textarea");
       textArea.value = studentInfo;
@@ -163,6 +169,8 @@ const FormatAComponent = () => {
             type="text"
             placeholder="Sales Order Number"
             value={studentId}
+            maxLength="6"
+            pattern="\d*"
             onChange={(e) => setStudentId(e.target.value)}
           />
         </div>
