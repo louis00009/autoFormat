@@ -279,7 +279,7 @@ const ComponentB = () => {
 
   useEffect(() => {
     const info = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(
-      vendorTotalPrice
+      vendorTotalPriceNoGst
     )}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
@@ -291,7 +291,7 @@ const ComponentB = () => {
     )}Sales Order Number: ${salesOrderNumber}`;
 
     const info2 = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}\n: $${formatPrice(
-      vendorTotalPrice
+      vendorTotalPriceNoGst
     )}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***INV SENT***`;
@@ -342,7 +342,9 @@ const ComponentB = () => {
 
   return (
     <div className="container">
-      <h2>Invoice Note Helper</h2>
+      {/* <h4>Invoice Note Helper</h4> */}
+      
+      <p>Transport/Storage/Admin: 255.2+ //Photos: 30+ //Admin fee: 30+ //Service call/Drop off://Disposal: Sharp test: Postage:// Admin/Photo/Plate removal</p>
       <div className="text-container">
         <p
           style={{

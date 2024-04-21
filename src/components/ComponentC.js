@@ -158,6 +158,7 @@ const ComponentB = () => {
   return (
     <div className="container">
       <h2>Invoice Note Helper</h2>
+      <p>Transport/Storage/Admin: 255.2+ //Photos: 30+ //Admin fee: 30+ //Service call/Drop off://Disposal: Sharp test: Postage:// Admin/Photo/Plate removal</p>
       <div className="text-container">
         <p
           style={{
