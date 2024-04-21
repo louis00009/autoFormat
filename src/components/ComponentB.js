@@ -228,6 +228,13 @@ const ComponentB = () => {
       alert("Wrong PO number, Start from 'Kin'.");
       return;
     }
+    //So validation 6 numbers
+    if (/[a-zA-Z]/.test(salesOrderNumber)) {
+      alert("SO should Only contain Numbers!");
+      return;
+    } else {
+      console.log("SO check pass");
+    }
     // 验证前三位字母是否为 "Kin"
     if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
       // 如果是 "Kin",则复制到剪贴板
