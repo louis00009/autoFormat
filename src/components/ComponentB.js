@@ -278,11 +278,8 @@ const ComponentB = () => {
   // };
 
   useEffect(() => {
-    const info = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(
-      vendorTotalPriceNoGst
-    )}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
-      raisedInvoicePrice
-    )} ***SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
+    const info = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(vendorTotalPriceNoGst)}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
+      raisedInvoicePrice)} ***SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
 
     const oldinfo = `Vendor Invoice Number: ${vendorInvoiceNumber}Vendor Total Price: ${formatPrice(
       vendorTotalPrice
@@ -290,11 +287,8 @@ const ComponentB = () => {
       raisedInvoicePrice
     )}Sales Order Number: ${salesOrderNumber}`;
 
-    const info2 = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}\n: $${formatPrice(
-      vendorTotalPriceNoGst
-    )}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
-      raisedInvoicePrice
-    )} ***SO: ${salesOrderNumber} ***INV SENT***`;
+    const info2 = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(vendorTotalPriceNoGst)}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
+      raisedInvoicePrice)} ***SO: ${salesOrderNumber} ***INV SENT***`;
 
     setComponentInfo(info);
     setComponentInfo2(info2);
@@ -313,6 +307,17 @@ const ComponentB = () => {
   const handleReset = () => {
     setVendorInvoiceNumber("");
     setvendorName("");
+    setVendorTotalPrice("");
+    setVendorInvoicePurpose("");
+    setPurchaseOrderNumber("");
+    setRaisedInvoiceNumber("");
+    setRaisedInvoicePurpose("");
+    setRaisedInvoicePrice("");
+    setSalesOrderNumber("");
+  };
+
+  const handleResetexceptvn = () => {
+    setVendorInvoiceNumber("");
     setVendorTotalPrice("");
     setVendorInvoicePurpose("");
     setPurchaseOrderNumber("");
@@ -421,22 +426,7 @@ const ComponentB = () => {
         />
       </div>
 
-      <div className="input-row">
-        <label>Raised Invoice Purpose:</label>
-        <input
-          type="text"
-          value={raisedInvoicePurpose}
-          onChange={(e) => setRaisedInvoicePurpose(e.target.value)}
-        />
-      </div>
-      <div className="input-row">
-        <label>Raised Invoice Price:</label>
-        <input
-          type="number"
-          value={raisedInvoicePrice}
-          onChange={(e) => setRaisedInvoicePrice(e.target.value)}
-        />
-      </div>
+      
       <div className="input-row">
         <label>Sales Order Number:</label>
         <input
@@ -447,7 +437,28 @@ const ComponentB = () => {
           onChange={(e) => setSalesOrderNumber(e.target.value)}
         />
       </div>
+      <div className="input-row">
+        <label>Raised Invoice Price:</label>
+        <input
+          type="number"
+          value={raisedInvoicePrice}
+          onChange={(e) => setRaisedInvoicePrice(e.target.value)}
+        />
+      </div>
+
+      <div className="input-row">
+        <label>Raised Invoice Purpose:</label>
+        <input
+          type="text"
+          value={raisedInvoicePurpose}
+          onChange={(e) => setRaisedInvoicePurpose(e.target.value)}
+          placeholder="Leave it empty"
+        />
+      </div>
+
+
       <button onClick={handleReset}>Reset</button>
+      <button onClick={handleResetexceptvn}>Reset-Keep VN</button>
       {/* <button onClick={handleCopy}>Copy</button>
       <button onClick={handleCopy2}>Copy(Invoice Sent)</button> */}
       <button onClick={unsecuredCopyToClipboard}>Copy</button>
