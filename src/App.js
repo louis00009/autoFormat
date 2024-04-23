@@ -3,6 +3,7 @@ import TabComponent from "../src/components/formater";
 import ComponentB from "./components/ComponentB";
 import ComponentC from "./components/ComponentC";
 import ComponentWOVR from "./components/ComponentWOVR";
+import ComponentPayout from "./components/ComponentPayout";
 
 import { Col, Row, Button } from "antd";
 
@@ -198,6 +199,7 @@ const formats = [
   { name: "Photo Note", content: <FormatAComponent /> },
   { name: "MD", content: <ComponentC /> },
   { name: "WOVR", content: <ComponentWOVR /> },
+  { name: "Payout", content: <ComponentPayout /> },
 ];
 
 const App = () => {
