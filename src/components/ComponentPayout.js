@@ -497,7 +497,7 @@ const ComponentB = () => {
     setVendorInvoiceNumber("");
     setvendorName("");
     setVendorTotalPrice("");
-    setVendorInvoicePurpose("Payout");
+    // setVendorInvoicePurpose("");
     setPurchaseOrderNumber("");
     setRaisedInvoiceNumber("");
     setRaisedInvoicePurpose("");
