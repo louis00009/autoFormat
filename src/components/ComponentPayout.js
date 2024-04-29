@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
-import { Table, Button, message, Col, Row, FloatButton } from "antd";
+import { Table, Button, message, Col, Row, FloatButton, Modal } from "antd";
 import SearchComponent from "./SearchComponent";
 
 //for floaticon
-import { CommentOutlined, CustomerServiceOutlined } from "@ant-design/icons";
+import { CommentOutlined, CustomerServiceOutlined,ExclamationCircleOutlined} from "@ant-design/icons";
 // import { FloatButton } from 'antd';
 
 const ComponentB = () => {
@@ -52,6 +52,21 @@ const ComponentB = () => {
 
   // default open float icon
   const [groupOpen, setGroupOpen] = useState(true);
+
+  // control the 2000 popup
+  const [visible, setVisible] = useState(false);
+  const [vendorValue, setVendorValue] = useState('');
+  const [options, setOptions] = useState([]);
+  
+  const handleConfirm = () => {
+    // Handle confirm logic here
+    setVisible(false);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
 
   const columns = [
     {
@@ -316,6 +331,7 @@ const ComponentB = () => {
   // };
 
   const unsecuredCopyToClipboard = () => {
+    
     if (purchaseOrderNumber.slice(0, 3).toLowerCase() === "kin") {
       console.log("Po number is correct");
     } else {
@@ -328,6 +344,11 @@ const ComponentB = () => {
       return;
     } else {
       console.log("SO check pass");
+    }
+    if(Number(raisedInvoicePrice)>=2000){
+      // message.warning("Please Sent email,Change email subject!");
+      setVisible(true);
+      
     }
     // 验证前三位字母是否为 "Kin"
     if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
@@ -354,6 +375,8 @@ const ComponentB = () => {
   };
 
   const unsecuredCopyToClipboard2 = () => {
+    
+    
     if (purchaseOrderNumber.slice(0, 3).toLowerCase() === "kin") {
       console.log("Po number is correct");
     } else {
@@ -366,6 +389,10 @@ const ComponentB = () => {
       return;
     } else {
       console.log("SO check pass");
+    }
+    if(Number(raisedInvoicePrice)>2000){
+      // message.warning("Please Sent email,Change email subject!");
+      setVisible(true);
     }
     // 验证前三位字母是否为 "Kin"
     if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
@@ -390,6 +417,8 @@ const ComponentB = () => {
       alert("Wrong Raised invoice number, Start from 'AAU'.");
     }
   };
+
+
 
   const unsecuredCopyToClipboardPO = (text) => {
     const textArea = document.createElement("textarea");
@@ -876,6 +905,17 @@ const ComponentB = () => {
           onClick={handleFloatButton1Click}
         /> */}
         <FloatButton icon="R" onClick={handleFloatButton2Click} />
+        <Modal
+        title={<span className="custom-modal-title">Confirmation</span>}
+        visible={visible}
+        onOk={handleConfirm}
+        onCancel={handleCancel}
+      >
+        
+        <p>Copy Success! BUT </p>
+        <p> <ExclamationCircleOutlined /> Please send an email and change the email subject!</p>
+      </Modal>
+
       </div>
 
       {/* </div> */}
