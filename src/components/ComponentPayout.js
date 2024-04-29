@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
 import { Table, Button, message, Col, Row, FloatButton } from "antd";
+import SearchComponent from "./SearchComponent";
 
 //for floaticon
 import { CommentOutlined, CustomerServiceOutlined } from "@ant-design/icons";
@@ -722,10 +723,15 @@ const ComponentB = () => {
           </div>
           <div className="input-row">
             <label>Vendor name:</label>
-            <input
+            {/* <input
               type="text"
               value={payoutVendor}
               onChange={(e) => setpayoutVendor(e.target.value)}
+            /> */}
+
+            <SearchComponent
+              payoutVendor={payoutVendor}
+              setPayoutVendor={setpayoutVendor}
             />
           </div>
 

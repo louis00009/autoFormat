@@ -77,9 +77,10 @@ flex for app.js
   flex-basis: 200px;
 }
 
+/* this min-wid influence the auto complete */
 .input-row input {
   max-width: 40%;
-  min-width: 100px;
+  min-width: 200px;
   flex: 1;
 }
 
