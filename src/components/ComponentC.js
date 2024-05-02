@@ -13,8 +13,15 @@ const ComponentB = () => {
   const [salesOrderNumber, setSalesOrderNumber] = useState("");
   const [componentInfo, setComponentInfo] = useState("");
   const [componentInfo2, setComponentInfo2] = useState("");
+  const [componentInfo3, setComponentInfo3] = useState("");
+  const [componentInfo4, setComponentInfo4] = useState("");
 
   const [isCopied, setIsCopied] = useState(false);
+
+// MD general notes
+  const [mdMakeModel, setmdMakeModel] = useState("");
+  const [mdRego, setmdRego] = useState("");
+  const [mdClaimNo, setmdClaimNo] = useState("");
 
   const formatPrice = (price) => {
     return parseFloat(price).toFixed(2);
@@ -78,6 +85,43 @@ const ComponentB = () => {
     }
   };
 
+  const unsecuredCopyToClipboard3= () => {
+    const textArea = document.createElement("textarea");
+    textArea.value = componentInfo3;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand("copy");
+      setIsCopied(true);
+    } catch (err) {
+      console.error("Unable to copy to clipboard", err);
+    }
+    document.body.removeChild(textArea);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+
+  }
+  const unsecuredCopyToClipboard4= () => {
+    const textArea = document.createElement("textarea");
+    textArea.value = componentInfo4;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand("copy");
+      setIsCopied(true);
+    } catch (err) {
+      console.error("Unable to copy to clipboard", err);
+    }
+    document.body.removeChild(textArea);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+
+  }
+
   // const unsecuredCopyToClipboard2 = (text) => {
   //   const textArea = document.createElement("textarea");
   //   textArea.value = componentInfo2;
@@ -107,12 +151,18 @@ const ComponentB = () => {
       raisedInvoicePrice
     )}Sales Order Number: ${salesOrderNumber}`;
 
-    const info2 = `***Raised invoice: ${raisedInvoiceNumber} to vendor for ${raisedInvoicePurpose}: $${formatPrice(
-      raisedInvoicePrice
-    )} ***SO: ${salesOrderNumber} ***INV SENT***`;
+    // const info2 = `***Raised invoice: ${raisedInvoiceNumber} to vendor for ${raisedInvoicePurpose}: $${formatPrice(
+    //   raisedInvoicePrice
+    // )} ***SO: ${salesOrderNumber} ***INV SENT***`;
+
+    const info3 = `Transport Fee\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
+
+    const info4 = `Storage Fee\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
 
     setComponentInfo(info);
-    setComponentInfo2(info2);
+    // setComponentInfo2(info2);
+    setComponentInfo3(info3);
+    setComponentInfo4(info4);
   }, [
     vendorInvoiceNumber,
     vendorName,
@@ -123,6 +173,9 @@ const ComponentB = () => {
     raisedInvoicePurpose,
     raisedInvoicePrice,
     salesOrderNumber,
+    mdClaimNo,
+    mdMakeModel,
+    mdRego
   ]);
 
   const handleReset = () => {
@@ -179,8 +232,21 @@ const ComponentB = () => {
         >
           {isCopied
             ? "Information successfully copied to the clipboard"
-            : componentInfo2}
+            : componentInfo3}
         </p>
+
+        <p
+          style={{
+            color: isCopied ? "red" : "inherit",
+            transition: "color 0.2s ease-in-out",
+          }}
+        >
+          {isCopied
+            ? "Information successfully copied to the clipboard"
+            : componentInfo4}
+        </p>
+
+
       </div>
       <b>For Storage, you should have 3 records in one SO</b>
       <br></br>
@@ -194,6 +260,31 @@ const ComponentB = () => {
       </b>{" "}
       <br></br>
       <br></br>
+      <div className="input-row">
+            <label>Rego:</label>
+            <input
+              type="text"
+              value={mdRego}
+              onChange={(e) => setmdRego(e.target.value)}
+            />
+          </div>
+          <div className="input-row">
+            <label>Make/Model:</label>
+            <input
+              type="text"
+              value={mdMakeModel}
+              onChange={(e) => setmdMakeModel(e.target.value)}
+            />
+          </div>
+          
+          <div className="input-row">
+            <label>Claim:</label>
+            <input
+              type="text"
+              value={mdClaimNo}
+              onChange={(e) => setmdClaimNo(e.target.value)}
+            />
+          </div>
       {/* <div>
         <label>Vendor Invoice Number:</label>
         <input
@@ -274,7 +365,9 @@ const ComponentB = () => {
       {/* <button onClick={handleCopy}>Copy</button>
       <button onClick={handleCopy2}>Copy(Invoice Sent)</button> */}
       <button onClick={unsecuredCopyToClipboard}>Copy</button>
-      <button onClick={unsecuredCopyToClipboard2}>Copy(Invoice Sent)</button>
+      {/* <button onClick={unsecuredCopyToClipboard2}>Copy</button> */}
+      <button onClick={unsecuredCopyToClipboard3}>Copy(Transport)</button>
+      <button onClick={unsecuredCopyToClipboard4}>Copy(Storage)</button>
     </div>
   );
 };
