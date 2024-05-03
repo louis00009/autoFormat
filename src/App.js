@@ -4,6 +4,8 @@ import ComponentB from "./components/ComponentB";
 import ComponentC from "./components/ComponentC";
 import ComponentWOVR from "./components/ComponentWOVR";
 import ComponentPayout from "./components/ComponentPayout";
+import TranDamDrawer from "./components/TranDamDrawer";
+import "./App.css";
 
 import { Col, Row, Button } from "antd";
 
@@ -200,6 +202,7 @@ const formats = [
   { name: "MD", content: <ComponentC /> },
   { name: "WOVR", content: <ComponentWOVR /> },
   { name: "Payout", content: <ComponentPayout /> },
+  // { name: "Payout", content: <ComponentPayout /> },
 ];
 
 const App = () => {
@@ -207,6 +210,8 @@ const App = () => {
     <div>
       <TabComponent formats={formats} />
       {/* <ComponentB /> */}
+      <TranDamDrawer style={{ marginBottom: '0px' }} />
+      
     </div>
   );
 };

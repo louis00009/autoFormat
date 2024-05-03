@@ -1,6 +1,6 @@
 /* General Styles */
 div {
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 label {
@@ -50,6 +50,10 @@ p {
 
 .container {
   margin: 3%;
+  
+}
+.container div {
+  margin-bottom: 0.8rem;
 }
 
 .text-container {
@@ -93,3 +97,4 @@ flex for app.js
 .table {
   margin-top: 25px;
 }
+

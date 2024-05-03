@@ -725,15 +725,6 @@ const ComponentB = () => {
               onChange={(e) => setpayoutInvoiceTwo(e.target.value)}
             />
           </div>
-
-          <div className="input-row">
-            <label>Make/Model:</label>
-            <input
-              type="text"
-              value={payoutMakeModel}
-              onChange={(e) => setpayoutMakeModel(e.target.value)}
-            />
-          </div>
           <div className="input-row">
             <label>Rego:</label>
             <input
@@ -742,6 +733,15 @@ const ComponentB = () => {
               onChange={(e) => setpayoutRego(e.target.value)}
             />
           </div>
+          <div className="input-row">
+            <label>Make/Model:</label>
+            <input
+              type="text"
+              value={payoutMakeModel}
+              onChange={(e) => setpayoutMakeModel(e.target.value)}
+            />
+          </div>
+          
           <div className="input-row">
             <label>Claim:</label>
             <input
@@ -907,7 +907,7 @@ const ComponentB = () => {
         <FloatButton icon="R" onClick={handleFloatButton2Click} />
         <Modal
         title={<span className="custom-modal-title">Confirmation</span>}
-        visible={visible}
+        open={visible}
         onOk={handleConfirm}
         onCancel={handleCancel}
       >

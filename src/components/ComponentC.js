@@ -15,6 +15,7 @@ const ComponentB = () => {
   const [componentInfo2, setComponentInfo2] = useState("");
   const [componentInfo3, setComponentInfo3] = useState("");
   const [componentInfo4, setComponentInfo4] = useState("");
+  const [componentInfo5, setComponentInfo5] = useState("");
 
   const [isCopied, setIsCopied] = useState(false);
 
@@ -121,7 +122,24 @@ const ComponentB = () => {
     }, 2000);
 
   }
+  const unsecuredCopyToClipboard5= () => {
+    const textArea = document.createElement("textarea");
+    textArea.value = componentInfo5;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand("copy");
+      setIsCopied(true);
+    } catch (err) {
+      console.error("Unable to copy to clipboard", err);
+    }
+    document.body.removeChild(textArea);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
 
+  }
   // const unsecuredCopyToClipboard2 = (text) => {
   //   const textArea = document.createElement("textarea");
   //   textArea.value = componentInfo2;
@@ -158,11 +176,13 @@ const ComponentB = () => {
     const info3 = `Transport Fee\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
 
     const info4 = `Storage Fee\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
+    const info5 = `Photo Fee\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
 
     setComponentInfo(info);
     // setComponentInfo2(info2);
     setComponentInfo3(info3);
     setComponentInfo4(info4);
+    setComponentInfo5(info5);
   }, [
     vendorInvoiceNumber,
     vendorName,
@@ -179,6 +199,20 @@ const ComponentB = () => {
   ]);
 
   const handleReset = () => {
+    setVendorInvoiceNumber("");
+    setvendorName("");
+    setVendorTotalPrice("");
+    setVendorInvoicePurpose("");
+    setPurchaseOrderNumber("");
+    setRaisedInvoiceNumber("");
+    setRaisedInvoicePurpose("");
+    setRaisedInvoicePrice("");
+    setSalesOrderNumber("");
+  };
+  const handleResetbutkeepcar = () => {
+    setmdClaimNo("");
+    setmdMakeModel("");
+    setmdRego("");
     setVendorInvoiceNumber("");
     setvendorName("");
     setVendorTotalPrice("");
@@ -244,6 +278,16 @@ const ComponentB = () => {
           {isCopied
             ? "Information successfully copied to the clipboard"
             : componentInfo4}
+        </p>
+        <p
+          style={{
+            color: isCopied ? "red" : "inherit",
+            transition: "color 0.2s ease-in-out",
+          }}
+        >
+          {isCopied
+            ? "Information successfully copied to the clipboard"
+            : componentInfo5}
         </p>
 
 
@@ -362,12 +406,14 @@ const ComponentB = () => {
         />
       </div>
       <button onClick={handleReset}>Reset</button>
+      <button onClick={handleResetbutkeepcar}>Reset(Carinfo)</button>
       {/* <button onClick={handleCopy}>Copy</button>
       <button onClick={handleCopy2}>Copy(Invoice Sent)</button> */}
       <button onClick={unsecuredCopyToClipboard}>Copy</button>
       {/* <button onClick={unsecuredCopyToClipboard2}>Copy</button> */}
       <button onClick={unsecuredCopyToClipboard3}>Copy(Transport)</button>
       <button onClick={unsecuredCopyToClipboard4}>Copy(Storage)</button>
+      <button onClick={unsecuredCopyToClipboard5}>Copy(Photo)</button>
     </div>
   );
 };
