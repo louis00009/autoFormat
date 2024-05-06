@@ -12,6 +12,7 @@ const ComponentB = () => {
   const [raisedInvoicePrice, setRaisedInvoicePrice] = useState("");
   const [salesOrderNumber, setSalesOrderNumber] = useState("");
   const [componentInfo, setComponentInfo] = useState("");
+  // const [componentInfosent, setComponentInfoSent] = useState("");
   const [componentInfo2, setComponentInfo2] = useState("");
   const [componentInfo3, setComponentInfo3] = useState("");
   const [componentInfo4, setComponentInfo4] = useState("");
@@ -162,6 +163,8 @@ const ComponentB = () => {
     const info = `***Raised invoice: ${raisedInvoiceNumber} to vendor for ${raisedInvoicePurpose}: $${formatPrice(
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
+    
+    
 
     const oldinfo = `Vendor Invoice Number: ${vendorInvoiceNumber}Vendor Total Price: ${formatPrice(
       vendorTotalPrice
@@ -169,17 +172,17 @@ const ComponentB = () => {
       raisedInvoicePrice
     )}Sales Order Number: ${salesOrderNumber}`;
 
-    // const info2 = `***Raised invoice: ${raisedInvoiceNumber} to vendor for ${raisedInvoicePurpose}: $${formatPrice(
-    //   raisedInvoicePrice
-    // )} ***SO: ${salesOrderNumber} ***INV SENT***`;
+    const info2 = `***Raised invoice: ${raisedInvoiceNumber} to vendor for ${raisedInvoicePurpose}: $${formatPrice(
+      raisedInvoicePrice
+    )} ***SO: ${salesOrderNumber} ***INV SENT***`;
 
-    const info3 = `Transport Fee\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
+    const info3 = `Transport \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
 
-    const info4 = `Storage Fee\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
+    const info4 = `Storage \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
     const info5 = `Photo Fee\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
 
     setComponentInfo(info);
-    // setComponentInfo2(info2);
+    setComponentInfo2(info2);
     setComponentInfo3(info3);
     setComponentInfo4(info4);
     setComponentInfo5(info5);
@@ -380,7 +383,7 @@ const ComponentB = () => {
         />
       </div>
       <div className="input-row">
-        <label>Raised Invoice Purpose:</label>
+        <label>Invoice Purpose:</label>
         <input
           type="text"
           value={raisedInvoicePurpose}
@@ -388,7 +391,7 @@ const ComponentB = () => {
         />
       </div>
       <div className="input-row">
-        <label>Raised Invoice Price:</label>
+        <label>Invoice Price:</label>
         <input
           type="number"
           value={raisedInvoicePrice}
@@ -407,9 +410,11 @@ const ComponentB = () => {
       </div>
       <button onClick={handleReset}>Reset</button>
       <button onClick={handleResetbutkeepcar}>Reset(Carinfo)</button>
-      {/* <button onClick={handleCopy}>Copy</button>
-      <button onClick={handleCopy2}>Copy(Invoice Sent)</button> */}
+      {/* <button onClick={handleCopy}>Copy</button> */}
+      
       <button onClick={unsecuredCopyToClipboard}>Copy</button>
+      <button onClick={unsecuredCopyToClipboard2}>Copy(Invoice Sent)</button>
+
       {/* <button onClick={unsecuredCopyToClipboard2}>Copy</button> */}
       <button onClick={unsecuredCopyToClipboard3}>Copy(Transport)</button>
       <button onClick={unsecuredCopyToClipboard4}>Copy(Storage)</button>
