@@ -4,7 +4,11 @@ import { Table, Button, message, Col, Row, FloatButton, Modal } from "antd";
 import SearchComponent from "./SearchComponent";
 
 //for floaticon
-import { CommentOutlined, CustomerServiceOutlined,ExclamationCircleOutlined} from "@ant-design/icons";
+import {
+  CommentOutlined,
+  CustomerServiceOutlined,
+  ExclamationCircleOutlined,
+} from "@ant-design/icons";
 // import { FloatButton } from 'antd';
 
 const ComponentB = () => {
@@ -55,9 +59,9 @@ const ComponentB = () => {
 
   // control the 2000 popup
   const [visible, setVisible] = useState(false);
-  const [vendorValue, setVendorValue] = useState('');
+  const [vendorValue, setVendorValue] = useState("");
   const [options, setOptions] = useState([]);
-  
+
   const handleConfirm = () => {
     // Handle confirm logic here
     setVisible(false);
@@ -66,7 +70,6 @@ const ComponentB = () => {
   const handleCancel = () => {
     setVisible(false);
   };
-
 
   const columns = [
     {
@@ -330,8 +333,13 @@ const ComponentB = () => {
   //   }, 2000);
   // };
 
+  // email notification
+  const vendorNameConditions = [
+    payoutVendor.toLowerCase() === "comcover",
+    payoutVendor.toLowerCase() === "car rental",
+  ];
+
   const unsecuredCopyToClipboard = () => {
-    
     if (purchaseOrderNumber.slice(0, 3).toLowerCase() === "kin") {
       console.log("Po number is correct");
     } else {
@@ -345,10 +353,9 @@ const ComponentB = () => {
     } else {
       console.log("SO check pass");
     }
-    if(Number(raisedInvoicePrice)>=2000){
+    if (Number(raisedInvoicePrice) >= 2000) {
       // message.warning("Please Sent email,Change email subject!");
       setVisible(true);
-      
     }
     // 验证前三位字母是否为 "Kin"
     if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
@@ -372,11 +379,13 @@ const ComponentB = () => {
       // 如果不是 "Kin",则提示用户输入有误
       alert("Wrong Raised invoice number, Start from 'AAU'.");
     }
+    // sent email notification
+    if (vendorNameConditions.some((condition) => condition)) {
+      message.warning("please sent email to " + payoutVendor + " !");
+    }
   };
 
   const unsecuredCopyToClipboard2 = () => {
-    
-    
     if (purchaseOrderNumber.slice(0, 3).toLowerCase() === "kin") {
       console.log("Po number is correct");
     } else {
@@ -390,10 +399,11 @@ const ComponentB = () => {
     } else {
       console.log("SO check pass");
     }
-    if(Number(raisedInvoicePrice)>2000){
+    if (Number(raisedInvoicePrice) > 2000) {
       // message.warning("Please Sent email,Change email subject!");
       setVisible(true);
     }
+
     // 验证前三位字母是否为 "Kin"
     if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
       // 如果是 "Kin",则复制到剪贴板
@@ -416,9 +426,11 @@ const ComponentB = () => {
       // 如果不是 "Kin",则提示用户输入有误
       alert("Wrong Raised invoice number, Start from 'AAU'.");
     }
+    // sent email notification
+    if (vendorNameConditions.some((condition) => condition)) {
+      message.warning("please sent email to " + payoutVendor + " !");
+    }
   };
-
-
 
   const unsecuredCopyToClipboardPO = (text) => {
     const textArea = document.createElement("textarea");
@@ -906,16 +918,18 @@ const ComponentB = () => {
         /> */}
         <FloatButton icon="R" onClick={handleFloatButton2Click} />
         <Modal
-        title={<span className="custom-modal-title">Confirmation</span>}
-        visible={visible}
-        onOk={handleConfirm}
-        onCancel={handleCancel}
-      >
-        
-        <p>Copy Success! BUT </p>
-        <p> <ExclamationCircleOutlined /> Please send an email and change the email subject!</p>
-      </Modal>
-
+          title={<span className="custom-modal-title">Confirmation</span>}
+          visible={visible}
+          onOk={handleConfirm}
+          onCancel={handleCancel}
+        >
+          <p>Copy Success! BUT </p>
+          <p>
+            {" "}
+            <ExclamationCircleOutlined /> Please send an email and change the
+            email subject!
+          </p>
+        </Modal>
       </div>
 
       {/* </div> */}

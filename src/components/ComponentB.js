@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
 
 import { Table, Button, message } from "antd";
+import SearchComponent from "./SearchComponent";
 
 // this is Towing company
 const ComponentB = () => {
@@ -18,6 +19,10 @@ const ComponentB = () => {
   const [componentInfo2, setComponentInfo2] = useState("");
 
   const [isCopied, setIsCopied] = useState(false);
+
+  // for vendor name make below element = payout//
+  const payoutVendor = vendorName;
+  const setpayoutVendor = setvendorName;
 
   //for calculator
   // 计算 vendorTotalPrice(NO GST), Profit(5%) 和 Profit(10%)
@@ -183,6 +188,11 @@ const ComponentB = () => {
   //   }, 2000);
   // };
 
+  const vendorNameConditions = [
+    vendorName.toLowerCase() === "comcover",
+    vendorName.toLowerCase() === "car rental",
+  ];
+
   const unsecuredCopyToClipboard = () => {
     if (purchaseOrderNumber.slice(0, 3).toLowerCase() === "kin") {
       console.log("Po number is correct");
@@ -190,6 +200,7 @@ const ComponentB = () => {
       alert("Wrong PO number, Start from 'Kin'.");
       return;
     }
+
     //So validation 6 numbers
     if (/[a-zA-Z]/.test(salesOrderNumber)) {
       alert("SO should Only contain Numbers!");
@@ -218,6 +229,10 @@ const ComponentB = () => {
     } else {
       // 如果不是 "Kin",则提示用户输入有误
       alert("Wrong Raised invoice number, Start from 'AAU'.");
+    }
+    // sent email notification
+    if (vendorNameConditions.some((condition) => condition)) {
+      message.warning("please sent email to " + vendorName + " !");
     }
   };
 
@@ -257,6 +272,10 @@ const ComponentB = () => {
       // 如果不是 "Kin",则提示用户输入有误
       alert("Wrong Raised invoice number, Start from 'AAU'.");
     }
+    // sent email notification
+    if (vendorNameConditions.some((condition) => condition)) {
+      message.warning("please sent email to " + vendorName + " !");
+    }
   };
 
   // const unsecuredCopyToClipboard2 = (text) => {
@@ -278,8 +297,11 @@ const ComponentB = () => {
   // };
 
   useEffect(() => {
-    const info = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(vendorTotalPriceNoGst)}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
-      raisedInvoicePrice)} ***SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
+    const info = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(
+      vendorTotalPriceNoGst
+    )}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
+      raisedInvoicePrice
+    )} ***SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
 
     const oldinfo = `Vendor Invoice Number: ${vendorInvoiceNumber}Vendor Total Price: ${formatPrice(
       vendorTotalPrice
@@ -287,8 +309,11 @@ const ComponentB = () => {
       raisedInvoicePrice
     )}Sales Order Number: ${salesOrderNumber}`;
 
-    const info2 = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(vendorTotalPriceNoGst)}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
-      raisedInvoicePrice)} ***SO: ${salesOrderNumber} ***INV SENT***`;
+    const info2 = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(
+      vendorTotalPriceNoGst
+    )}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
+      raisedInvoicePrice
+    )} ***SO: ${salesOrderNumber} ***INV SENT***`;
 
     setComponentInfo(info);
     setComponentInfo2(info2);
@@ -348,8 +373,12 @@ const ComponentB = () => {
   return (
     <div className="container">
       {/* <h4>Invoice Note Helper</h4> */}
-      
-      <p>Transport/Storage/Admin: 255.2+ //Photos: 30+ //Admin fee: 30+ //Service call/Drop off://Disposal: Sharp test: Postage:// Admin/Photo/Plate removal</p>
+
+      <p>
+        Transport/Storage/Admin: 255.2+ //Photos: 30+ //Admin fee: 30+ //Service
+        call/Drop off://Disposal: Sharp test: Postage:// Admin/Photo/Plate
+        removal
+      </p>
       <div className="text-container">
         <p
           style={{
@@ -384,12 +413,17 @@ const ComponentB = () => {
       </div>
       <div className="input-row">
         <label>Vendor name:</label>
-        <input
+        {/* <input
           type="text"
           value={vendorName}
           onChange={(e) => setvendorName(e.target.value)}
+        /> */}
+        <SearchComponent
+          payoutVendor={payoutVendor}
+          setPayoutVendor={setpayoutVendor}
         />
       </div>
+
       <div className="input-row">
         <label>Vendor Invoice Purpose:</label>
         <input
@@ -426,7 +460,6 @@ const ComponentB = () => {
         />
       </div>
 
-      
       <div className="input-row">
         <label>Sales Order Number:</label>
         <input
@@ -455,7 +488,6 @@ const ComponentB = () => {
           placeholder="Leave it empty"
         />
       </div>
-
 
       <button onClick={handleReset}>Reset</button>
       <button onClick={handleResetexceptvn}>Reset-Keep VN</button>
