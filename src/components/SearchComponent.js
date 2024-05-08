@@ -255,7 +255,7 @@ const data = [
   { value: "In-Group" },
   { value: "Innovation Group (Sureplan)" },
   { value: "Insurance Australia Ltd - fast salvage" },
-  { value: "Insuret (Name PDF by rego and number)" },
+  { value: "Insuret" },
   { value: "Insuret Statement (Debtors)" },
   { value: "Inter Hannover (Argis)" },
   { value: "Inter Hannover Australian Branch / Armada" },

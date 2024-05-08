@@ -737,15 +737,6 @@ const ComponentB = () => {
               onChange={(e) => setpayoutInvoiceTwo(e.target.value)}
             />
           </div>
-
-          <div className="input-row">
-            <label>Make/Model:</label>
-            <input
-              type="text"
-              value={payoutMakeModel}
-              onChange={(e) => setpayoutMakeModel(e.target.value)}
-            />
-          </div>
           <div className="input-row">
             <label>Rego:</label>
             <input
@@ -754,6 +745,15 @@ const ComponentB = () => {
               onChange={(e) => setpayoutRego(e.target.value)}
             />
           </div>
+          <div className="input-row">
+            <label>Make/Model:</label>
+            <input
+              type="text"
+              value={payoutMakeModel}
+              onChange={(e) => setpayoutMakeModel(e.target.value)}
+            />
+          </div>
+          
           <div className="input-row">
             <label>Claim:</label>
             <input
@@ -918,18 +918,16 @@ const ComponentB = () => {
         /> */}
         <FloatButton icon="R" onClick={handleFloatButton2Click} />
         <Modal
-          title={<span className="custom-modal-title">Confirmation</span>}
-          visible={visible}
-          onOk={handleConfirm}
-          onCancel={handleCancel}
-        >
-          <p>Copy Success! BUT </p>
-          <p>
-            {" "}
-            <ExclamationCircleOutlined /> Please send an email and change the
-            email subject!
-          </p>
-        </Modal>
+        title={<span className="custom-modal-title">Confirmation</span>}
+        open={visible}
+        onOk={handleConfirm}
+        onCancel={handleCancel}
+      >
+        
+        <p>Copy Success! BUT </p>
+        <p> <ExclamationCircleOutlined /> Please send an email and change the email subject!</p>
+      </Modal>
+
       </div>
 
       {/* </div> */}
