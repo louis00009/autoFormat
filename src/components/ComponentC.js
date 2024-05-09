@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
+import { message } from "antd";
 // This is MD
 const ComponentB = () => {
   const [vendorInvoiceNumber, setVendorInvoiceNumber] = useState("");
@@ -19,6 +20,8 @@ const ComponentB = () => {
   const [componentInfo5, setComponentInfo5] = useState("");
   //photo notes
   const [componentInfo6, setComponentInfo6] = useState("");
+  //WOVER
+  const [componentInfo7, setComponentInfo7] = useState("");
 
   const [isCopied, setIsCopied] = useState(false);
 
@@ -97,14 +100,15 @@ const ComponentB = () => {
     textArea.select();
     try {
       document.execCommand("copy");
-      setIsCopied(true);
+      // setIsCopied(true);
     } catch (err) {
       console.error("Unable to copy to clipboard", err);
     }
     document.body.removeChild(textArea);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
+    // setTimeout(() => {
+    //   setIsCopied(false);
+    // }, 2000);
+    message.success("Transport note copy success for SO-General")
 
   }
   const unsecuredCopyToClipboard4= () => {
@@ -115,14 +119,15 @@ const ComponentB = () => {
     textArea.select();
     try {
       document.execCommand("copy");
-      setIsCopied(true);
+      // setIsCopied(true);
     } catch (err) {
       console.error("Unable to copy to clipboard", err);
     }
     document.body.removeChild(textArea);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
+    // setTimeout(() => {
+    //   setIsCopied(false);
+    // }, 2000);
+    message.success("Storage note copy success for SO-General")
 
   }
   const unsecuredCopyToClipboard5= () => {
@@ -133,15 +138,15 @@ const ComponentB = () => {
     textArea.select();
     try {
       document.execCommand("copy");
-      setIsCopied(true);
+      // setIsCopied(true);
     } catch (err) {
       console.error("Unable to copy to clipboard", err);
     }
     document.body.removeChild(textArea);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
-
+    // setTimeout(() => {
+    //   setIsCopied(false);
+    // }, 2000);
+    message.success("Photo note copy success for SO-General")
   }
 
   const unsecuredCopyToClipboard6= () => {
@@ -149,6 +154,30 @@ const ComponentB = () => {
       // 如果是 "Kin",则复制到剪贴板
       const textArea = document.createElement("textarea");
       textArea.value = componentInfo6;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        setIsCopied(true);
+      } catch (err) {
+        console.error("Unable to copy to clipboard", err);
+      }
+      document.body.removeChild(textArea);
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } else {
+      // 如果不是 "Kin",则提示用户输入有误
+      alert("Wrong Raised invoice number, Start from 'AAU'.");
+    }
+
+  }
+  const unsecuredCopyToClipboard7= () => {
+    if (raisedInvoiceNumber.slice(0, 3).toLowerCase() === "aau") {
+      // 如果是 "Kin",则复制到剪贴板
+      const textArea = document.createElement("textarea");
+      textArea.value = componentInfo7;
       document.body.appendChild(textArea);
       textArea.focus();
       textArea.select();
@@ -202,7 +231,7 @@ const ComponentB = () => {
     const info2 = `***Raised invoice: ${raisedInvoiceNumber} to vendor for ${raisedInvoicePurpose}: $${formatPrice(
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***INV SENT***`;
-
+// notes for geneal
     const info3 = `Transport \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
 
     const info4 = `Storage \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
@@ -210,6 +239,10 @@ const ComponentB = () => {
     
     //photo notes
     const info6 = `***Raised YARD PHOTO $35.75, to vendor ${raisedInvoiceNumber} ***, SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***  `;
+    // const info7 = `***Raised WOVR $${formatPrice(
+    //   raisedInvoicePrice
+    // )}, to vendor*** ${raisedInvoiceNumber} ***SO: ${salesOrderNumber} ***invoice not sent will SD after veicle sold***`;
+     const info7 = `***Raised WOVR $27.5, to vendor*** ${raisedInvoiceNumber} ***SO: ${salesOrderNumber} ***invoice not sent will SD after veicle sold***`;
 
     setComponentInfo(info);
     setComponentInfo2(info2);
@@ -217,6 +250,7 @@ const ComponentB = () => {
     setComponentInfo4(info4);
     setComponentInfo5(info5);
     setComponentInfo6(info6);
+    setComponentInfo7(info7);
   }, [
     vendorInvoiceNumber,
     vendorName,
@@ -293,7 +327,7 @@ const ComponentB = () => {
             : componentInfo}
         </p>
 
-        <p
+        {/* <p
           style={{
             color: isCopied ? "red" : "inherit",
             transition: "color 0.2s ease-in-out",
@@ -323,7 +357,7 @@ const ComponentB = () => {
           {isCopied
             ? "Information successfully copied to the clipboard"
             : componentInfo5}
-        </p>
+        </p> */}
         <p
           style={{
             color: isCopied ? "red" : "inherit",
@@ -333,6 +367,16 @@ const ComponentB = () => {
           {isCopied
             ? "Information successfully copied to the clipboard"
             : componentInfo6}
+        </p>
+        <p
+          style={{
+            color: isCopied ? "red" : "inherit",
+            transition: "color 0.2s ease-in-out",
+          }}
+        >
+          {isCopied
+            ? "Information successfully copied to the clipboard"
+            : componentInfo7}
         </p>
 
 
@@ -462,12 +506,13 @@ const ComponentB = () => {
       <button onClick={unsecuredCopyToClipboard}>Copy Note</button>
       <button onClick={unsecuredCopyToClipboard2}>Copy(Invoice Sent)</button>
       <button onClick={unsecuredCopyToClipboard6}>CP Photo Note</button>
+      <button onClick={unsecuredCopyToClipboard7}>CP WOVR</button>
       <br></br>
 
       {/* <button onClick={unsecuredCopyToClipboard2}>Copy</button> */}
-      <button onClick={unsecuredCopyToClipboard3}>Copy(Transport)</button>
-      <button onClick={unsecuredCopyToClipboard4}>Copy(Storage)</button>
-      <button onClick={unsecuredCopyToClipboard5}>Copy(Photo)</button>
+      <button onClick={unsecuredCopyToClipboard3} style={{ backgroundColor: "#f5655b" }}>Copy(Transport)</button>
+      <button onClick={unsecuredCopyToClipboard4} style={{ backgroundColor: "#f5655b" }}>Copy(Storage)</button>
+      <button onClick={unsecuredCopyToClipboard5} style={{ backgroundColor: "#f5655b" }}>Copy(Photo)</button>
       
     </div>
   );

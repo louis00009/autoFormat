@@ -21,8 +21,9 @@ const ComponentB = () => {
   const [isCopied, setIsCopied] = useState(false);
 
   // for vendor name make below element = payout//
-  const payoutVendor = vendorName;
-  const setpayoutVendor = setvendorName;
+  const [payoutVendor, setpayoutVendor] = useState("");
+  // const payoutVendor = vendorName;
+  // const setpayoutVendor = setvendorName;
 
   //for calculator
   // 计算 vendorTotalPrice(NO GST), Profit(5%) 和 Profit(10%)
@@ -191,7 +192,8 @@ const ComponentB = () => {
   const vendorNameConditions = [
     payoutVendor.toLowerCase() === "comcover",
     payoutVendor.toLowerCase() === "car rental",
-    payoutVendor.toLowerCase() === "car rental insurence",
+    payoutVendor.toLowerCase() === "cri",
+    payoutVendor.toLowerCase() === "car rental insurance",
     payoutVendor.toLowerCase() === "rentsure",
     payoutVendor.toLowerCase() === "recoversure",
     payoutVendor.toLowerCase() === "dkg fleet insurance company",
@@ -208,6 +210,10 @@ const ComponentB = () => {
     } else {
       alert("Wrong PO number, Start from 'Kin'.");
       return;
+    }
+    if(payoutVendor === ""){
+      // setpayoutVendor("Vendor");
+      alert("Vendor can not be empty!")
     }
 
     //So validation 6 numbers
@@ -241,7 +247,8 @@ const ComponentB = () => {
     }
     // sent email notification
     if (vendorNameConditions.some((condition) => condition)) {
-      message.warning("please sent email to " + vendorName + " !");
+      // message.warning("please sent email to " + payoutVendor + " !");
+      alert("please sent email to " + payoutVendor + " !");
     }
   };
 
@@ -252,6 +259,11 @@ const ComponentB = () => {
       alert("Wrong PO number, Start from 'Kin'.");
       return;
     }
+    if(payoutVendor === ""){
+      // setpayoutVendor("Vendor");
+      alert("Vendor can not be empty!")
+    }
+
     //So validation 6 numbers
     if (/[a-zA-Z]/.test(salesOrderNumber)) {
       alert("SO should Only contain Numbers!");
@@ -283,7 +295,8 @@ const ComponentB = () => {
     }
     // sent email notification
     if (vendorNameConditions.some((condition) => condition)) {
-      message.warning("please sent email to " + vendorName + " !");
+      // message.warning("please sent email to " + vendorName + " !");
+      alert("please sent email to " + payoutVendor + " !");
     }
   };
 
@@ -308,7 +321,7 @@ const ComponentB = () => {
   useEffect(() => {
     const info = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(
       vendorTotalPriceNoGst
-    )}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
+    )}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to ${payoutVendor} for ${vendorInvoicePurpose}: $${formatPrice(
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
 
@@ -320,7 +333,7 @@ const ComponentB = () => {
 
     const info2 = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(
       vendorTotalPriceNoGst
-    )}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to vendor for ${vendorInvoicePurpose}: $${formatPrice(
+    )}+ ***PO: ${purchaseOrderNumber}***Raised invoice: ${raisedInvoiceNumber} to ${payoutVendor} for ${vendorInvoicePurpose}: $${formatPrice(
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***INV SENT***`;
 
@@ -336,6 +349,7 @@ const ComponentB = () => {
     raisedInvoicePurpose,
     raisedInvoicePrice,
     salesOrderNumber,
+    payoutVendor
   ]);
 
   const handleReset = () => {
@@ -422,16 +436,16 @@ const ComponentB = () => {
         />
       </div>
       <div className="input-row">
-        <label>Vendor name:</label>
-        {/* <input
+        <label>Towing Company:</label>
+        <input
           type="text"
           value={vendorName}
           onChange={(e) => setvendorName(e.target.value)}
-        /> */}
-        <SearchComponent
+        />
+        {/* <SearchComponent
           payoutVendor={payoutVendor}
           setPayoutVendor={setpayoutVendor}
-        />
+        /> */}
       </div>
 
       <div className="input-row">
@@ -467,6 +481,18 @@ const ComponentB = () => {
           type="text"
           value={raisedInvoiceNumber}
           onChange={(e) => setRaisedInvoiceNumber(e.target.value)}
+        />
+      </div>
+      <div className="input-row">
+        <label>Vendor name:</label>
+        {/* <input
+          type="text"
+          value={vendorName}
+          onChange={(e) => setvendorName(e.target.value)}
+        /> */}
+        <SearchComponent
+          payoutVendor={payoutVendor}
+          setPayoutVendor={setpayoutVendor}
         />
       </div>
 

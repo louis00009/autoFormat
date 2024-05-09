@@ -391,7 +391,9 @@ const ComponentB = () => {
     }
     // sent email notification
     if (vendorNameConditions.some((condition) => condition)) {
-      message.warning("please sent email to " + payoutVendor + " !");
+      // message.warning("please sent email to " + payoutVendor + " !");
+      alert("please sent email to " + payoutVendor + " !");
+      
     }
   };
 
@@ -438,7 +440,8 @@ const ComponentB = () => {
     }
     // sent email notification
     if (vendorNameConditions.some((condition) => condition)) {
-      message.warning("please sent email to " + payoutVendor + " !");
+      // message.warning("please sent email to " + payoutVendor + " !");
+      alert("please sent email to " + payoutVendor + " !");
     }
   };
 
