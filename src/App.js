@@ -198,10 +198,11 @@ const FormatBComponent = () => {
 
 const formats = [
   { name: "Towing Company", content: <ComponentB /> },
-  { name: "Photo Note", content: <FormatAComponent /> },
   { name: "MD", content: <ComponentC /> },
-  { name: "WOVR", content: <ComponentWOVR /> },
   { name: "Payout", content: <ComponentPayout /> },
+  { name: "WOVR", content: <ComponentWOVR /> },
+  { name: "Photo Note", content: <FormatAComponent /> },
+  
   // { name: "Payout", content: <ComponentPayout /> },
 ];
 

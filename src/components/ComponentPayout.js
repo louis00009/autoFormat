@@ -337,6 +337,16 @@ const ComponentB = () => {
   const vendorNameConditions = [
     payoutVendor.toLowerCase() === "comcover",
     payoutVendor.toLowerCase() === "car rental",
+    payoutVendor.toLowerCase() === "car rental insurence",
+    payoutVendor.toLowerCase() === "rentsure",
+    payoutVendor.toLowerCase() === "recoversure",
+    payoutVendor.toLowerCase() === "dkg fleet insurance company",
+    payoutVendor.toLowerCase() === "dkg fleet",
+    payoutVendor.toLowerCase() === "dkg",
+    payoutVendor.toLowerCase() === "fuse fleet underwriting pty ltd",
+    payoutVendor.toLowerCase() === "fuse fleet",
+    payoutVendor.toLowerCase() === "fuse",
+
   ];
 
   const unsecuredCopyToClipboard = () => {
