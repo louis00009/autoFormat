@@ -362,6 +362,8 @@ const ComponentB = () => {
     setRaisedInvoicePurpose("");
     setRaisedInvoicePrice("");
     setSalesOrderNumber("");
+    setpayoutVendor("");
+    
   };
 
   const handleResetexceptvn = () => {
@@ -373,6 +375,7 @@ const ComponentB = () => {
     setRaisedInvoicePurpose("");
     setRaisedInvoicePrice("");
     setSalesOrderNumber("");
+    setpayoutVendor("");
   };
 
   const handleCopy = () => {
