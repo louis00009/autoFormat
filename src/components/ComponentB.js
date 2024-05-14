@@ -19,7 +19,7 @@ const ComponentB = () => {
   const [componentInfo2, setComponentInfo2] = useState("");
 
   const [isCopied, setIsCopied] = useState(false);
-
+  const [isCopied2, setIsCopied2] = useState(false);
   // for vendor name make below element = payout//
   const [payoutVendor, setpayoutVendor] = useState("");
   // const payoutVendor = vendorName;
@@ -211,9 +211,9 @@ const ComponentB = () => {
       alert("Wrong PO number, Start from 'Kin'.");
       return;
     }
-    if(payoutVendor === ""){
+    if (payoutVendor === "") {
       // setpayoutVendor("Vendor");
-      alert("Vendor can not be empty!")
+      alert("Vendor can not be empty!");
     }
 
     //So validation 6 numbers
@@ -259,9 +259,9 @@ const ComponentB = () => {
       alert("Wrong PO number, Start from 'Kin'.");
       return;
     }
-    if(payoutVendor === ""){
+    if (payoutVendor === "") {
       // setpayoutVendor("Vendor");
-      alert("Vendor can not be empty!")
+      alert("Vendor can not be empty!");
     }
 
     //So validation 6 numbers
@@ -281,13 +281,13 @@ const ComponentB = () => {
       textArea.select();
       try {
         document.execCommand("copy");
-        setIsCopied(true);
+        setIsCopied2(true);
       } catch (err) {
         console.error("Unable to copy to clipboard", err);
       }
       document.body.removeChild(textArea);
       setTimeout(() => {
-        setIsCopied(false);
+        setIsCopied2(false);
       }, 2000);
     } else {
       // 如果不是 "Kin",则提示用户输入有误
@@ -349,7 +349,7 @@ const ComponentB = () => {
     raisedInvoicePurpose,
     raisedInvoicePrice,
     salesOrderNumber,
-    payoutVendor
+    payoutVendor,
   ]);
 
   const handleReset = () => {
@@ -363,7 +363,6 @@ const ComponentB = () => {
     setRaisedInvoicePrice("");
     setSalesOrderNumber("");
     setpayoutVendor("");
-    
   };
 
   const handleResetexceptvn = () => {
@@ -405,7 +404,7 @@ const ComponentB = () => {
         call/Drop off://Disposal: Sharp test: Postage:// Admin/Photo/Plate
         removal
       </p>
-      
+
       <div className="text-container">
         <p
           style={{
@@ -420,11 +419,11 @@ const ComponentB = () => {
 
         <p
           style={{
-            color: isCopied ? "red" : "inherit",
+            color: isCopied2 ? "red" : "inherit",
             transition: "color 0.2s ease-in-out",
           }}
         >
-          {isCopied
+          {isCopied2
             ? "Information successfully copied to the clipboard"
             : componentInfo2}
         </p>

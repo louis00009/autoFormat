@@ -26,6 +26,10 @@ const ComponentB = () => {
   const [componentInfo7, setComponentInfo7] = useState("");
 
   const [isCopied, setIsCopied] = useState(false);
+  //control Photo
+  const [isCopied2, setIsCopied2] = useState(false);
+  //control Wovr
+  const [isCopied3, setIsCopied3] = useState(false);
 
   // MD general notes
   const [mdMakeModel, setmdMakeModel] = useState("");
@@ -177,13 +181,13 @@ const ComponentB = () => {
       textArea.select();
       try {
         document.execCommand("copy");
-        setIsCopied(true);
+        setIsCopied2(true);
       } catch (err) {
         console.error("Unable to copy to clipboard", err);
       }
       document.body.removeChild(textArea);
       setTimeout(() => {
-        setIsCopied(false);
+        setIsCopied2(false);
       }, 2000);
     } else {
       // 如果不是 "Kin",则提示用户输入有误
@@ -200,13 +204,13 @@ const ComponentB = () => {
       textArea.select();
       try {
         document.execCommand("copy");
-        setIsCopied(true);
+        setIsCopied3(true);
       } catch (err) {
         console.error("Unable to copy to clipboard", err);
       }
       document.body.removeChild(textArea);
       setTimeout(() => {
-        setIsCopied(false);
+        setIsCopied3(false);
       }, 2000);
     } else {
       // 如果不是 "Kin",则提示用户输入有误
@@ -380,21 +384,21 @@ const ComponentB = () => {
         </p> */}
         <p
           style={{
-            color: isCopied ? "red" : "inherit",
+            color: isCopied2 ? "red" : "inherit",
             transition: "color 0.2s ease-in-out",
           }}
         >
-          {isCopied
+          {isCopied2
             ? "Information successfully copied to the clipboard"
             : componentInfo6}
         </p>
         <p
           style={{
-            color: isCopied ? "red" : "inherit",
+            color: isCopied3 ? "red" : "inherit",
             transition: "color 0.2s ease-in-out",
           }}
         >
-          {isCopied
+          {isCopied3
             ? "Information successfully copied to the clipboard"
             : componentInfo7}
         </p>
