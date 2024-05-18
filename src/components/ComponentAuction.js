@@ -173,80 +173,82 @@ const App = () => {
           </Button>
           <Button onClick={() => handleReset("salePriceInclGST")}>Reset</Button>
         </div>
+        {/* <div style={{ width: "60%"}}> */}
+        <div className="AuctionTable">
+          <Table
+            dataSource={[
+              {
+                key: "1",
+                salePriceExclGST,
+                salePriceInclGST,
+                baf,
+                bafExclGST,
+                ppsrFeeInclGST,
+                ppsrFeeExclGST,
+                logisticFeeInclGST,
+                logisticFeeExclGST,
+                totalFees,
+                invoiceAmount,
+              },
+            ]}
+            pagination={false} // Disable pagination
+          >
+            <Column
+              title="Sale Price Incl GST"
+              dataIndex="salePriceInclGST"
+              key="salePriceInclGST"
+              render={(text) => (
+                <div>
+                  {text.toFixed(2)}
+                  <Button onClick={() => handleCopy(text.toFixed(2))}>
+                    Copy
+                  </Button>
+                </div>
+              )}
+            />
+            <Column
+              title="BAF Inc-GST"
+              dataIndex="baf"
+              key="baf"
+              render={(text) => (
+                <div>
+                  {text.toFixed(2)}
+                  <Button disabled onClick={() => handleCopy(text.toFixed(2))}>
+                    Copy
+                  </Button>
+                </div>
+              )}
+            />
 
-        <Table
-          dataSource={[
-            {
-              key: "1",
-              salePriceExclGST,
-              salePriceInclGST,
-              baf,
-              bafExclGST,
-              ppsrFeeInclGST,
-              ppsrFeeExclGST,
-              logisticFeeInclGST,
-              logisticFeeExclGST,
-              totalFees,
-              invoiceAmount,
-            },
-          ]}
-          pagination={false} // Disable pagination
-        >
-          <Column
-            title="Sale Price Incl GST"
-            dataIndex="salePriceInclGST"
-            key="salePriceInclGST"
-            render={(text) => (
-              <div>
-                {text.toFixed(2)}
-                <Button onClick={() => handleCopy(text.toFixed(2))}>
-                  Copy
-                </Button>
-              </div>
-            )}
-          />
-          <Column
-            title="BAF Inc-GST"
-            dataIndex="baf"
-            key="baf"
-            render={(text) => (
-              <div>
-                {text.toFixed(2)}
-                <Button onClick={() => handleCopy(text.toFixed(2))}>
-                  Copy
-                </Button>
-              </div>
-            )}
-          />
+            <Column
+              title="PPSR Fee Inc-GST"
+              dataIndex="ppsrFeeInclGST"
+              key="ppsrFeeInclGST"
+              render={(text) => (
+                <div>
+                  {text.toFixed(2)}
+                  <Button disabled onClick={() => handleCopy(text.toFixed(2))}>
+                    Copy
+                  </Button>
+                </div>
+              )}
+            />
 
-          <Column
-            title="PPSR Fee Inc-GST"
-            dataIndex="ppsrFeeInclGST"
-            key="ppsrFeeInclGST"
-            render={(text) => (
-              <div>
-                {text.toFixed(2)}
-                <Button onClick={() => handleCopy(text.toFixed(2))}>
-                  Copy
-                </Button>
-              </div>
-            )}
-          />
-
-          <Column
-            title="Logistic Management Fee"
-            dataIndex="logisticFeeInclGST"
-            key="logisticFeeInclGST"
-            render={(text) => (
-              <div>
-                {text.toFixed(2)}
-                <Button onClick={() => handleCopy(text.toFixed(2))}>
-                  Copy
-                </Button>
-              </div>
-            )}
-          />
-        </Table>
+            <Column
+              title="Logistic Management Fee"
+              dataIndex="logisticFeeInclGST"
+              key="logisticFeeInclGST"
+              render={(text) => (
+                <div>
+                  {text.toFixed(2)}
+                  <Button disabled onClick={() => handleCopy(text.toFixed(2))}>
+                    Copy
+                  </Button>
+                </div>
+              )}
+            />
+          </Table>
+        </div>
         <Table
           dataSource={[
             {

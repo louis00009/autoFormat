@@ -48,3 +48,11 @@
 .containerAuction {
   margin: 3%;
 }
+
+.AuctionTable {
+  width: 63%;
+  margin-left: 0;
+}
+.AuctionTable .ant-table-thead > tr > th {
+  color: #808080; /* 设置标题字体颜色为灰色 */
+}
