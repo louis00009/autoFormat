@@ -24,6 +24,7 @@ const App = () => {
   const { logisticFeeInclGST, logisticFeeExclGST } = getLogisticFees();
 
   const baf = (markup / 100) * salePriceInclGST;
+  const bafExclGST = baf/1.1 
   const totalFees = baf + ppsrFeeInclGST + logisticFeeInclGST;
   const invoiceAmount = salePriceInclGST + totalFees;
 
@@ -130,7 +131,10 @@ const App = () => {
               salePriceExclGST,
               salePriceInclGST,
               baf,
+              bafExclGST,
               ppsrFeeInclGST,
+              ppsrFeeExclGST,
+              logisticFeeInclGST,
               logisticFeeInclGST,
               totalFees,
               invoiceAmount,
@@ -165,9 +169,11 @@ const App = () => {
             )}
           />
           <Column
-            title="BAF"
-            dataIndex="baf"
-            key="baf"
+            title="BAF No-GST"
+            dataIndex="bafExclGST"
+            key="bafExclGST"
+            // dataIndex="baf"
+            // key="baf"
             render={(text) => (
               <div>
                 {text.toFixed(2)}
@@ -179,9 +185,11 @@ const App = () => {
           />
 
           <Column
-            title="PPSR Fee"
-            dataIndex="ppsrFeeInclGST"
-            key="ppsrFeeInclGST"
+            title="PPSR Fee NO-GST"
+            // dataIndex="ppsrFeeInclGST"
+            // key="ppsrFeeInclGST"
+            dataIndex="ppsrFeeExclGST"
+            key="ppsrFeeExclGST"
             render={(text) => (
               <div>
                 {text.toFixed(2)}
@@ -191,6 +199,7 @@ const App = () => {
               </div>
             )}
           />
+
           <Column
             title="Logistic Management Fee"
             dataIndex="logisticFeeInclGST"
@@ -231,6 +240,23 @@ const App = () => {
             )}
           />
         </Table>
+
+        <hr style={{marginTop: "20px"}}></hr>
+        {/* Fleet */}
+        <div>
+          <b>Fleet</b>
+          <p>
+            Buyer fee: DB <br></br>
+            Admin: ADM-SF<br></br>
+            Freight: VHE-TRAN<br></br>
+            Please make sure the amount you put in is GST <b style={{color:"red"}}>EXCLUSIVE</b><br></br>
+            For the selling fee and inspection, please search in the the spreadsheet: <b>Fleet / OEM Vendor fees 2024</b><br></br>
+            <b>058412</b> For inspection
+          </p>
+          
+
+        </div>
+
       </div>
     </div>
   );
