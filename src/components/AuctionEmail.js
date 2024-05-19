@@ -3,13 +3,13 @@ import React from "react";
 const EmailButton = () => {
   const handleClick = () => {
     const recipient = "aaa@gmail.com";
-    const subject = encodeURIComponent("固定的邮件主题");
+    const subject = encodeURIComponent("iSalvage Invoice");
     const body = encodeURIComponent(`
     <div>
 ZHANBO LIU
 <b>Business Analyst & Data Administrator</b>
 
-<img src="public\companylogo.png"><b>Australia</b>
+<img src="%PUBLIC_URL%/companylogo.png"><b>Australia</b>
 201, 12-14 Cato Street,
 Hawthorn East. Victoria 3123
  

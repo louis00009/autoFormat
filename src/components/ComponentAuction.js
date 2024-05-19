@@ -8,8 +8,9 @@ import {
   Flex,
   Row,
   Col,
+  Card,
 } from "antd";
-import AuctionEmail from "./AuctionEmail";
+// import AuctionEmail from "./AuctionEmail";
 
 const { Column } = Table;
 
@@ -25,6 +26,12 @@ const App = () => {
   const gstRate = 0.1;
   const [ppsrFeeInclGST, setPPSRFeeInclGST] = useState(41.0);
   const [ppsrFeeExclGST, setPPSRFeeExclGST] = useState(37.273);
+
+  // iSalvage
+  const [iSalvagePrice, SetiSalvagePrice] = useState("");
+  const [iSalvageRate, SetiSalvageRate] = useState("");
+  const [iSalvagePriceNoGST, SetiSalvagePriceNoGST] = useState("");
+  const [iSalvageFinalPrice, setiSalvageFinalPrice] = useState("");
 
   const getLogisticFees = () => {
     if (calculatorType === "salvage" || calculatorType === "typeC") {
@@ -108,6 +115,10 @@ const App = () => {
     }
   };
 
+  const formatPrice = (price) => {
+    return parseFloat(price).toFixed(2);
+  };
+
   const handleExclGSTChange = (value) => {
     const exclGST = value || 0;
     setSalePriceExclGST(exclGST);
@@ -129,7 +140,34 @@ const App = () => {
     } else if (calculatorType === "typeD") {
       setMarkup(15);
     }
-  }, [calculatorType, calculateBaf, salePriceInclGST, ppsrFeeInclGST]);
+    // calc isalvage
+    if (!isNaN(parseFloat(iSalvagePrice))) {
+      const priceNoGST = (parseFloat(iSalvagePrice) / 1.1).toFixed(2);
+      SetiSalvagePriceNoGST(priceNoGST);
+    } else {
+      SetiSalvagePriceNoGST("");
+    }
+
+    // islavage final price
+    if (
+      !isNaN(parseFloat(iSalvagePriceNoGST)) &&
+      !isNaN(parseFloat(iSalvageRate))
+    ) {
+      const final = (
+        (parseFloat(iSalvagePriceNoGST) * parseFloat(iSalvageRate)) /
+        100
+      ).toFixed(2);
+      setiSalvageFinalPrice(final);
+    } else {
+      setiSalvageFinalPrice("");
+    }
+  }, [
+    calculatorType,
+    calculateBaf,
+    salePriceInclGST,
+    ppsrFeeInclGST,
+    iSalvagePrice,
+  ]);
 
   return (
     <div style={{ padding: "20px" }}>
@@ -141,7 +179,7 @@ const App = () => {
         <Radio.Button value="salvage">Salvage</Radio.Button>
         <Radio.Button value="typeB">Truck</Radio.Button>
         <Radio.Button value="typeC">Bike</Radio.Button>
-        <Radio.Button value="typeD">NZ Car</Radio.Button>
+        <Radio.Button value="typeD">NZ Car 50/55</Radio.Button>
       </Radio.Group>
       {/* tables */}
       <div style={{ marginTop: "20px" }}>
@@ -418,10 +456,63 @@ const App = () => {
         {/* </div> */}
 
         <Col span={12}>
-          <b>iSalvage</b>
-          <AuctionEmail />
+          <b>iSalvage: Please email to Shanita/Navya</b>
+          {/* <AuctionEmail /> */}
+          <div className="input-row" style={{ marginTop: "10px" }}>
+            <label>iSalvage Price:</label>
+            <input
+              type="number"
+              value={iSalvagePrice}
+              onChange={(e) => SetiSalvagePrice(e.target.value)}
+            />
+            <Button onClick={() => handleCopy(iSalvagePrice)}>Copy</Button>
+          </div>
+          <div className="input-row" style={{ marginTop: "10px" }}>
+            <label>iSalvage Price(NO-GST):</label>
+            <input
+              type="number"
+              value={iSalvagePriceNoGST}
+              onChange={(e) => {
+                const value = parseFloat(e.target.value);
+                if (!isNaN(value)) {
+                  SetiSalvagePriceNoGST(value.toFixed(2));
+                } else {
+                  SetiSalvagePriceNoGST("");
+                }
+              }}
+            />
+            <Button onClick={() => handleCopy(iSalvagePriceNoGST)}>Copy</Button>
+          </div>
+
+          <div className="input-row" style={{ marginTop: "10px" }}>
+            <label>iSalvage Rate:</label>
+            <input
+              type="number"
+              value={iSalvageRate}
+              onChange={(e) => SetiSalvageRate(e.target.value)}
+            />
+            <Button disabled onClick={() => handleCopy(iSalvageRate)}>
+              Copy
+            </Button>
+          </div>
+          <div className="input-row" style={{ marginTop: "10px" }}>
+            <label>iSalvage Final Price:</label>
+            <input type="number" value={iSalvageFinalPrice} readOnly />
+            <Button onClick={() => handleCopy(iSalvageFinalPrice)}>Copy</Button>
+          </div>
         </Col>
       </Row>
+
+      <Card
+        title="Leave below buyer open"
+        bordered={false}
+        style={{
+          width: 300,
+        }}
+      >
+        <p>Autorola Private Sales</p>
+        {/* <p>Card content</p> */}
+      </Card>
     </div>
   );
 };
