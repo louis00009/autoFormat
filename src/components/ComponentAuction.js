@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Radio, InputNumber, Table, Button, message } from "antd";
+import {
+  Radio,
+  InputNumber,
+  Table,
+  Button,
+  message,
+  Flex,
+  Row,
+  Col,
+} from "antd";
+import AuctionEmail from "./AuctionEmail";
 
 const { Column } = Table;
 
@@ -133,7 +143,7 @@ const App = () => {
         <Radio.Button value="typeC">Bike</Radio.Button>
         <Radio.Button value="typeD">NZ Car</Radio.Button>
       </Radio.Group>
-
+      {/* tables */}
       <div style={{ marginTop: "20px" }}>
         <div style={{ marginBottom: "20px" }}>
           <span>Markup (%): </span>
@@ -383,10 +393,14 @@ const App = () => {
             )}
           />
         </Table>
+      </div>
+      {/* divide line */}
+      <hr style={{ marginTop: "20px" }}></hr>
 
-        <hr style={{ marginTop: "20px" }}></hr>
-        {/* Fleet */}
-        <div>
+      {/* Fleet */}
+      <Row>
+        {/* <div style={{ width: "50%" }}> */}
+        <Col span={12}>
           <b>Fleet</b>
           <p>
             Buyer fee: DB <br></br>
@@ -400,8 +414,14 @@ const App = () => {
             <br></br>
             <b>058412</b> For inspection
           </p>
-        </div>
-      </div>
+        </Col>
+        {/* </div> */}
+
+        <Col span={12}>
+          <b>iSalvage</b>
+          <AuctionEmail />
+        </Col>
+      </Row>
     </div>
   );
 };
