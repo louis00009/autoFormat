@@ -456,7 +456,7 @@ const App = () => {
         {/* </div> */}
 
         <Col span={12}>
-          <b>iSalvage: Please email to Shanita/Navya</b>
+          <b>iSalvage: Please email to Shanita/Navya(check email)</b>
           {/* <AuctionEmail /> */}
           <div className="input-row" style={{ marginTop: "10px" }}>
             <label>iSalvage Price:</label>
@@ -496,13 +496,15 @@ const App = () => {
             </Button>
           </div>
           <div className="input-row" style={{ marginTop: "10px" }}>
-            <label>iSalvage Final Price:</label>
+            <label>iSalvage DB Fee:</label>
             <input type="number" value={iSalvageFinalPrice} readOnly />
             <Button onClick={() => handleCopy(iSalvageFinalPrice)}>Copy</Button>
           </div>
         </Col>
       </Row>
-
+      {/* second card */}
+      <Row gutter={16}>
+      <Col span={8}>
       <Card
         title="Leave below buyer open"
         bordered={false}
@@ -511,9 +513,49 @@ const App = () => {
         }}
       >
         <p>Autorola Private Sales</p>
+        <p>Autorola MCH - Fleet</p>
+        <p>Autorola Fastsalvage FM</p>
         {/* <p>Card content</p> */}
       </Card>
+      </Col>
+
+<Col span={8}>
+      <Card
+        title="Other Special rules"
+        bordered={false}
+        style={{
+          width: 300,
+        }}
+      >
+        
+        <p>Sixt Australia - Salvage - 69+ SO</p>
+        <p>NationWide 9.07+ SO</p>
+        <p>TFS : 297(270) if no address DB in email(306.5- 278.64)</p>
+        {/* <p>Card content</p> */}
+      </Card>
+
+      </Col>
+      <Col span={8}>
+      <Card
+        title="Key points to note"
+        bordered={false}
+        style={{
+          width: 300,
+        }}
+      >
+        
+        <p><b>Truck:</b>Always Check Email and write down rego</p>
+        <p>Tick Admin for fleet</p>
+        <p></p>
+        {/* <p>Card content</p> */}
+      </Card>
+
+      </Col>
+      </Row>
+      
+      
     </div>
+    
   );
 };
 
