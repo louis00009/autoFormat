@@ -503,26 +503,45 @@ const App = () => {
         </Col>
       </Row>
       {/* second card */}
-      <Row gutter={16}>
-      <Col span={8}>
+      <Row gutter={24} style={{ marginTop: "10px" }}>
+      <Col span={6}>
       <Card
         title="Leave below buyer open"
-        bordered={false}
+        bordered={true}
         style={{
           width: 300,
         }}
+        size="default"
       >
         <p>Autorola Private Sales</p>
         <p>Autorola MCH - Fleet</p>
         <p>Autorola Fastsalvage FM</p>
-        {/* <p>Card content</p> */}
+        <p>Sherrif’s office Victoria(No selling fee and e-salvage fee) Buyer's line: Car price+ Special fee of $300 inc</p>
+        <p>EX: Car Price:21000- 19090.91 DB:272.73 fixed rate Exc GST</p>
       </Card>
       </Col>
 
-<Col span={8}>
+<Col span={6}>
       <Card
         title="Other Special rules"
-        bordered={false}
+        bordered={true}
+        style={{
+          width: 300,
+        }}
+      >
+        
+        
+        <p><b style={{color:"red"}}>TFS :</b>297<b style={{color:"red"}}>(270)</b>if no address DB in email(306.5- <b style={{color:"red"}}>278.64</b>)</p>
+        <p><b style={{ color: "red" }}>TFS buyer only has 1 line(Car price)</b></p>
+        <b style={{ color: "red" }}>GST Free[Only Car Price]- export Setup-VAT(NOVAT/NOVAT)</b>
+        {/* <p>Card content</p> */}
+      </Card>
+
+      </Col>
+      <Col span={6}>
+      <Card
+        title="Special Fees"
+        bordered={true}
         style={{
           width: 300,
         }}
@@ -530,22 +549,23 @@ const App = () => {
         
         <p>Sixt Australia - Salvage - 69+ SO</p>
         <p>NationWide 9.07+ SO</p>
-        <p>TFS : 297(270) if no address DB in email(306.5- 278.64)</p>
+        <p></p>
         {/* <p>Card content</p> */}
       </Card>
 
       </Col>
-      <Col span={8}>
+      <Col span={6}>
       <Card
         title="Key points to note"
-        bordered={false}
+        bordered={true}
         style={{
           width: 300,
         }}
       >
         
-        <p><b>Truck:</b>Always Check Email and write down rego</p>
+        <p style={{ color: "red" }}><b>DO Truck Frist:</b><p >Always Check Email and <b>write down rego(Truck & NZ)</b></p></p>
         <p>Tick Admin for fleet</p>
+        <b style={{ color: "red" }}>Click Execute: TFS/i(salvage)/truck/bike/NZ Cars</b>
         <p></p>
         {/* <p>Card content</p> */}
       </Card>
