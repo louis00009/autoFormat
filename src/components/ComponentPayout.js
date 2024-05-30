@@ -337,6 +337,7 @@ const ComponentB = () => {
   const vendorNameConditions = [
     payoutVendor.toLowerCase() === "comcover",
     payoutVendor.toLowerCase() === "car rental",
+    payoutVendor.toLowerCase() === "cri",
     payoutVendor.toLowerCase() === "car rental insurence",
     payoutVendor.toLowerCase() === "rentsure",
     payoutVendor.toLowerCase() === "recoversure",

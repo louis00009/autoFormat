@@ -31,6 +31,10 @@ const ComponentB = () => {
   const vendorTotalPriceNoGst = vendorTotalPrice / 1.1;
   const profit5Percent = vendorTotalPriceNoGst * 0.05;
   const profit10Percent = vendorTotalPriceNoGst * 0.1;
+
+  // for top bottons 
+  //Storage/Admin: 255.2+ //Photos: 30+ //Admin fee: 30+ //Service call/Drop off://Disposal: Sharp test: Postage:// Admin/Photo/Plate removal
+  const [purposeButtons,setPurposeButtons] = useState(['Transport','Storage','Admin','Admin fee','Photos','Service call','Drop off','Disposal','Sharp test','Postage','Plate removal'])
   const columns = [
     {
       title: "Vendor Total Price",
@@ -300,23 +304,47 @@ const ComponentB = () => {
     }
   };
 
-  // const unsecuredCopyToClipboard2 = (text) => {
-  //   const textArea = document.createElement("textarea");
-  //   textArea.value = componentInfo2;
-  //   document.body.appendChild(textArea);
-  //   textArea.focus();
-  //   textArea.select();
-  //   try {
-  //     document.execCommand("copy");
-  //     setIsCopied(true);
-  //   } catch (err) {
-  //     console.error("Unable to copy to clipboard", err);
-  //   }
-  //   document.body.removeChild(textArea);
-  //   setTimeout(() => {
-  //     setIsCopied(false);
-  //   }, 2000);
-  // };
+  const unsecuredCopyToClipboardInv = () => {
+    if (vendorInvoiceNumber === "") {
+      // setpayoutVendor("Vendor");
+      alert("Copy Failed, can not be empty!");
+    }else{
+      const textArea = document.createElement("textarea");
+      textArea.value = vendorInvoiceNumber;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        message.success("Copied to clipboard!");
+        // setIsCopied(true);
+      } catch (err) {
+        console.error("Unable to copy to clipboard", err);
+      }
+      document.body.removeChild(textArea);
+    }
+    
+    // setTimeout(() => {
+    //   setIsCopied(false);
+    // }, 2000);
+  };
+
+  const copyToClipboard = (text) => {
+    // navigator.clipboard.writeText(text);
+    const textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        message.success("Copied to clipboard!");
+        // setIsCopied(true);
+      } catch (err) {
+        console.error("Unable to copy to clipboard", err);
+      }
+      document.body.removeChild(textArea);
+  };
 
   useEffect(() => {
     const info = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(
@@ -399,11 +427,17 @@ const ComponentB = () => {
     <div className="container">
       {/* <h4>Invoice Note Helper</h4> */}
 
-      <p>
+      {/* <p>
         Transport/Storage/Admin: 255.2+ //Photos: 30+ //Admin fee: 30+ //Service
         call/Drop off://Disposal: Sharp test: Postage:// Admin/Photo/Plate
         removal
-      </p>
+      </p> */}
+
+      {purposeButtons.map((item, index) => (
+          <Button onClick={() => copyToClipboard(item)} type="primary"  key={index} style={{ width: '7%', marginBottom: 8 }}>
+          {item}
+        </Button>
+        ))}
 
       <div className="text-container">
         <p
@@ -436,6 +470,7 @@ const ComponentB = () => {
           value={vendorInvoiceNumber}
           onChange={(e) => setVendorInvoiceNumber(e.target.value)}
         />
+        <button onClick={unsecuredCopyToClipboardInv}>Copy</button>
       </div>
       <div className="input-row">
         <label>Towing Company:</label>

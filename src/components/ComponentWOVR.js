@@ -175,7 +175,7 @@ const ComponentB = () => {
   return (
     <div className="container">
       <div className="text-container">
-        <h2>Invoice Note Helper</h2>
+        <h2>WOVER Note Helper(27.5 Flat rate)</h2>
         <p
           style={{
             color: isCopied ? "red" : "inherit",

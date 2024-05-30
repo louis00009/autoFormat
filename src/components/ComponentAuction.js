@@ -516,6 +516,7 @@ const App = () => {
         <p>Autorola Private Sales</p>
         <p>Autorola MCH - Fleet</p>
         <p>Autorola Fastsalvage FM</p>
+        <p>Smartleasing - Fleet</p>
         <p>Sherrif’s office Victoria(No selling fee and e-salvage fee) Buyer's line: Car price+ Special fee of $300 inc</p>
         <p>EX: Car Price:21000- 19090.91 DB:272.73 fixed rate Exc GST</p>
       </Card>
