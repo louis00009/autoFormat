@@ -1,0 +1,681 @@
+[
+  {
+    "vendor": "Anglican Diocesan Services",
+    "type": "Fleet",
+    "sellingFee": 223.0,
+    "inspectionFee": 152.0,
+    "totalFees": 375.0
+  },
+  {
+    "vendor": "Anglicare TAS",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "Ateco Group - LDV",
+    "type": "OEM",
+    "sellingFee": 223.0,
+    "inspectionFee": 135.0,
+    "totalFees": 358.0
+  },
+  {
+    "vendor": "Ateco Group - Ram Trucks",
+    "type": "OEM",
+    "sellingFee": 223.0,
+    "inspectionFee": 135.0,
+    "totalFees": 358.0
+  },
+  {
+    "vendor": "Ateco Group - Renault",
+    "type": "OEM",
+    "sellingFee": 223.0,
+    "inspectionFee": 135.0,
+    "totalFees": 358.0
+  },
+  {
+    "vendor": "Audi Australia",
+    "type": "OEM",
+    "sellingFee": 0.0,
+    "inspectionFee": 0.0,
+    "totalFees": 0.0
+  },
+  {
+    "vendor": "Australian Red Cross",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "Baptist Care",
+    "type": "Fleet",
+    "sellingFee": 238.0,
+    "inspectionFee": 164.0,
+    "totalFees": 402.0
+  },
+  {
+    "vendor": "Barwon Health ",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 0.0,
+    "totalFees": 200.0
+  },
+  {
+    "vendor": "Belcardo ",
+    "type": "Fleet",
+    "sellingFee": 108.0,
+    "inspectionFee": 0.0,
+    "totalFees": 108.0
+  },
+  {
+    "vendor": "Benaee",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 92.0,
+    "totalFees": 292.0
+  },
+  {
+    "vendor": "Benetas ",
+    "type": "Fleet",
+    "sellingFee": 233.0,
+    "inspectionFee": 154.0,
+    "totalFees": 387.0
+  },
+  {
+    "vendor": "Bowens ",
+    "type": "Fleet",
+    "sellingFee": 252.0,
+    "inspectionFee": 167.0,
+    "totalFees": 419.0
+  },
+  {
+    "vendor": "Brisbane City Council",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "Budget Dandenong (Budget Frankston)",
+    "type": "Fleet",
+    "sellingFee": 178.0,
+    "inspectionFee": 178.0,
+    "totalFees": 356.0
+  },
+  {
+    "vendor": "Calvary",
+    "type": "Fleet",
+    "sellingFee": 238.0,
+    "inspectionFee": 164.0,
+    "totalFees": 402.0
+  },
+  {
+    "vendor": "Catholic Healthcare",
+    "type": "Fleet",
+    "sellingFee": 211.0,
+    "inspectionFee": 188.0,
+    "totalFees": 399.0
+  },
+  {
+    "vendor": "Chery Motor",
+    "type": "OEM",
+    "sellingFee": 0.0,
+    "inspectionFee": 0.0,
+    "totalFees": 0.0
+  },
+  {
+    "vendor": "Chevin Fleet Solutions",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "Churches of Christ",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "City of Adelaide",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "City of Greater Geelong",
+    "type": "Fleet",
+    "sellingFee": 175.0,
+    "inspectionFee": 165.0,
+    "totalFees": 340.0
+  },
+  {
+    "vendor": "City of Hobart",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "Claro",
+    "type": "Fleet",
+    "sellingFee": 258.0,
+    "inspectionFee": 170.0,
+    "totalFees": 428.0
+  },
+  {
+    "vendor": "Colac Area Health",
+    "type": "Fleet",
+    "sellingFee": 65.0,
+    "inspectionFee": 0.0,
+    "totalFees": 65.0
+  },
+  {
+    "vendor": "Colac Otway Shire",
+    "type": "Fleet",
+    "sellingFee": 211.0,
+    "inspectionFee": 132.0,
+    "totalFees": 343.0
+  },
+  {
+    "vendor": "CSIRO",
+    "type": "Fleet",
+    "sellingFee": 351.0,
+    "inspectionFee": 216.0,
+    "totalFees": 567.0
+  },
+  {
+    "vendor": "Dementia Australia",
+    "type": "Fleet",
+    "sellingFee": 261.0,
+    "inspectionFee": 178.0,
+    "totalFees": 439.0
+  },
+  {
+    "vendor": "Don Care",
+    "type": "Fleet",
+    "sellingFee": 155.0,
+    "inspectionFee": 167.0,
+    "totalFees": 322.0
+  },
+  {
+    "vendor": "E Pac",
+    "type": "Fleet",
+    "sellingFee": 220.0,
+    "inspectionFee": 185.0,
+    "totalFees": 405.0
+  },
+  {
+    "vendor": "Easi Fleet",
+    "type": "Fleet",
+    "sellingFee": 208.0,
+    "inspectionFee": 0.0,
+    "totalFees": 208.0
+  },
+  {
+    "vendor": "Eco Dynamics",
+    "type": "Fleet",
+    "sellingFee": 216.0,
+    "inspectionFee": 0.0,
+    "totalFees": 216.0
+  },
+  {
+    "vendor": "Empowr Mobility",
+    "type": "Fleet",
+    "sellingFee": 175.0,
+    "inspectionFee": 89.0,
+    "totalFees": 264.0
+  },
+  {
+    "vendor": "Enterprise Rent a Car- Remarketing",
+    "type": "Fleet",
+    "sellingFee": 238.0,
+    "inspectionFee": 0.0,
+    "totalFees": 238.0
+  },
+  {
+    "vendor": "Essential Energy ",
+    "type": "Fleet",
+    "sellingFee": 192.5,
+    "inspectionFee": 154.0,
+    "totalFees": 346.5
+  },
+  {
+    "vendor": "Europcar",
+    "type": "Fleet",
+    "sellingFee": 211.0,
+    "inspectionFee": 120.0,
+    "totalFees": 331.0
+  },
+  {
+    "vendor": "Federation University Australia - Fleet",
+    "type": "Fleet",
+    "sellingFee": 208.0,
+    "inspectionFee": 167.0,
+    "totalFees": 375.0
+  },
+  {
+    "vendor": "Fleet advisory",
+    "type": "Fleet",
+    "sellingFee": 238.0,
+    "inspectionFee": 164.0,
+    "totalFees": 402.0
+  },
+  {
+    "vendor": "Fowles Wine",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "Fox & Lillie Pty Ltd",
+    "type": "Fleet",
+    "sellingFee": 261.0,
+    "inspectionFee": 185.0,
+    "totalFees": 446.0
+  },
+  {
+    "vendor": "Fraser Coast Council",
+    "type": "Fleet",
+    "sellingFee": 211.0,
+    "inspectionFee": 178.0,
+    "totalFees": 389.0
+  },
+  {
+    "vendor": "GenU",
+    "type": "Fleet",
+    "sellingFee": 262.0,
+    "inspectionFee": 167.0,
+    "totalFees": 429.0
+  },
+  {
+    "vendor": "GenWest",
+    "type": "Fleet",
+    "sellingFee": 261.0,
+    "inspectionFee": 178.0,
+    "totalFees": 439.0
+  },
+  {
+    "vendor": "Greater Western Hire Pty. Ltd",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "Hatch",
+    "type": "Fleet",
+    "sellingFee": 189.0,
+    "inspectionFee": 178.0,
+    "totalFees": 367.0
+  },
+  {
+    "vendor": "Hermes ",
+    "type": "Fleet",
+    "sellingFee": 238.0,
+    "inspectionFee": 164.0,
+    "totalFees": 402.0
+  },
+  {
+    "vendor": "Hertz Remarketing - Fleet",
+    "type": "Fleet",
+    "sellingFee": 192.5,
+    "inspectionFee": 42.0,
+    "totalFees": 234.5
+  },
+  {
+    "vendor": "Honda Australia ",
+    "type": "OEM",
+    "sellingFee": 84.0,
+    "inspectionFee": 110.0,
+    "totalFees": 194.0
+  },
+  {
+    "vendor": "Insurance Australia Group Limited (IAG) - Fleet",
+    "type": "Fleet",
+    "sellingFee": 186.0,
+    "inspectionFee": 94.0,
+    "totalFees": 280.0
+  },
+  {
+    "vendor": "Kestrel",
+    "type": "Fleet",
+    "sellingFee": 262.0,
+    "inspectionFee": 178.0,
+    "totalFees": 440.0
+  },
+  {
+    "vendor": "Knox City Council -Fleet",
+    "type": "Fleet",
+    "sellingFee": 185.0,
+    "inspectionFee": 164.0,
+    "totalFees": 349.0
+  },
+  {
+    "vendor": "Latrobe City Council - Fleet",
+    "type": "Fleet",
+    "sellingFee": 180.0,
+    "inspectionFee": 165.0,
+    "totalFees": 345.0
+  },
+  {
+    "vendor": "Life Without Barriers",
+    "type": "Fleet",
+    "sellingFee": 0.0,
+    "inspectionFee": 212.0,
+    "totalFees": 212.0
+  },
+  {
+    "vendor": "Little Company of Mary Health Care Limited",
+    "type": "Fleet",
+    "sellingFee": 189.0,
+    "inspectionFee": 178.0,
+    "totalFees": 367.0
+  },
+  {
+    "vendor": "M1 Access Hire",
+    "type": "Fleet",
+    "sellingFee": 216.0,
+    "inspectionFee": 147.0,
+    "totalFees": 363.0
+  },
+  {
+    "vendor": "MAS National",
+    "type": "Fleet",
+    "sellingFee": 238.0,
+    "inspectionFee": 151.0,
+    "totalFees": 389.0
+  },
+  {
+    "vendor": "McKillop Family Services",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "MH5 Pty Ltd - Fleet",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 167.0,
+    "totalFees": 367.0
+  },
+  {
+    "vendor": "Minda Incorporated",
+    "type": "Fleet",
+    "sellingFee": 238.0,
+    "inspectionFee": 164.0,
+    "totalFees": 402.0
+  },
+  {
+    "vendor": "Moyne Shire",
+    "type": "Fleet",
+    "sellingFee": 185.0,
+    "inspectionFee": 165.0,
+    "totalFees": 350.0
+  },
+  {
+    "vendor": "mpower",
+    "type": "Fleet",
+    "sellingFee": 262.0,
+    "inspectionFee": 178.0,
+    "totalFees": 440.0
+  },
+  {
+    "vendor": "NextFleet",
+    "type": "Fleet",
+    "sellingFee": 189.0,
+    "inspectionFee": 177.0,
+    "totalFees": 366.0
+  },
+  {
+    "vendor": "OPAL",
+    "type": "Fleet",
+    "sellingFee": 265.3,
+    "inspectionFee": 169.4,
+    "totalFees": 434.7
+  },
+  {
+    "vendor": "Oreana Homes",
+    "type": "Fleet",
+    "sellingFee": 268.0,
+    "inspectionFee": 151.0,
+    "totalFees": 419.0
+  },
+  {
+    "vendor": "Origin",
+    "type": "Fleet",
+    "sellingFee": 238.0,
+    "inspectionFee": 164.0,
+    "totalFees": 402.0
+  },
+  {
+    "vendor": "Oz Care",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "Payne Investments (Budget Sth Melb)",
+    "type": "Fleet",
+    "sellingFee": 227.0,
+    "inspectionFee": 0.0,
+    "totalFees": 227.0
+  },
+  {
+    "vendor": "Queensland Fire",
+    "type": "Fleet",
+    "sellingFee": 238.0,
+    "inspectionFee": 164.0,
+    "totalFees": 402.0
+  },
+  {
+    "vendor": "Red Spot Motors - Fleet",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 0.0,
+    "totalFees": 200.0
+  },
+  {
+    "vendor": "Reece Group",
+    "type": "Fleet",
+    "sellingFee": 161.0,
+    "inspectionFee": 178.0,
+    "totalFees": 339.0
+  },
+  {
+    "vendor": "Rijk Zwaan Australia Pty Ltd - Fleet",
+    "type": "Fleet",
+    "sellingFee": 208.0,
+    "inspectionFee": 151.0,
+    "totalFees": 359.0
+  },
+  {
+    "vendor": "RMIT",
+    "type": "Fleet",
+    "sellingFee": 180.0,
+    "inspectionFee": 116.0,
+    "totalFees": 296.0
+  },
+  {
+    "vendor": "Scope",
+    "type": "Fleet",
+    "sellingFee": 262.0,
+    "inspectionFee": 178.0,
+    "totalFees": 440.0
+  },
+  {
+    "vendor": "Shoalhaven City Council",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "Smart Fleet",
+    "type": "Fleet",
+    "sellingFee": 175.0,
+    "inspectionFee": 165.0,
+    "totalFees": 340.0
+  },
+  {
+    "vendor": "SmartLeasing",
+    "type": "Fleet",
+    "sellingFee": 0.0,
+    "inspectionFee": 164.0,
+    "totalFees": 164.0
+  },
+  {
+    "vendor": "Snowdon Developments",
+    "type": "Fleet",
+    "sellingFee": 262.0,
+    "inspectionFee": 178.0,
+    "totalFees": 440.0
+  },
+  {
+    "vendor": "Snowy Hydro ",
+    "type": "Fleet",
+    "sellingFee": 238.0,
+    "inspectionFee": 164.0,
+    "totalFees": 402.0
+  },
+  {
+    "vendor": "Southern Grampians Shire",
+    "type": "Fleet",
+    "sellingFee": 185.0,
+    "inspectionFee": 165.0,
+    "totalFees": 350.0
+  },
+  {
+    "vendor": "Splend",
+    "type": "Fleet",
+    "sellingFee": 238.0,
+    "inspectionFee": 164.0,
+    "totalFees": 402.0
+  },
+  {
+    "vendor": "Steel Chief Sheds",
+    "type": "Fleet",
+    "sellingFee": 324.0,
+    "inspectionFee": 0.0,
+    "totalFees": 324.0
+  },
+  {
+    "vendor": "Surfcoast Shire",
+    "type": "Fleet",
+    "sellingFee": 185.0,
+    "inspectionFee": 178.0,
+    "totalFees": 363.0
+  },
+  {
+    "vendor": "Sustainable Timber Tasmania",
+    "type": "Fleet",
+    "sellingFee": 200.0,
+    "inspectionFee": 178.0,
+    "totalFees": 378.0
+  },
+  {
+    "vendor": "Tabcorp",
+    "type": "Fleet",
+    "sellingFee": 187.0,
+    "inspectionFee": 162.0,
+    "totalFees": 349.0
+  },
+  {
+    "vendor": "The Fleet Management Business Improvement Group",
+    "type": "Fleet",
+    "sellingFee": 270.0,
+    "inspectionFee": 164.0,
+    "totalFees": 434.0
+  },
+  {
+    "vendor": "The Precise Air Group of Companies",
+    "type": "Fleet",
+    "sellingFee": 262.0,
+    "inspectionFee": 178.0,
+    "totalFees": 440.0
+  },
+  {
+    "vendor": "Timber Truss Geelong",
+    "type": "Fleet",
+    "sellingFee": 252.0,
+    "inspectionFee": 166.0,
+    "totalFees": 418.0
+  },
+  {
+    "vendor": "Toyota Finance Australia Limited - Fleet",
+    "type": "Fleet",
+    "sellingFee": 270.0,
+    "inspectionFee": 0.0,
+    "totalFees": 270.0
+  },
+  {
+    "vendor": "Toyota Fleet Management - Fleet",
+    "type": "Fleet",
+    "sellingFee": 208.0,
+    "inspectionFee": 0.0,
+    "totalFees": 208.0
+  },
+  {
+    "vendor": "U R Drive",
+    "type": "Fleet",
+    "sellingFee": 207.0,
+    "inspectionFee": 108.0,
+    "totalFees": 315.0
+  },
+  {
+    "vendor": "UGL",
+    "type": "Fleet",
+    "sellingFee": " 2.16% Sales price",
+    "inspectionFee": 180.0,
+    "totalFees": null
+  },
+  {
+    "vendor": "United Care Queensland",
+    "type": "Fleet",
+    "sellingFee": 185.0,
+    "inspectionFee": 178.0,
+    "totalFees": 363.0
+  },
+  {
+    "vendor": "Ventia",
+    "type": "Fleet",
+    "sellingFee": 202.0,
+    "inspectionFee": 164.0,
+    "totalFees": 366.0
+  },
+  {
+    "vendor": "Wagga Wagga City Council",
+    "type": "Fleet",
+    "sellingFee": 185.0,
+    "inspectionFee": 165.0,
+    "totalFees": 350.0
+  },
+  {
+    "vendor": "Wathaurong Aboriginal Cooperative Limited -Fleet",
+    "type": "Fleet",
+    "sellingFee": 252.0,
+    "inspectionFee": 0.0,
+    "totalFees": 252.0
+  },
+  {
+    "vendor": "Wellways -  Fleet",
+    "type": "Fleet",
+    "sellingFee": 229.0,
+    "inspectionFee": 151.0,
+    "totalFees": 380.0
+  },
+  {
+    "vendor": "Wheelton Investments P/L Budget - Fleet",
+    "type": "Fleet",
+    "sellingFee": 162.0,
+    "inspectionFee": 178.0,
+    "totalFees": 340.0
+  }
+]
