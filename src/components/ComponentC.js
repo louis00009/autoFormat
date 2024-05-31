@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
-import { message } from "antd";
+import { message,Button } from "antd";
 // This is MD
 const ComponentB = () => {
   const [vendorInvoiceNumber, setVendorInvoiceNumber] = useState("");
@@ -35,6 +35,10 @@ const ComponentB = () => {
   const [mdMakeModel, setmdMakeModel] = useState("");
   const [mdRego, setmdRego] = useState("");
   const [mdClaimNo, setmdClaimNo] = useState("");
+
+  //for buttons 
+  const [purposeButtons,setPurposeButtons] = useState(['Transport','Storage','Admin','Admin fee','Photos','Service call','Drop off','Disposal','Sharp test','Postage','Plate removal'])
+
 
   const formatPrice = (price) => {
     return parseFloat(price).toFixed(2);
@@ -217,6 +221,23 @@ const ComponentB = () => {
       alert("Wrong Raised invoice number, Start from 'AAU'.");
     }
   };
+
+  const copyToClipboard = (text) => {
+    // navigator.clipboard.writeText(text);
+    const textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        message.success("Copied to clipboard!");
+        // setIsCopied(true);
+      } catch (err) {
+        console.error("Unable to copy to clipboard", err);
+      }
+      document.body.removeChild(textArea);
+  };
   // const unsecuredCopyToClipboard2 = (text) => {
   //   const textArea = document.createElement("textarea");
   //   textArea.value = componentInfo2;
@@ -333,11 +354,16 @@ const ComponentB = () => {
   return (
     <div className="container">
       <h2>Invoice Note Helper</h2>
-      <p>
+      {/* <p>
         Transport/Storage/Admin: 255.2+ //Photos: 30+ //Admin fee: 30+ //Service
         call/Drop off://Disposal: Sharp test: Postage:// Admin/Photo/Plate
         removal
-      </p>
+      </p> */}
+       {purposeButtons.map((item, index) => (
+          <Button onClick={() => copyToClipboard(item)} type="primary"  key={index} style={{ width: '7%', marginBottom: 8 }}>
+          {item}
+        </Button>
+        ))}
 
       <div className="text-container">
         <p
