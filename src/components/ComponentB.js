@@ -404,6 +404,15 @@ const ComponentB = () => {
     setSalesOrderNumber("");
     setpayoutVendor("");
   };
+  const handleResetfire = () => {
+    setVendorInvoiceNumber("");
+    setPurchaseOrderNumber("");
+    setRaisedInvoiceNumber("");
+    setRaisedInvoicePurpose("");
+    // setRaisedInvoicePrice("");
+    setSalesOrderNumber("");
+    setpayoutVendor("");
+  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(componentInfo);
@@ -564,6 +573,7 @@ const ComponentB = () => {
 
       <button onClick={handleReset}>Reset</button>
       <button onClick={handleResetexceptvn}>Reset-Keep VN</button>
+      <button onClick={handleResetfire}>🔥</button>
       {/* <button onClick={handleCopy}>Copy</button>
       <button onClick={handleCopy2}>Copy(Invoice Sent)</button> */}
       <button onClick={unsecuredCopyToClipboard}>Copy</button>
