@@ -22,7 +22,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 10; // 每页显示的数据条数
+  const pageSize = 6; // 每页显示的数据条数
 
   // 从 vendorfee.json 文件中读取数据
   useEffect(() => {
@@ -57,7 +57,7 @@ const App = () => {
         style={{ marginBottom: "20px", width: "300px" }}
       />
       <List
-        grid={{ gutter: 16, column: 1 }}
+        grid={{ gutter: 16, column: 2 }}
         dataSource={currentData}
         renderItem={(item) => (
           <List.Item>

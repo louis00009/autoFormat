@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
 
-import { Table, Button, message } from "antd";
+import { Table, Button, message, Tooltip } from "antd";
 import SearchComponent from "./SearchComponent";
 
 // this is Towing company
@@ -32,9 +32,21 @@ const ComponentB = () => {
   const profit5Percent = vendorTotalPriceNoGst * 0.05;
   const profit10Percent = vendorTotalPriceNoGst * 0.1;
 
-  // for top bottons 
+  // for top bottons
   //Storage/Admin: 255.2+ //Photos: 30+ //Admin fee: 30+ //Service call/Drop off://Disposal: Sharp test: Postage:// Admin/Photo/Plate removal
-  const [purposeButtons,setPurposeButtons] = useState(['Transport','Storage','Admin','Admin fee','Photos','Service call','Drop off','Disposal','Sharp test','Postage','Plate removal'])
+  const [purposeButtons, setPurposeButtons] = useState([
+    "Transport",
+    "Storage",
+    "Admin",
+    "Admin fee",
+    "Photos",
+    "Service call",
+    "Drop off",
+    "Disposal",
+    "Sharp test",
+    "Postage",
+    "Plate removal",
+  ]);
   const columns = [
     {
       title: "Vendor Total Price",
@@ -308,7 +320,7 @@ const ComponentB = () => {
     if (vendorInvoiceNumber === "") {
       // setpayoutVendor("Vendor");
       alert("Copy Failed, can not be empty!");
-    }else{
+    } else {
       const textArea = document.createElement("textarea");
       textArea.value = vendorInvoiceNumber;
       document.body.appendChild(textArea);
@@ -323,7 +335,7 @@ const ComponentB = () => {
       }
       document.body.removeChild(textArea);
     }
-    
+
     // setTimeout(() => {
     //   setIsCopied(false);
     // }, 2000);
@@ -332,18 +344,18 @@ const ComponentB = () => {
   const copyToClipboard = (text) => {
     // navigator.clipboard.writeText(text);
     const textArea = document.createElement("textarea");
-      textArea.value = text;
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
-      try {
-        document.execCommand("copy");
-        message.success("Copied to clipboard!");
-        // setIsCopied(true);
-      } catch (err) {
-        console.error("Unable to copy to clipboard", err);
-      }
-      document.body.removeChild(textArea);
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand("copy");
+      message.success("Copied to clipboard!");
+      // setIsCopied(true);
+    } catch (err) {
+      console.error("Unable to copy to clipboard", err);
+    }
+    document.body.removeChild(textArea);
   };
 
   useEffect(() => {
@@ -443,10 +455,15 @@ const ComponentB = () => {
       </p> */}
 
       {purposeButtons.map((item, index) => (
-          <Button onClick={() => copyToClipboard(item)} type="primary"  key={index} style={{ width: '7%', marginBottom: 8 }}>
+        <Button
+          onClick={() => copyToClipboard(item)}
+          type="default"
+          key={index}
+          style={{ width: "7.5%", marginBottom: 8 }}
+        >
           {item}
         </Button>
-        ))}
+      ))}
 
       <div className="text-container">
         <p
@@ -573,7 +590,12 @@ const ComponentB = () => {
 
       <button onClick={handleReset}>Reset</button>
       <button onClick={handleResetexceptvn}>Reset-Keep VN</button>
-      <button onClick={handleResetfire}>🔥</button>
+      {/* <button onClick={handleResetfire}>🔥</button> */}
+      <Tooltip title="When you have more invoice in the same purpose & company">
+        <Button onClick={handleResetfire} danger>
+          🔥
+        </Button>
+      </Tooltip>
       {/* <button onClick={handleCopy}>Copy</button>
       <button onClick={handleCopy2}>Copy(Invoice Sent)</button> */}
       <button onClick={unsecuredCopyToClipboard}>Copy</button>
