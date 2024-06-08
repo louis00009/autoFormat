@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
-import { Table, Button, message, Col, Row, FloatButton, Modal } from "antd";
+import {
+  Table,
+  Button,
+  message,
+  Col,
+  Row,
+  FloatButton,
+  Modal,
+  Tooltip,
+} from "antd";
 import SearchComponent from "./SearchComponent";
 
 //for floaticon
@@ -347,7 +356,6 @@ const ComponentB = () => {
     payoutVendor.toLowerCase() === "fuse fleet underwriting pty ltd",
     payoutVendor.toLowerCase() === "fuse fleet",
     payoutVendor.toLowerCase() === "fuse",
-
   ];
 
   const unsecuredCopyToClipboard = () => {
@@ -394,7 +402,6 @@ const ComponentB = () => {
     if (vendorNameConditions.some((condition) => condition)) {
       // message.warning("please sent email to " + payoutVendor + " !");
       alert("please sent email to " + payoutVendor + " !");
-      
     }
   };
 
@@ -767,7 +774,7 @@ const ComponentB = () => {
               onChange={(e) => setpayoutMakeModel(e.target.value)}
             />
           </div>
-          
+
           <div className="input-row">
             <label>Claim:</label>
             <input
@@ -930,18 +937,22 @@ const ComponentB = () => {
           icon="P"
           onClick={handleFloatButton1Click}
         /> */}
-        <FloatButton icon="R" onClick={handleFloatButton2Click} />
+        <Tooltip title="Copy desc for SO">
+          <FloatButton icon="R" onClick={handleFloatButton2Click} />
+        </Tooltip>
         <Modal
-        title={<span className="custom-modal-title">Confirmation</span>}
-        open={visible}
-        onOk={handleConfirm}
-        onCancel={handleCancel}
-      >
-        
-        <p>Copy Success! BUT </p>
-        <p> <ExclamationCircleOutlined /> Please send an email and change the email subject!</p>
-      </Modal>
-
+          title={<span className="custom-modal-title">Confirmation</span>}
+          open={visible}
+          onOk={handleConfirm}
+          onCancel={handleCancel}
+        >
+          <p>Copy Success! BUT </p>
+          <p>
+            {" "}
+            <ExclamationCircleOutlined /> Please send an email and change the
+            email subject!
+          </p>
+        </Modal>
       </div>
 
       {/* </div> */}

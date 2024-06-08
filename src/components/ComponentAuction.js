@@ -9,6 +9,7 @@ import {
   Row,
   Col,
   Card,
+  Tooltip,
 } from "antd";
 // import AuctionEmail from "./AuctionEmail";
 
@@ -179,7 +180,16 @@ const App = () => {
         <Radio.Button value="salvage">Salvage</Radio.Button>
         <Radio.Button value="typeB">Truck</Radio.Button>
         <Radio.Button value="typeC">Bike</Radio.Button>
-        <Radio.Button value="typeD">NZ Car 50/55</Radio.Button>
+        <Tooltip title="Europcar 50 for salvage 55 NZ" placement="bottom">
+          <Radio.Button value="typeD">NZ Car</Radio.Button>
+        </Tooltip>
+        <Tooltip
+          title="Be careful check notes"
+          placement="bottom"
+          color={"#f50"}
+        >
+          <Radio.Button value="typeD">Comcover</Radio.Button>
+        </Tooltip>
       </Radio.Group>
       {/* tables */}
       <div style={{ marginTop: "20px" }}>
@@ -504,80 +514,90 @@ const App = () => {
       </Row>
       {/* second card */}
       <Row gutter={24} style={{ marginTop: "10px" }}>
-      <Col span={6}>
-      <Card
-        title="Leave below buyer open"
-        bordered={true}
-        style={{
-          width: 300,
-        }}
-        size="default"
-      >
-        <p>Autorola Private Sales</p>
-        <p>Autorola MCH - Fleet</p>
-        <p>Autorola Fastsalvage FM</p>
-        <p>Smartleasing - Fleet</p>
-        <p>FBP Remarketing</p>
-        <p>Sherrif’s office Victoria(No selling fee and e-salvage fee) Buyer's line: Car price+ Special fee of $300 inc</p>
-        <p>EX: Car Price:21000- 19090.91 DB:272.73 fixed rate Exc GST</p>
-      </Card>
-      </Col>
+        <Col span={6}>
+          <Card
+            title="Leave below buyer open"
+            bordered={true}
+            style={{
+              width: 300,
+            }}
+            size="default"
+          >
+            <p>Autorola Private Sales</p>
+            <p>Autorola MCH - Fleet</p>
+            <p>Autorola Fastsalvage FM</p>
+            <p>Smartleasing - Fleet</p>
+            <p>FBP Remarketing</p>
+            <p>
+              Sherrif’s office Victoria(No selling fee and e-salvage fee)
+              Buyer's line: Car price+ Special fee of $300 inc
+            </p>
+            <p>EX: Car Price:21000- 19090.91 DB:272.73 fixed rate Exc GST</p>
+          </Card>
+        </Col>
 
-<Col span={6}>
-      <Card
-        title="Other Special rules"
-        bordered={true}
-        style={{
-          width: 300,
-        }}
-      >
-        
-        
-        <p><b style={{color:"red"}}>TFS :</b>297<b style={{color:"red"}}>(270)</b>if no address DB in email(306.5- <b style={{color:"red"}}>278.64</b>)</p>
-        <p><b style={{ color: "red" }}>TFS buyer only has 1 line(Car price)</b></p>
-        <b style={{ color: "red" }}>GST Free[Only Car Price]- export Setup-VAT(NOVAT/NOVAT)</b>
-        {/* <p>Card content</p> */}
-      </Card>
-
-      </Col>
-      <Col span={6}>
-      <Card
-        title="Special Fees"
-        bordered={true}
-        style={{
-          width: 300,
-        }}
-      >
-        
-        <p>Sixt Australia - Salvage - 69+ SO</p>
-        <p>NationWide 9.07+ SO</p>
-        <p></p>
-        {/* <p>Card content</p> */}
-      </Card>
-
-      </Col>
-      <Col span={6}>
-      <Card
-        title="Key points to note"
-        bordered={true}
-        style={{
-          width: 300,
-        }}
-      >
-        
-        <p style={{ color: "red" }}><b>DO Truck Frist:</b><p >Always Check Email and <b>write down rego(Truck & NZ)</b></p></p>
-        <p>Tick Admin for fleet</p>
-        <b style={{ color: "red" }}>Click Execute: TFS/i(salvage)/truck/bike/NZ Cars</b>
-        <p></p>
-        {/* <p>Card content</p> */}
-      </Card>
-
-      </Col>
+        <Col span={6}>
+          <Card
+            title="Other Special rules"
+            bordered={true}
+            style={{
+              width: 300,
+            }}
+          >
+            <p>
+              <b style={{ color: "red" }}>TFS :</b>297
+              <b style={{ color: "red" }}>(270)</b>if no address DB in
+              email(306.5- <b style={{ color: "red" }}>278.64</b>)
+            </p>
+            <p>
+              <b style={{ color: "red" }}>
+                TFS buyer only has 1 line(Car price)
+              </b>
+            </p>
+            <b style={{ color: "red" }}>
+              GST Free[Only Car Price]- export Setup-VAT(NOVAT/NOVAT)
+            </b>
+            {/* <p>Card content</p> */}
+          </Card>
+        </Col>
+        <Col span={6}>
+          <Card
+            title="Special Fees"
+            bordered={true}
+            style={{
+              width: 300,
+            }}
+          >
+            <p>Sixt Australia - Salvage - 69+ SO</p>
+            <p>NationWide 9.07+ SO</p>
+            <p></p>
+            {/* <p>Card content</p> */}
+          </Card>
+        </Col>
+        <Col span={6}>
+          <Card
+            title="Key points to note"
+            bordered={true}
+            style={{
+              width: 300,
+            }}
+          >
+            <p style={{ color: "red" }}>
+              <b>DO Truck Frist:</b>
+              <p>
+                Always Check Email and <b>write down rego(Truck & NZ)</b>
+              </p>
+            </p>
+            <p>Tick Admin for fleet</p>
+            <b style={{ color: "red" }}>
+              Click Execute: TFS/i(salvage)/truck/bike/NZ Cars
+            </b>
+            <p></p>
+            {/* <p>Card content</p> */}
+          </Card>
+        </Col>
       </Row>
-      
-      
     </div>
-    
   );
 };
 
