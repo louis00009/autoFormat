@@ -61,6 +61,12 @@
     "sellingFee": 200.0,
     "inspectionFee": 0.0,
     "totalFees": 200.0
+  },{
+    "vendor": "Bargain Car Rental",
+    "type": "Fleet",
+    "sellingFee": 109.0,
+    "inspectionFee": 148.0,
+    "totalFees": 257.0
   },
   {
     "vendor": "Belcardo ",
@@ -478,9 +484,9 @@
   {
     "vendor": "Red Spot Motors - Fleet",
     "type": "Fleet",
-    "sellingFee": 200.0,
-    "inspectionFee": 0.0,
-    "totalFees": 200.0
+    "sellingFee": 40.0,
+    "inspectionFee": 180.0,
+    "totalFees": 220.0
   },
   {
     "vendor": "Reece Group",

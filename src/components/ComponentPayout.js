@@ -9,6 +9,7 @@ import {
   FloatButton,
   Modal,
   Tooltip,
+  Radio,
 } from "antd";
 import SearchComponent from "./SearchComponent";
 
@@ -70,7 +71,13 @@ const ComponentB = () => {
   const [visible, setVisible] = useState(false);
   const [vendorValue, setVendorValue] = useState("");
   const [options, setOptions] = useState([]);
+  const [isA2b, setIsA2b] = useState(false);
 
+  const A2bOptions = [
+    {label: 'Yes', value:true},
+    {label: 'No', value:false}
+  ]
+  
   const handleConfirm = () => {
     // Handle confirm logic here
     setVisible(false);
@@ -176,7 +183,7 @@ const ComponentB = () => {
       dataIndex: "profit10Percent",
       key: "profit10Percent",
       render: (value) => (
-        <div>
+        <div style={{ color: isA2b ? 'red' : 'black', fontWeight: isA2b ? 'bold' : 'normal' }}>
           {formatPrice(value)}
           <Button
             onClick={() => {
@@ -322,6 +329,11 @@ const ComponentB = () => {
 
   const formatPrice = (price) => {
     return parseFloat(price).toFixed(2);
+  };
+
+  const onChange3 = ({ target: { value } }) => {
+    // console.log('radio3 checked', value);
+    setIsA2b(value);
   };
 
   // const unsecuredCopyToClipboard = (text) => {
@@ -796,6 +808,12 @@ const ComponentB = () => {
               setPayoutVendor={setpayoutVendor}
             />
           </div>
+          <div className="input-row">
+        <label>Is A2b</label>
+        {/* <Radio.Group options={A2bOptions} onChange={onChange3} value={value3} optionType="button" /> */}
+        {/* <Radio.Group options={A2bOptions} onChange={onChange3} value={value3} optionType="button" /> */}
+        <Radio.Group options={A2bOptions} onChange={onChange3} value={isA2b} optionType="button" />
+      </div>
 
           <Button type="primary" danger="true" onClick={handleResetPO}>
             Reset PO
@@ -949,8 +967,8 @@ const ComponentB = () => {
           <p>Copy Success! BUT </p>
           <p>
             {" "}
-            <ExclamationCircleOutlined /> Please send an email and change the
-            email subject!
+            <ExclamationCircleOutlined /> Please send email and change the
+            email subject! Please attach the sublet invoice to email, thanks!
           </p>
         </Modal>
       </div>

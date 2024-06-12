@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
 
-import { Table, Button, message, Tooltip } from "antd";
+import { Table, Button, message, Tooltip,Radio  } from "antd";
 import SearchComponent from "./SearchComponent";
 
 // this is Towing company
@@ -20,8 +20,14 @@ const ComponentB = () => {
 
   const [isCopied, setIsCopied] = useState(false);
   const [isCopied2, setIsCopied2] = useState(false);
+  const [isA2b, setIsA2b] = useState(false);
   // for vendor name make below element = payout//
   const [payoutVendor, setpayoutVendor] = useState("");
+
+  const A2bOptions = [
+    {label: 'Yes', value:true},
+    {label: 'No', value:false}
+  ]
   // const payoutVendor = vendorName;
   // const setpayoutVendor = setvendorName;
 
@@ -143,7 +149,7 @@ const ComponentB = () => {
       dataIndex: "profit10Percent",
       key: "profit10Percent",
       render: (value) => (
-        <div>
+        <div style={{ color: isA2b ? 'red' : 'black', fontWeight: isA2b ? 'bold' : 'normal' }}>
           {formatPrice(value)}
           <Button
             onClick={() => {
@@ -178,6 +184,7 @@ const ComponentB = () => {
       vendorTotalPriceNoGst: vendorTotalPriceNoGst.toFixed(2),
       profit5Percent: profit5Percent.toFixed(2),
       profit10Percent: profit10Percent.toFixed(2),
+     
     },
   ];
 
@@ -444,6 +451,11 @@ const ComponentB = () => {
     return () => clearTimeout(timer);
   };
 
+  const onChange3 = ({ target: { value } }) => {
+    // console.log('radio3 checked', value);
+    setIsA2b(value);
+  };
+
   return (
     <div className="container">
       {/* <h4>Invoice Note Helper</h4> */}
@@ -557,6 +569,13 @@ const ComponentB = () => {
           payoutVendor={payoutVendor}
           setPayoutVendor={setpayoutVendor}
         />
+      </div>
+      
+      <div className="input-row">
+        <label>Is A2b</label>
+        {/* <Radio.Group options={A2bOptions} onChange={onChange3} value={value3} optionType="button" /> */}
+        {/* <Radio.Group options={A2bOptions} onChange={onChange3} value={value3} optionType="button" /> */}
+        <Radio.Group options={A2bOptions} onChange={onChange3} value={isA2b} optionType="button" />
       </div>
 
       <div className="input-row">
