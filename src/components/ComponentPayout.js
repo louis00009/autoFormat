@@ -328,8 +328,15 @@ const ComponentB = () => {
   //
 
   const formatPrice = (price) => {
-    return parseFloat(price).toFixed(2);
+    let formattedPrice;
+    if (typeof price === 'number') {
+      formattedPrice = price.toFixed(2).toLocaleString();
+    } else {
+      formattedPrice = parseFloat(price.replace(/,/g, '')).toFixed(2).toLocaleString();
+    }
+    return formattedPrice;
   };
+
 
   const onChange3 = ({ target: { value } }) => {
     // console.log('radio3 checked', value);
@@ -600,6 +607,31 @@ const ComponentB = () => {
     setRaisedInvoicePrice("");
     setSalesOrderNumber("");
   };
+
+  
+  const handleInputChange = (event) => {
+    let value = event.target.value;
+  
+    if (value === '') {
+      setRaisedInvoicePrice('');
+    } else if (value.includes('.')) {
+      setRaisedInvoicePrice(value);
+    } else {
+      value = value.replace(/,/g, '');
+      value = parseFloat(value);
+      if (isNaN(value)) {
+        setRaisedInvoicePrice('');
+      } else {
+        value = value.toLocaleString();
+        setRaisedInvoicePrice(value);
+      }
+    }
+  };
+  // const handleInputChange = (event) => {
+  //   let value = event.target.value;
+  //   value = parseFloat(value.replace(/,/g, '')); // 去除输入框中的千位分隔符并转换为数字
+  //   setRaisedInvoicePrice(value); // 更新 state
+  // };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(componentInfo);
@@ -906,11 +938,17 @@ const ComponentB = () => {
           </div>
           <div className="input-row">
             <label>Raised Invoice Price:</label>
-            <input
+            {/* <input
               type="number"
               value={raisedInvoicePrice}
               onChange={(e) => setRaisedInvoicePrice(e.target.value)}
-            />
+            /> */}
+            <input
+      type="text"
+      value={raisedInvoicePrice}
+      // onChange={(e) => setRaisedInvoicePrice(e.target.value.replace(/,/g, ''))}
+      onChange={handleInputChange}
+    />
           </div>
 
           <div className="input-row">
