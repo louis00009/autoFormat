@@ -672,6 +672,38 @@ const ComponentB = () => {
     document.body.removeChild(textArea);
   };
 
+  const handleFloatButton3Click = () => {
+    const textArea = document.createElement("textarea");
+    textArea.value = "Tran-dam other";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand("copy");
+      // setIsCopied(true);
+      message.success("Copied Tran-dam other to clipboard!");
+    } catch (err) {
+      console.error("Unable to copy to clipboard", err);
+    }
+    document.body.removeChild(textArea);
+  };
+
+  const handleFloatButton4Click = () => {
+    const textArea = document.createElement("textarea");
+    textArea.value = "AUTOROLA MANAGEMENT FEE";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand("copy");
+      // setIsCopied(true);
+      message.success("Copied AUTOROLA MANAGEMENT FEE to clipboard!");
+    } catch (err) {
+      console.error("Unable to copy to clipboard", err);
+    }
+    document.body.removeChild(textArea);
+  };
+
   return (
     <div className="container">
       {/* <h4>Invoice Note Helper</h4> */}
@@ -986,16 +1018,40 @@ const ComponentB = () => {
           position: "fixed",
           bottom: 24,
           right: 24,
+          // gap: "30px",
+          zIndex: 999
         }}
       >
         {/* <FloatButton
           style={{ marginBottom: 50 }}
-          icon="P"
-          onClick={handleFloatButton1Click}
+          icon="O"
+          onClick={handleFloatButton3Click}
         /> */}
-        <Tooltip title="Copy desc for SO">
+        
+        {/* <Tooltip title="Copy Tran-Other">
+          <FloatButton icon="O" onClick={handleFloatButton3Click} />
+        </Tooltip> */}
+
+        <FloatButton.Group shape="circle" style={{ right: 24 }}>
+        <Tooltip title="Copy TRAN-DAM OTHER">
+              <FloatButton style={{ marginBottom: 25 }}
+                  icon="O"
+                  onClick={handleFloatButton3Click}/>
+
+        </Tooltip>
+
+        <Tooltip title="Copy AUTOROLA MANAGEMENT FEE">
+      <FloatButton style={{ marginBottom: 25 }}
+          icon="M"
+          onClick={handleFloatButton4Click}/>
+          </Tooltip>
+          <Tooltip title="Copy desc for SO">
           <FloatButton icon="R" onClick={handleFloatButton2Click} />
         </Tooltip>
+      
+    </FloatButton.Group>
+      
+
         <Modal
           title={<span className="custom-modal-title">Confirmation</span>}
           open={visible}
