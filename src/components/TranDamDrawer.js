@@ -7,7 +7,7 @@ import { MenuFoldOutlined } from '@ant-design/icons';
 const TranDamDrawer = () => {
   const [open, setOpen] = useState(false);
   const [listData, setListData] = useState([
-    'Autorola Management Fee','TRAN-DAM Other','TRAN-DAM Innovation', 'TRAN-DAM Hertz', 'TRAN-DAM Insuret','TRAN-DAM Car Rental','TRAN-DAM Rentsure',
+    'AUTOROLA MANAGEMENT FEE','TRAN-DAM Other','TRAN-DAM Innovation', 'TRAN-DAM Hertz', 'TRAN-DAM Insuret','TRAN-DAM Car Rental','TRAN-DAM Rentsure',
 ]);
   const [fleetData,setFleetData] = useState(['VHE-TRAN','C682151','058412','570.91']) 
   const [vendorData,setVendorData] = useState(['Reardons','WP Towing','Nationwide Towing','Uber Carshare','Insuret','Sixt Australia - Salvage','Innovation Group (Sureplan)','Steadfast Claims Solutions Pty Ltd T/A Dawes Claims Solutions']) 

@@ -467,7 +467,7 @@ const ComponentB = () => {
 
   const unsecuredCopyToClipboardPO = (text) => {
     const textArea = document.createElement("textarea");
-    textArea.value = componentInfoPO;
+    textArea.value = componentInfoPO.toUpperCase();
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
@@ -483,7 +483,7 @@ const ComponentB = () => {
 
   const unsecuredCopyToClipboardPO2 = (text) => {
     const textArea = document.createElement("textarea");
-    textArea.value = componentInfoPO2;
+    textArea.value = componentInfoPO2.toUpperCase();
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();

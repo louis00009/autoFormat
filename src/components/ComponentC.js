@@ -104,7 +104,7 @@ const ComponentB = () => {
 
   const unsecuredCopyToClipboard3 = () => {
     const textArea = document.createElement("textarea");
-    textArea.value = componentInfo3;
+    textArea.value = componentInfo3.toUpperCase();
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
@@ -122,7 +122,7 @@ const ComponentB = () => {
   };
   const unsecuredCopyToClipboard4 = () => {
     const textArea = document.createElement("textarea");
-    textArea.value = componentInfo4;
+    textArea.value = componentInfo4.toUpperCase();
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
@@ -140,7 +140,7 @@ const ComponentB = () => {
   };
   const unsecuredCopyToClipboard5 = () => {
     const textArea = document.createElement("textarea");
-    textArea.value = componentInfo5;
+    textArea.value = componentInfo5.toUpperCase();
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
@@ -158,7 +158,7 @@ const ComponentB = () => {
   };
   const unsecuredCopyToClipboard8 = () => {
     const textArea = document.createElement("textarea");
-    textArea.value = componentInfo8;
+    textArea.value = componentInfo8.toUpperCase();
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
@@ -271,7 +271,7 @@ const ComponentB = () => {
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***INV SENT***`;
     // notes for geneal
-    const info3 = `Transport \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
+    const info3 = `Transport service \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
 
     const info4 = `Storage \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
     const info5 = `Photo Fee\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
