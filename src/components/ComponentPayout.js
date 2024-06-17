@@ -626,7 +626,7 @@ const ComponentB = () => {
 
   const handleFloatButton2Click = () => {
     const textArea = document.createElement("textarea");
-    textArea.value = ComponentInfoGeneralR;
+    textArea.value = ComponentInfoGeneralR.toUpperCase();
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
