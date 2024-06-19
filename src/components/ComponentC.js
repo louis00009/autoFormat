@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
 import { message,Button } from "antd";
+import FloatButtonComponent from "./FloatButton";
+
 // This is MD
 const ComponentB = () => {
   const [vendorInvoiceNumber, setVendorInvoiceNumber] = useState("");
@@ -583,6 +585,7 @@ const ComponentB = () => {
       >
         Copy(WOVR)
       </button>
+      <FloatButtonComponent />
     </div>
   );
 };

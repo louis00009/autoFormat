@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
 
-import { Table, Button, message, Tooltip,Radio  } from "antd";
+import { Table, Button, message, Tooltip,Radio } from "antd";
 import SearchComponent from "./SearchComponent";
+import FloatButtonComponent from "./FloatButton";
 
 // this is Towing company
 const ComponentB = () => {
@@ -628,6 +629,7 @@ const ComponentB = () => {
           pagination={false}
         />
       </div>
+      <FloatButtonComponent />
     </div>
   );
 };
