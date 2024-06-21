@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
 import { message,Button } from "antd";
 import FloatButtonComponent from "./FloatButton";
+import { SearchOutlined } from '@ant-design/icons';
 
 // This is MD
 const ComponentB = () => {
@@ -39,7 +40,7 @@ const ComponentB = () => {
   const [mdClaimNo, setmdClaimNo] = useState("");
 
   //for buttons 
-  const [purposeButtons,setPurposeButtons] = useState(['Transport','Storage','Admin','Admin fee','Photos','Service call','Drop off','Disposal','Sharp test','Postage','Plate removal'])
+  const [purposeButtons,setPurposeButtons] = useState(['TRANSPORT','STORAGE','ADMIN','ADMIN FEE','PHOTOS','SERVICE CALL','DROP OFF','DISPOSAL','SHARP TEST','POSTAGE','PLATE REMOVAL'])
 
 
   const formatPrice = (price) => {
@@ -455,6 +456,31 @@ const ComponentB = () => {
           value={mdRego}
           onChange={(e) => setmdRego(e.target.value)}
         />
+         <Button
+            type="primary"
+            icon={<SearchOutlined />}
+            onClick={() => {
+              // Construct the search URL
+              const searchUrl = `http://139.159.151.95:3979/cardetails/searchcar?rego=${mdRego}`;
+
+              // Send the request
+              fetch(searchUrl)
+                .then((response) => response.json())
+                .then((data) => {
+                  // Handle the response data
+                  console.log(data);
+
+                  setmdClaimNo(data.carClaim)
+                  setmdMakeModel(data.carMake)
+                })
+                .catch((error) => {
+                  // Handle any errors
+                  console.error(error);
+                });
+            }}
+          >
+            Search
+  </Button>
       </div>
       <div className="input-row">
         <label>Make/Model:</label>

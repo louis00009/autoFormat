@@ -42,17 +42,16 @@ const ComponentB = () => {
   // for top bottons
   //Storage/Admin: 255.2+ //Photos: 30+ //Admin fee: 30+ //Service call/Drop off://Disposal: Sharp test: Postage:// Admin/Photo/Plate removal
   const [purposeButtons, setPurposeButtons] = useState([
-    "Transport",
-    "Storage",
-    "Admin",
-    "Admin fee",
-    "Photos",
-    "Service call",
-    "Drop off",
-    "Disposal",
-    "Sharp test",
-    "Postage",
-    "Plate removal",
+    "TRANSPORT",
+    "STORAGE",
+    "ADMIN FEE",
+    "PHOTOS",
+    "SERVICE CALL",
+    "DROP OFF",
+    "DISPOSAL",
+    "SHARP TEST",
+    "POSTAGE",
+    "PLATE REMOVAL",
   ]);
   const columns = [
     {

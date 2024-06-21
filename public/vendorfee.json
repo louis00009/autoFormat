@@ -683,5 +683,12 @@
     "sellingFee": 162.0,
     "inspectionFee": 178.0,
     "totalFees": 340.0
+  },
+  {
+    "vendor": "E & S Trading",
+    "type": "Fleet",
+    "sellingFee": 169.0,
+    "inspectionFee": 189.0,
+    "totalFees": 358.0
   }
 ]
