@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
 
-import { Table, Button, message, Tooltip,Radio } from "antd";
+import { Table, Button, message, Tooltip,Radio,Row,Col } from "antd";
 import SearchComponent from "./SearchComponent";
 import FloatButtonComponent from "./FloatButton";
+import { SearchOutlined } from '@ant-design/icons';
 
 // this is Towing company
 const ComponentB = () => {
@@ -24,6 +25,15 @@ const ComponentB = () => {
   const [isA2b, setIsA2b] = useState(false);
   // for vendor name make below element = payout//
   const [payoutVendor, setpayoutVendor] = useState("");
+
+  // for Towing notes
+  const [componentInfoCarNote, setComponentInfoCarNote] = useState("");
+  const [carRego, setCarRego] = useState("");
+  const [carModel, setCarModel] = useState("");
+  const [carClaim, setCarClaim] = useState("");
+  const [carCollect, setCarCollect] = useState("");
+  const [carTowTo, setCarTowTo] = useState("");
+
 
   const A2bOptions = [
     {label: 'Yes', value:true},
@@ -384,8 +394,11 @@ const ComponentB = () => {
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***INV SENT***`;
 
+    const infoCarNote = `Transport service \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no:${carClaim} \n\nCollect From:${carCollect}\nDeliver To:${carTowTo}\nTow Operator:${vendorName}`;
+
     setComponentInfo(info);
     setComponentInfo2(info2);
+    setComponentInfoCarNote(infoCarNote)
   }, [
     vendorInvoiceNumber,
     vendorName,
@@ -397,6 +410,11 @@ const ComponentB = () => {
     raisedInvoicePrice,
     salesOrderNumber,
     payoutVendor,
+    carRego,
+    carModel,
+    carClaim,
+    carCollect,
+    carTowTo
   ]);
 
   const handleReset = () => {
@@ -410,6 +428,14 @@ const ComponentB = () => {
     setRaisedInvoicePrice("");
     setSalesOrderNumber("");
     setpayoutVendor("");
+  };
+
+  const handleCarInfoReset = () => {
+    setCarRego("");
+    setCarModel("");
+    setCarClaim("");
+    setCarCollect("");
+    setCarTowTo("");
   };
 
   const handleResetexceptvn = () => {
@@ -501,6 +527,8 @@ const ComponentB = () => {
         </p>
       </div>
 
+    <Row>
+      <Col span={15}>
       <div className="input-row">
         <label>Vendor Invoice Number:</label>
         <input
@@ -517,10 +545,6 @@ const ComponentB = () => {
           value={vendorName}
           onChange={(e) => setvendorName(e.target.value)}
         />
-        {/* <SearchComponent
-          payoutVendor={payoutVendor}
-          setPayoutVendor={setpayoutVendor}
-        /> */}
       </div>
 
       <div className="input-row">
@@ -606,13 +630,112 @@ const ComponentB = () => {
           placeholder="Leave it empty"
         />
       </div>
+      </Col>
 
+        {/* right part */}
+      <Col span={9}>
+        <div className="input-row">
+          <label>Car Rego:</label>
+          <input
+            type="text"
+            value={carRego}
+            onChange={(e) => setCarRego(e.target.value)}
+          />
+          <Button
+            type="primary"
+            icon={<SearchOutlined />}
+            onClick={() => {
+              // Construct the search URL
+              const searchUrl = `http://139.159.151.95:3979/cardetails/searchcar?rego=${carRego}`;
+
+              // Send the request
+              fetch(searchUrl)
+                .then((response) => response.json())
+                .then((data) => {
+                  // Handle the response data
+                  console.log(data);
+
+                  setCarClaim(data.carClaim)
+                  setCarModel(data.carMake)
+                  setCarCollect(data.TowFrom)
+                  setCarTowTo(data.TowTo)
+
+                })
+                .catch((error) => {
+                  // Handle any errors
+                  console.error(error);
+                });
+            }}
+          >
+            Search
+  </Button>
+        </div>
+
+        <div className="input-row">
+          <label>Car Model:</label>
+          <input
+            type="text"
+            value={carModel}
+            onChange={(e) => setCarModel(e.target.value)}
+          />
+        </div>
+
+        <div className="input-row">
+          <label>Claim No:</label>
+          <input
+            type="text"
+            value={carClaim}
+            onChange={(e) => setCarClaim(e.target.value)}
+          />
+        </div>
+
+        <div className="input-row">
+          <label>Collect From:</label>
+          <input
+            type="text"
+            value={carCollect}
+            onChange={(e) => setCarCollect(e.target.value)}
+          />
+        </div>
+
+        <div className="input-row">
+          <label>Tow To:</label>
+          <input
+            type="text"
+            value={carTowTo}
+            onChange={(e) => setCarTowTo(e.target.value)}
+          />
+        </div>
+
+        <button 
+          onClick={() => {
+            // navigator.clipboard.writeText(formatPrice(value));
+            const textArea = document.createElement("textarea");
+            textArea.value = componentInfoCarNote.toUpperCase();
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+              document.execCommand("copy");
+              // setIsCopied(true);
+              message.success("Copied to clipboard!");
+            } catch (err) {
+              console.error("Unable to copy to clipboard", err);
+            }
+            document.body.removeChild(textArea);
+          }}
+          >Copy</button>
+
+          <button onClick={handleCarInfoReset}>Reset</button>
+
+      </Col>
+    </Row>
       <button onClick={handleReset}>Reset</button>
       <button onClick={handleResetexceptvn}>Reset-Keep VN</button>
       {/* <button onClick={handleResetfire}>🔥</button> */}
       <Tooltip title="When you have more invoice in the same purpose & company">
         <Button onClick={handleResetfire} danger>
-          🔥
+        
         </Button>
       </Tooltip>
       {/* <button onClick={handleCopy}>Copy</button>
