@@ -28,11 +28,16 @@ const ComponentB = () => {
 
   // for Towing notes
   const [componentInfoCarNote, setComponentInfoCarNote] = useState("");
+  const [componentInfoCarNoteStorage, setComponentInfoCarNoteStorage] = useState("");
+  const [componentInfoCarNoteNotTransport, setComponentInfoCarNoteNotTransport] = useState("");
   const [carRego, setCarRego] = useState("");
   const [carModel, setCarModel] = useState("");
   const [carClaim, setCarClaim] = useState("");
   const [carCollect, setCarCollect] = useState("");
   const [carTowTo, setCarTowTo] = useState("");
+  //Storage
+  const [StorageVisible, setStorageVisible] = useState(false);
+  const [StorageInputValue, setStorageInputValue] = useState('');
 
 
   const A2bOptions = [
@@ -375,6 +380,17 @@ const ComponentB = () => {
     document.body.removeChild(textArea);
   };
 
+  const handleTowingCompanyInputChange = (event) => {
+    setVendorInvoicePurpose(event.target.value);
+    if (event.target.value.toLowerCase() === "storage") {
+      setStorageVisible(true);
+    } else {
+      setStorageVisible(false);
+    }
+  };
+ 
+
+
   useEffect(() => {
     const info = `***Received Invoice: ${vendorInvoiceNumber} from ${vendorName} for ${vendorInvoicePurpose}: $${formatPrice(
       vendorTotalPriceNoGst
@@ -395,10 +411,21 @@ const ComponentB = () => {
     )} ***SO: ${salesOrderNumber} ***INV SENT***`;
 
     const infoCarNote = `Transport service \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no:${carClaim} \n\nCollect From:${carCollect}\nDeliver To:${carTowTo}\nTow Operator:${vendorName}`;
-
+    const infoCarNoteNotTransport = `${vendorInvoicePurpose} \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no:${carClaim}`;
+    const infoCarNoteStorage = `${vendorInvoicePurpose} for ${StorageInputValue} \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no:${carClaim}`;
+    
     setComponentInfo(info);
     setComponentInfo2(info2);
     setComponentInfoCarNote(infoCarNote)
+    setComponentInfoCarNoteNotTransport(infoCarNoteNotTransport)
+    setComponentInfoCarNoteStorage(infoCarNoteStorage)
+    // update visible for storage for 
+    if (vendorInvoicePurpose.toLowerCase().includes('storage')) {
+      setStorageVisible(true);
+    } else {
+      setStorageVisible(false);
+    }
+    
   }, [
     vendorInvoiceNumber,
     vendorName,
@@ -414,7 +441,8 @@ const ComponentB = () => {
     carModel,
     carClaim,
     carCollect,
-    carTowTo
+    carTowTo,
+    
   ]);
 
   const handleReset = () => {
@@ -667,6 +695,7 @@ const ComponentB = () => {
                 });
             }}
           >
+
             Search
   </Button>
         </div>
@@ -677,6 +706,17 @@ const ComponentB = () => {
             type="text"
             value={carModel}
             onChange={(e) => setCarModel(e.target.value)}
+          />
+        </div>
+
+        <div className="input-row" style={{ display: StorageVisible ? '' : 'none' }}>
+          <label>Storage for:</label>
+          <input
+            type="text"
+            value={StorageInputValue}
+            placeholder="Ex: 30 days @ 25/day"
+            // onChange={handleTowingCompanyInputChange}
+            onChange={(e) => setStorageInputValue(e.target.value)}
           />
         </div>
 
@@ -709,21 +749,55 @@ const ComponentB = () => {
 
         <button 
           onClick={() => {
-            // navigator.clipboard.writeText(formatPrice(value));
-            const textArea = document.createElement("textarea");
-            textArea.value = componentInfoCarNote.toUpperCase();
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            try {
-              document.execCommand("copy");
-              // setIsCopied(true);
-              message.success("Copied to clipboard!");
-            } catch (err) {
-              console.error("Unable to copy to clipboard", err);
+            if (vendorInvoicePurpose.toLowerCase().includes('transport')){
+              // navigator.clipboard.writeText(formatPrice(value));
+              const textArea = document.createElement("textarea");
+              textArea.value = componentInfoCarNote.toUpperCase();
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              try {
+                document.execCommand("copy");
+                // setIsCopied(true);
+                message.success("Copied to clipboard!");
+              } catch (err) {
+                console.error("Unable to copy to clipboard", err);
+              }
+              document.body.removeChild(textArea);
+            }else if(vendorInvoicePurpose.toLowerCase().includes('storage')){
+              const textArea = document.createElement("textarea");
+              textArea.value = componentInfoCarNoteStorage.toUpperCase();
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              try {
+                document.execCommand("copy");
+                // setIsCopied(true);
+                message.success("Copied to clipboard!");
+              } catch (err) {
+                console.error("Unable to copy to clipboard", err);
+              }
+              document.body.removeChild(textArea);
             }
-            document.body.removeChild(textArea);
-          }}
+            else {
+              // setComponentInfoCarNote(infoCarNoteNotTransport)
+              const textArea = document.createElement("textarea");
+              textArea.value = componentInfoCarNoteNotTransport.toUpperCase();
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              try {
+                document.execCommand("copy");
+                // setIsCopied(true);
+                message.success("Copied to clipboard!");
+              } catch (err) {
+                console.error("Unable to copy to clipboard", err);
+              }
+              document.body.removeChild(textArea);
+            }
+          }
+
+        }
           >Copy</button>
 
           <button onClick={handleCarInfoReset}>Reset</button>
@@ -735,7 +809,7 @@ const ComponentB = () => {
       {/* <button onClick={handleResetfire}>🔥</button> */}
       <Tooltip title="When you have more invoice in the same purpose & company">
         <Button onClick={handleResetfire} danger>
-        
+        🔥
         </Button>
       </Tooltip>
       {/* <button onClick={handleCopy}>Copy</button>
