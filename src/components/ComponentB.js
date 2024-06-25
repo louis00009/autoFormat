@@ -30,6 +30,7 @@ const ComponentB = () => {
   const [componentInfoCarNote, setComponentInfoCarNote] = useState("");
   const [componentInfoCarNoteStorage, setComponentInfoCarNoteStorage] = useState("");
   const [componentInfoCarNoteNotTransport, setComponentInfoCarNoteNotTransport] = useState("");
+  const [componentInfoCarNoteOtherTransport, setComponentInfoCarNoteOtherTransport] = useState("");
   const [carRego, setCarRego] = useState("");
   const [carModel, setCarModel] = useState("");
   const [carClaim, setCarClaim] = useState("");
@@ -410,15 +411,17 @@ const ComponentB = () => {
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***INV SENT***`;
 
-    const infoCarNote = `Transport service \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no:${carClaim} \n\nCollect From:${carCollect}\nDeliver To:${carTowTo}\nTow Operator:${vendorName}`;
+    const infoCarNote = `Transport service \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no: ${carClaim} \n\nCollect From: ${carCollect}\nDeliver To: ${carTowTo}\nTow Operator: ${vendorName}`;
+    const infoCarNoteOtherTrans = `Transport service/${vendorInvoicePurpose}  \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no: ${carClaim} \n\nCollect From: ${carCollect}\nDeliver To: ${carTowTo}\nTow Operator: ${vendorName}`;
     const infoCarNoteNotTransport = `${vendorInvoicePurpose} \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no:${carClaim}`;
-    const infoCarNoteStorage = `${vendorInvoicePurpose} for ${StorageInputValue} \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no:${carClaim}`;
+    const infoCarNoteStorage = `${vendorInvoicePurpose} for ${StorageInputValue} \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no: ${carClaim}`;
     
     setComponentInfo(info);
     setComponentInfo2(info2);
     setComponentInfoCarNote(infoCarNote)
     setComponentInfoCarNoteNotTransport(infoCarNoteNotTransport)
     setComponentInfoCarNoteStorage(infoCarNoteStorage)
+    setComponentInfoCarNoteOtherTransport(infoCarNoteOtherTrans)
     // update visible for storage for 
     if (vendorInvoicePurpose.toLowerCase().includes('storage')) {
       setStorageVisible(true);
@@ -767,6 +770,20 @@ const ComponentB = () => {
             }else if(vendorInvoicePurpose.toLowerCase().includes('storage')){
               const textArea = document.createElement("textarea");
               textArea.value = componentInfoCarNoteStorage.toUpperCase();
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              try {
+                document.execCommand("copy");
+                // setIsCopied(true);
+                message.success("Copied to clipboard!");
+              } catch (err) {
+                console.error("Unable to copy to clipboard", err);
+              }
+              document.body.removeChild(textArea);
+            }else if(vendorInvoicePurpose.toLowerCase().includes('drop off') || vendorInvoicePurpose.toLowerCase().includes('a2b')){
+              const textArea = document.createElement("textarea");
+              textArea.value = componentInfoCarNoteOtherTransport.toUpperCase();
               document.body.appendChild(textArea);
               textArea.focus();
               textArea.select();
