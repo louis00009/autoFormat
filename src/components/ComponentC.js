@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ComponentB.css";
 import { message,Button } from "antd";
 import FloatButtonComponent from "./FloatButton";
+import CalcTable from "./CalcTable";
 import { SearchOutlined } from '@ant-design/icons';
 
 // This is MD
@@ -285,7 +286,7 @@ const ComponentB = () => {
     // const info7 = `***Raised WOVR $${formatPrice(
     //   raisedInvoicePrice
     // )}, to vendor*** ${raisedInvoiceNumber} ***SO: ${salesOrderNumber} ***invoice not sent will SD after veicle sold***`;
-    const info7 = `***Raised WOVR $27.5, to vendor*** ${raisedInvoiceNumber} ***SO: ${salesOrderNumber} ***invoice not sent will SD after veicle sold***`;
+    const info7 = `***Raised WOVR $27.5, to vendor*** ${raisedInvoiceNumber} ***SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
 
     setComponentInfo(info);
     setComponentInfo2(info2);
@@ -541,6 +542,7 @@ const ComponentB = () => {
           onChange={(e) => setPurchaseOrderNumber(e.target.value)}
         />
       </div> */}
+      
       <div className="input-row">
         <label>Invoice Purpose:</label>
         <input
@@ -612,6 +614,9 @@ const ComponentB = () => {
         Copy(WOVR)
       </button>
       <FloatButtonComponent />
+
+      <CalcTable />
+
     </div>
   );
 };
