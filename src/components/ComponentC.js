@@ -40,6 +40,11 @@ const ComponentB = () => {
   const [mdRego, setmdRego] = useState("");
   const [mdClaimNo, setmdClaimNo] = useState("");
 
+    //Storage
+    const [StorageVisible, setStorageVisible] = useState(false);
+    const [StorageInputValue, setStorageInputValue] = useState("");
+  
+
   //for buttons 
   const [purposeButtons,setPurposeButtons] = useState(['TRANSPORT','STORAGE','ADMIN','ADMIN FEE','PHOTOS','SERVICE CALL','DROP OFF','DISPOSAL','SHARP TEST','POSTAGE','PLATE REMOVAL'])
 
@@ -129,7 +134,7 @@ const ComponentB = () => {
     textArea.value = componentInfo4.toUpperCase();
     document.body.appendChild(textArea);
     textArea.focus();
-    textArea.select();
+    textArea.select(); 
     try {
       document.execCommand("copy");
       // setIsCopied(true);
@@ -242,23 +247,7 @@ const ComponentB = () => {
       }
       document.body.removeChild(textArea);
   };
-  // const unsecuredCopyToClipboard2 = (text) => {
-  //   const textArea = document.createElement("textarea");
-  //   textArea.value = componentInfo2;
-  //   document.body.appendChild(textArea);
-  //   textArea.focus();
-  //   textArea.select();
-  //   try {
-  //     document.execCommand("copy");
-  //     setIsCopied(true);
-  //   } catch (err) {
-  //     console.error("Unable to copy to clipboard", err);
-  //   }
-  //   document.body.removeChild(textArea);
-  //   setTimeout(() => {
-  //     setIsCopied(false);
-  //   }, 2000);
-  // };
+
 
   useEffect(() => {
     const info = `***Raised invoice: ${raisedInvoiceNumber} to vendor for ${raisedInvoicePurpose}: $${formatPrice(
@@ -277,16 +266,21 @@ const ComponentB = () => {
     // notes for geneal
     const info3 = `Transport service \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
 
-    const info4 = `Storage \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
+    const info4 = `Storage for ${StorageInputValue}\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
     const info5 = `Photo Fee\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
     const info8 = `WOVR \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
 
     //photo notes
-    const info6 = `***Raised YARD PHOTO $35.75, to vendor ${raisedInvoiceNumber} ***, SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***  `;
-    // const info7 = `***Raised WOVR $${formatPrice(
-    //   raisedInvoicePrice
-    // )}, to vendor*** ${raisedInvoiceNumber} ***SO: ${salesOrderNumber} ***invoice not sent will SD after veicle sold***`;
+    const info6 = `***Raised YARD PHOTO $35.75, to vendor ${raisedInvoiceNumber} ***, SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
+  
     const info7 = `***Raised WOVR $27.5, to vendor*** ${raisedInvoiceNumber} ***SO: ${salesOrderNumber} ***invoice not sent will SD after vehicle sold***`;
+
+     // update visible for storage for 
+     if (raisedInvoicePurpose.toLowerCase().includes('storage')) {
+      setStorageVisible(true);
+    } else {
+      setStorageVisible(false);
+    }
 
     setComponentInfo(info);
     setComponentInfo2(info2);
@@ -309,6 +303,7 @@ const ComponentB = () => {
     mdClaimNo,
     mdMakeModel,
     mdRego,
+    StorageInputValue,
   ]);
 
   const handleReset = () => {
@@ -358,11 +353,7 @@ const ComponentB = () => {
   return (
     <div className="container">
       <h2>Invoice Note Helper</h2>
-      {/* <p>
-        Transport/Storage/Admin: 255.2+ //Photos: 30+ //Admin fee: 30+ //Service
-        call/Drop off://Disposal: Sharp test: Postage:// Admin/Photo/Plate
-        removal
-      </p> */}
+    
        {purposeButtons.map((item, index) => (
           <Button onClick={() => copyToClipboard(item)} type="primary"  key={index} style={{ width: '7%', marginBottom: 8 }}>
           {item}
@@ -381,37 +372,6 @@ const ComponentB = () => {
             : componentInfo}
         </p>
 
-        {/* <p
-          style={{
-            color: isCopied ? "red" : "inherit",
-            transition: "color 0.2s ease-in-out",
-          }}
-        >
-          {isCopied
-            ? "Information successfully copied to the clipboard"
-            : componentInfo3}
-        </p>
-
-        <p
-          style={{
-            color: isCopied ? "red" : "inherit",
-            transition: "color 0.2s ease-in-out",
-          }}
-        >
-          {isCopied
-            ? "Information successfully copied to the clipboard"
-            : componentInfo4}
-        </p>
-        <p
-          style={{
-            color: isCopied ? "red" : "inherit",
-            transition: "color 0.2s ease-in-out",
-          }}
-        >
-          {isCopied
-            ? "Information successfully copied to the clipboard"
-            : componentInfo5}
-        </p> */}
         <p
           style={{
             color: isCopied2 ? "red" : "inherit",
@@ -500,48 +460,7 @@ const ComponentB = () => {
           onChange={(e) => setmdClaimNo(e.target.value)}
         />
       </div>
-      {/* <div>
-        <label>Vendor Invoice Number:</label>
-        <input
-          type="text"
-          value={vendorInvoiceNumber}
-          onChange={(e) => setVendorInvoiceNumber(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Vendor name:</label>
-        <input
-          type="text"
-          value={vendorName}
-          onChange={(e) => setvendorName(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Vendor Invoice Purpose:</label>
-        <input
-          type="text"
-          value={vendorInvoicePurpose}
-          onChange={(e) => setVendorInvoicePurpose(e.target.value)}
-        />
-      </div>
-      
-      <div>
-        <label>Vendor Total Price:</label>
-        <input
-          type="number"
-          value={vendorTotalPrice}
-          onChange={(e) => setVendorTotalPrice(e.target.value)}
-        />
-      </div>
-      
-      <div>
-        <label>Purchase Order Number:</label>
-        <input
-          type="text"
-          value={purchaseOrderNumber}
-          onChange={(e) => setPurchaseOrderNumber(e.target.value)}
-        />
-      </div> */}
+    
       
       <div className="input-row">
         <label>Invoice Purpose:</label>
@@ -551,6 +470,21 @@ const ComponentB = () => {
           onChange={(e) => setRaisedInvoicePurpose(e.target.value)}
         />
       </div>
+
+      <div className="input-row" style={{ display: StorageVisible ? '' : 'none' }}>
+          <label>Storage for:</label>
+          <input
+            type="text"
+            value={StorageInputValue}
+            placeholder="Ex: 30 days @ 25/day"
+            onChange={(e) => {
+              const newValue = e.target.value;
+              setStorageInputValue(newValue);
+              setComponentInfo4(`Storage for ${newValue}\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`);
+            }}
+          />
+        </div>
+
       <div className="input-row">
         <label style={{ color: "blue" }}>Raised Invoice Number:</label>
         <input

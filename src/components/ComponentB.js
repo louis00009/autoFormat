@@ -38,7 +38,7 @@ const ComponentB = () => {
   const [carTowTo, setCarTowTo] = useState("");
   //Storage
   const [StorageVisible, setStorageVisible] = useState(false);
-  const [StorageInputValue, setStorageInputValue] = useState('');
+  const [StorageInputValue, setStorageInputValue] = useState("");
 
 
   const A2bOptions = [
@@ -445,6 +445,8 @@ const ComponentB = () => {
     carClaim,
     carCollect,
     carTowTo,
+    StorageInputValue,
+    
     
   ]);
 
@@ -467,6 +469,7 @@ const ComponentB = () => {
     setCarClaim("");
     setCarCollect("");
     setCarTowTo("");
+    setStorageInputValue("")
   };
 
   const handleResetexceptvn = () => {
@@ -490,15 +493,29 @@ const ComponentB = () => {
     setpayoutVendor("");
   };
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(componentInfo);
-    setIsCopied(true);
-    const timer = setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  };
+  // const handleCopy = () => {
+  //   navigator.clipboard.writeText(componentInfo);
+  //   setIsCopied(true);
+  //   const timer = setTimeout(() => {
+  //     setIsCopied(false);
+  //   }, 2000);
+  //   return () => clearTimeout(timer);
+  // };
 
+  const handleCopy = (text) => {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand("copy");
+      message.success("Copied to clipboard!");
+    } catch (err) {
+      console.error("Unable to copy to clipboard", err);
+    }
+    document.body.removeChild(textArea);
+  };
   const handleCopy2 = () => {
     navigator.clipboard.writeText(componentInfo2);
     setIsCopied(true);
@@ -712,7 +729,7 @@ const ComponentB = () => {
           />
         </div>
 
-        <div className="input-row" style={{ display: StorageVisible ? '' : 'none' }}>
+        {/* <div className="input-row" style={{ display: StorageVisible ? '' : 'none' }}>
           <label>Storage for:</label>
           <input
             type="text"
@@ -720,6 +737,19 @@ const ComponentB = () => {
             placeholder="Ex: 30 days @ 25/day"
             // onChange={handleTowingCompanyInputChange}
             onChange={(e) => setStorageInputValue(e.target.value)}
+          />
+        </div> */}
+        <div className="input-row" style={{ display: StorageVisible ? '' : 'none' }}>
+          <label>Storage for:</label>
+          <input
+            type="text"
+            value={StorageInputValue}
+            placeholder="Ex: 30 days @ 25/day"
+            onChange={(e) => {
+              const newValue = e.target.value;
+              setStorageInputValue(newValue);
+              setComponentInfoCarNoteStorage(`${vendorInvoicePurpose} for ${newValue} \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no: ${carClaim}`);
+            }}
           />
         </div>
 
@@ -750,72 +780,22 @@ const ComponentB = () => {
           />
         </div>
 
+       
         <button 
-          onClick={() => {
-            if (vendorInvoicePurpose.toLowerCase().includes('transport')){
-              // navigator.clipboard.writeText(formatPrice(value));
-              const textArea = document.createElement("textarea");
-              textArea.value = componentInfoCarNote.toUpperCase();
-              document.body.appendChild(textArea);
-              textArea.focus();
-              textArea.select();
-              try {
-                document.execCommand("copy");
-                // setIsCopied(true);
-                message.success("Copied to clipboard!");
-              } catch (err) {
-                console.error("Unable to copy to clipboard", err);
-              }
-              document.body.removeChild(textArea);
-            }else if(vendorInvoicePurpose.toLowerCase().includes('storage')){
-              const textArea = document.createElement("textarea");
-              textArea.value = componentInfoCarNoteStorage.toUpperCase();
-              document.body.appendChild(textArea);
-              textArea.focus();
-              textArea.select();
-              try {
-                document.execCommand("copy");
-                // setIsCopied(true);
-                message.success("Copied to clipboard!");
-              } catch (err) {
-                console.error("Unable to copy to clipboard", err);
-              }
-              document.body.removeChild(textArea);
-            }else if(vendorInvoicePurpose.toLowerCase().includes('drop off') || vendorInvoicePurpose.toLowerCase().includes('a2b')){
-              const textArea = document.createElement("textarea");
-              textArea.value = componentInfoCarNoteOtherTransport.toUpperCase();
-              document.body.appendChild(textArea);
-              textArea.focus();
-              textArea.select();
-              try {
-                document.execCommand("copy");
-                // setIsCopied(true);
-                message.success("Copied to clipboard!");
-              } catch (err) {
-                console.error("Unable to copy to clipboard", err);
-              }
-              document.body.removeChild(textArea);
-            }
-            else {
-              // setComponentInfoCarNote(infoCarNoteNotTransport)
-              const textArea = document.createElement("textarea");
-              textArea.value = componentInfoCarNoteNotTransport.toUpperCase();
-              document.body.appendChild(textArea);
-              textArea.focus();
-              textArea.select();
-              try {
-                document.execCommand("copy");
-                // setIsCopied(true);
-                message.success("Copied to clipboard!");
-              } catch (err) {
-                console.error("Unable to copy to clipboard", err);
-              }
-              document.body.removeChild(textArea);
-            }
+        onClick={() => {
+          const lowerCasePurpose = vendorInvoicePurpose.toLowerCase().trim();
+          console.log("Purpose:", lowerCasePurpose); // 调试用
+          if (lowerCasePurpose.includes('drop off') || lowerCasePurpose.includes('a2b')) {
+            handleCopy(componentInfoCarNoteOtherTransport.toUpperCase());
+          } else if (lowerCasePurpose.includes('transport')) {
+            handleCopy(componentInfoCarNote.toUpperCase());
+          } else if (lowerCasePurpose.includes('storage')) {
+            handleCopy(componentInfoCarNoteStorage.toUpperCase());
+          } else {
+            handleCopy(componentInfoCarNoteNotTransport.toUpperCase());
           }
-
-        }
-          >Copy</button>
+        }}
+      >Copy</button>
 
           <button onClick={handleCarInfoReset}>Reset</button>
 
