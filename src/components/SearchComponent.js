@@ -244,8 +244,8 @@ const data = [
   { value: "HCi Commercial Motor" },
   { value: "HDI Global Specialty (Ford Insure)" },
   { value: "HDI Global (AGD)" },
-  { value: "HDI Global Specialty" },
-  { value: "HDI Global Specialty" },
+  { value: "HDI Global Specialty (Insurance Facilitators)" },
+  { value: "HDI Global Specialty (One Underwriting)" },
   { value: "Hello Claims" },
   { value: "Hertz Remarketing" },
   { value: "Hertz Salvage" },
@@ -328,6 +328,7 @@ const data = [
   { value: "T&M Auto Repairs" },
   { value: "Territory Rent A Car" },
   { value: "Thrifty (Sixt)" },
+  { value: "Sixt Australia - Salvage" },
   { value: "Tokio" },
   { value: "Tourism Holdings" },
   { value: "Toyota" },
@@ -375,7 +376,7 @@ const SearchComponent = ({ payoutVendor, setPayoutVendor }) => {
   return (
     <AutoComplete
       style={{
-        width: 250,
+        width: 300,
       }}
       options={options}
       placeholder=""

@@ -690,5 +690,12 @@
     "sellingFee": 169.0,
     "inspectionFee": 189.0,
     "totalFees": 358.0
+  },
+  {
+    "vendor": "Multivac Australia Pty Ltd",
+    "type": "Fleet",
+    "sellingFee": 169.0,
+    "inspectionFee": 189.0,
+    "totalFees": 358.0
   }
 ]
