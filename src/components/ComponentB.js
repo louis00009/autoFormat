@@ -745,11 +745,12 @@ const ComponentB = () => {
             type="text"
             value={StorageInputValue}
             placeholder="Ex: 30 days @ 25/day"
-            onChange={(e) => {
-              const newValue = e.target.value;
-              setStorageInputValue(newValue);
-              setComponentInfoCarNoteStorage(`${vendorInvoicePurpose} for ${newValue} \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no: ${carClaim}`);
-            }}
+            // onChange={(e) => {
+            //   const newValue = e.target.value;
+            //   setStorageInputValue(newValue);
+            //   setComponentInfoCarNoteStorage(`${vendorInvoicePurpose} for ${newValue} \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no: ${carClaim}`);
+            // }}
+            onChange={(e)=> setStorageInputValue(e.target.value)}
           />
         </div>
 

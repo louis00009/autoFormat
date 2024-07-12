@@ -477,11 +477,12 @@ const ComponentB = () => {
             type="text"
             value={StorageInputValue}
             placeholder="Ex: 30 days @ 25/day"
-            onChange={(e) => {
-              const newValue = e.target.value;
-              setStorageInputValue(newValue);
-              setComponentInfo4(`Storage for ${newValue}\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`);
-            }}
+            // onChange={(e) => {
+            //   const newValue = e.target.value;
+            //   setStorageInputValue(newValue);
+            //   setComponentInfo4(`Storage for ${newValue}\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`);
+            // }}
+            onChange={(e) => setStorageInputValue(e.target.value)}
           />
         </div>
 
