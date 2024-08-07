@@ -43,7 +43,12 @@ const ComponentB = () => {
     //Storage
     const [StorageVisible, setStorageVisible] = useState(false);
     const [StorageInputValue, setStorageInputValue] = useState("");
-  
+
+  //transport
+  const [TransportVisible, setTransportVisible] = useState(false);
+  const [TransportFromValue, setTransportFromValue] = useState("");
+  const [TransportToValue, setTransportToValue] = useState("");
+  const [TransportTowCompany, setTransportTowCompany] = useState("");
 
   //for buttons 
   const [purposeButtons,setPurposeButtons] = useState(['TRANSPORT','STORAGE','ADMIN','ADMIN FEE','PHOTOS','SERVICE CALL','DROP OFF','DISPOSAL','SHARP TEST','POSTAGE','PLATE REMOVAL'])
@@ -264,10 +269,10 @@ const ComponentB = () => {
       raisedInvoicePrice
     )} ***SO: ${salesOrderNumber} ***INV SENT***`;
     // notes for geneal
-    const info3 = `Transport service \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
+    const info3 = `Transport service \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo} \n\nCollect From: ${TransportFromValue}\nDeliver To: ${TransportToValue}\nTow Operator: ${TransportTowCompany}`;
 
     const info4 = `Storage for ${StorageInputValue}\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
-    const info5 = `Photo Fee\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
+    const info5 = `Photo Charges\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
     const info8 = `WOVR \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
 
     //photo notes
@@ -278,8 +283,11 @@ const ComponentB = () => {
      // update visible for storage for 
      if (raisedInvoicePurpose.toLowerCase().includes('storage')) {
       setStorageVisible(true);
+    }if (raisedInvoicePurpose.toLowerCase().includes('transport')) {
+      setTransportVisible(true);
     } else {
       setStorageVisible(false);
+      setTransportVisible(false);
     }
 
     setComponentInfo(info);
@@ -304,6 +312,9 @@ const ComponentB = () => {
     mdMakeModel,
     mdRego,
     StorageInputValue,
+    TransportFromValue,
+    TransportToValue,
+    TransportTowCompany,
   ]);
 
   const handleReset = () => {
@@ -316,6 +327,9 @@ const ComponentB = () => {
     setRaisedInvoicePurpose("");
     setRaisedInvoicePrice("");
     setSalesOrderNumber("");
+    setTransportFromValue("");
+    setTransportToValue("");
+    setTransportTowCompany("");
   };
   const handleResetbutkeepcar = () => {
     setmdClaimNo("");
@@ -330,6 +344,9 @@ const ComponentB = () => {
     setRaisedInvoicePurpose("");
     setRaisedInvoicePrice("");
     setSalesOrderNumber("");
+    setTransportFromValue("");
+    setTransportToValue("");
+    setTransportTowCompany("");
   };
 
   const handleCopy = () => {
@@ -430,9 +447,11 @@ const ComponentB = () => {
                 .then((data) => {
                   // Handle the response data
                   console.log(data);
-
                   setmdClaimNo(data.carClaim)
                   setmdMakeModel(data.carMake)
+                  setTransportFromValue(data.TowFrom)
+                  setTransportToValue(data.TowTo)
+                  setTransportTowCompany(data.TowingCompany)
                 })
                 .catch((error) => {
                   // Handle any errors
@@ -483,6 +502,33 @@ const ComponentB = () => {
             //   setComponentInfo4(`Storage for ${newValue}\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`);
             // }}
             onChange={(e) => setStorageInputValue(e.target.value)}
+          />
+        </div>
+
+        <div className="input-row" style={{ display: TransportVisible ? '' : 'none' }}>
+          <label>TOW FROM:</label>
+          <input
+            type="text"
+            value={TransportFromValue}
+            onChange={(e) => setTransportFromValue(e.target.value)}
+          />
+        </div>
+
+        <div className="input-row" style={{ display: TransportVisible ? '' : 'none' }}>
+          <label>TOW TO:</label>
+          <input
+            type="text"
+            value={TransportToValue}
+            onChange={(e) => setTransportToValue(e.target.value)}
+          />
+        </div>
+
+        <div className="input-row" style={{ display: TransportVisible ? '' : 'none' }}>
+          <label>TOW Company:</label>
+          <input
+            type="text"
+            value={TransportTowCompany}
+            onChange={(e) => setTransportTowCompany(e.target.value)}
           />
         </div>
 

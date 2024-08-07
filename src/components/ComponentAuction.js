@@ -528,10 +528,7 @@ const App = () => {
             <p>Autorola Fastsalvage FM</p>
             <p>Smartleasing - Fleet</p>
             <p>FBP Remarketing</p>
-            <p>
-              Sherrif’s office Victoria(No selling fee and e-salvage fee)
-              Buyer's line: Car price+ Special fee of $300 inc
-            </p>
+            
             <p>EX: Car Price:21000- 19090.91 DB:272.73 fixed rate Exc GST</p>
           </Card>
         </Col>
@@ -557,6 +554,11 @@ const App = () => {
             <b style={{ color: "red" }}>
               GST Free[Only Car Price]- export Setup-VAT(NOVAT/NOVAT)
             </b>
+            <p>
+            <b style={{ color: "red" }}>Sherrif’s office Victoria</b> 297
+              (No selling fee and e-salvage fee)
+              Buyer's line: Car price+ Special fee of $300 inc
+            </p>
             {/* <p>Card content</p> */}
           </Card>
         </Col>
@@ -569,7 +571,7 @@ const App = () => {
             }}
           >
             <p>Sixt Australia - Salvage - 69+ SO</p>
-            <p>NationWide 9.07+ SO</p>
+            <p>NationWide 9.09+ SO</p>
             <p></p>
             {/* <p>Card content</p> */}
           </Card>
