@@ -283,7 +283,7 @@ const ComponentB = () => {
      // update visible for storage for 
      if (raisedInvoicePurpose.toLowerCase().includes('storage')) {
       setStorageVisible(true);
-    }if (raisedInvoicePurpose.toLowerCase().includes('transport')) {
+    }else if (raisedInvoicePurpose.toLowerCase().includes('transport')) {
       setTransportVisible(true);
     } else {
       setStorageVisible(false);

@@ -71,7 +71,7 @@ const ComponentB = () => {
   ]);
   const columns = [
     {
-      title: "Vendor Total Price",
+      title: "Sublet Total Price",
       dataIndex: "vendorTotalPrice",
       key: "vendorTotalPrice",
       render: (value) => (
@@ -101,7 +101,7 @@ const ComponentB = () => {
       ),
     },
     {
-      title: "Vendor Total Price (NO GST)",
+      title: "Sublet Total Price (NO GST)",
       dataIndex: "vendorTotalPriceNoGst",
       key: "vendorTotalPriceNoGst",
       render: (value) => (
@@ -596,7 +596,7 @@ const ComponentB = () => {
       </div>
 
       <div className="input-row">
-        <label>Vendor Invoice Purpose:</label>
+        <label>Sublet Invoice Purpose:</label>
         <input
           type="text"
           value={vendorInvoicePurpose}
@@ -605,7 +605,7 @@ const ComponentB = () => {
       </div>
 
       <div className="input-row">
-        <label>Vendor Total Price:</label>
+        <label>Sublet Total Price:</label>
         <input
           type="number"
           value={vendorTotalPrice}
