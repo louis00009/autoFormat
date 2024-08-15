@@ -28,6 +28,10 @@ const ComponentB = () => {
   const [componentInfo6, setComponentInfo6] = useState("");
   //WOVER
   const [componentInfo7, setComponentInfo7] = useState("");
+  //Transport with no Rego
+  const [componentInfoTransNoRego, setComponentInfoTransNoRego] = useState("");
+  //Storage with no Rego
+  const [componentInfoStorageNoRego, setComponentInfoStorageNoRego] = useState("");
 
   const [isCopied, setIsCopied] = useState(false);
   //control Photo
@@ -51,7 +55,7 @@ const ComponentB = () => {
   const [TransportTowCompany, setTransportTowCompany] = useState("");
 
   //for buttons 
-  const [purposeButtons,setPurposeButtons] = useState(['TRANSPORT','STORAGE','ADMIN','ADMIN FEE','PHOTOS','SERVICE CALL','DROP OFF','DISPOSAL','SHARP TEST','POSTAGE','PLATE REMOVAL'])
+  const [purposeButtons,setPurposeButtons] = useState(['TRANSPORT','STORAGE','WOVR','ADMIN FEE','PHOTOS','SERVICE CALL','DROP OFF','DISPOSAL','SHARP TEST','POSTAGE','PLATE REMOVAL'])
 
 
   const formatPrice = (price) => {
@@ -87,6 +91,25 @@ const ComponentB = () => {
     }
   };
 
+  const handleDoubleClickTransport = () => {
+    const textArea = document.createElement("textarea");
+    textArea.value = componentInfoTransNoRego.toUpperCase();
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand("copy");
+      // setIsCopied(true);
+    } catch (err) {
+      console.error("Unable to copy to clipboard", err);
+    }
+    document.body.removeChild(textArea);
+    // setTimeout(() => {
+    //   setIsCopied(false);
+    // }, 2000);
+    message.success("Transport note No Rego copy success for SO-General");
+  };
+
   const unsecuredCopyToClipboard2 = () => {
     //So validation 6 numbers
     if (/[a-zA-Z]/.test(salesOrderNumber)) {
@@ -114,6 +137,24 @@ const ComponentB = () => {
     } else {
       alert("Wrong Raised invoice number, Start from 'AAU'.");
     }
+  };
+  const handleDoubleClickStorage = () => {
+    const textArea = document.createElement("textarea");
+    textArea.value = componentInfoStorageNoRego.toUpperCase();
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select(); 
+    try {
+      document.execCommand("copy");
+      // setIsCopied(true);
+    } catch (err) {
+      console.error("Unable to copy to clipboard", err);
+    }
+    document.body.removeChild(textArea);
+    // setTimeout(() => {
+    //   setIsCopied(false);
+    // }, 2000);
+    message.success("Storage note No Rego copy success for SO-General");
   };
 
   const unsecuredCopyToClipboard3 = () => {
@@ -270,8 +311,10 @@ const ComponentB = () => {
     )} ***SO: ${salesOrderNumber} ***INV SENT***`;
     // notes for geneal
     const info3 = `Transport service \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo} \n\nCollect From: ${TransportFromValue}\nDeliver To: ${TransportToValue}\nTow Operator: ${TransportTowCompany}`;
+    const info9 = `Transport service \n\nCollect From: ${TransportFromValue}\nDeliver To: ${TransportToValue}\nTow Operator: ${TransportTowCompany}`;
 
     const info4 = `Storage for ${StorageInputValue}\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
+    const info10 = `Storage for ${StorageInputValue}`;
     const info5 = `Photo Charges\n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
     const info8 = `WOVR \n\nRego: ${mdRego}\nMake: ${mdMakeModel}\nClaim no:${mdClaimNo}`;
 
@@ -298,6 +341,8 @@ const ComponentB = () => {
     setComponentInfo6(info6);
     setComponentInfo7(info7);
     setComponentInfo8(info8);
+    setComponentInfoTransNoRego(info9);
+    setComponentInfoStorageNoRego(info10);
   }, [
     vendorInvoiceNumber,
     vendorName,
@@ -563,8 +608,8 @@ const ComponentB = () => {
       <button onClick={handleResetbutkeepcar}>Reset(Carinfo)</button>
       {/* <button onClick={handleCopy}>Copy</button> */}
 
-      <button onClick={unsecuredCopyToClipboard}>Copy Note</button>
-      <button onClick={unsecuredCopyToClipboard2}>Copy(Invoice Sent)</button>
+      <button onClick={unsecuredCopyToClipboard} >Copy Note</button>
+      <button onClick={unsecuredCopyToClipboard2} >Copy(Invoice Sent)</button>
       <button onClick={unsecuredCopyToClipboard6}>CP Photo Note</button>
       <button onClick={unsecuredCopyToClipboard7}>CP WOVR</button>
       <br></br>
@@ -577,10 +622,24 @@ const ComponentB = () => {
         Copy(Transport)
       </button>
       <button
+        onClick={handleDoubleClickTransport}
+        style={{ backgroundColor: "#1a8784" }}
+      >
+        Trans NoReg
+      </button>
+      <button
         onClick={unsecuredCopyToClipboard4}
+        onDoubleClick={handleDoubleClickStorage}
         style={{ backgroundColor: "#f5655b" }}
       >
         Copy(Storage)
+      </button>
+      <button
+        onClick={handleDoubleClickStorage}
+      
+        style={{ backgroundColor: "#1a8784" }}
+      >
+        Storage NoReg
       </button>
       <button
         onClick={unsecuredCopyToClipboard5}

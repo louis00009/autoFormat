@@ -31,6 +31,13 @@ const ComponentB = () => {
   const [componentInfoCarNoteStorage, setComponentInfoCarNoteStorage] = useState("");
   const [componentInfoCarNoteNotTransport, setComponentInfoCarNoteNotTransport] = useState("");
   const [componentInfoCarNoteOtherTransport, setComponentInfoCarNoteOtherTransport] = useState("");
+
+  // for Towing notes no rego
+  const [componentInfoCarNoteNoRego, setComponentInfoCarNoteNoRego] = useState("");
+  const [componentInfoCarNoteStorageNoRego, setComponentInfoCarNoteStorageNoRego] = useState("");
+  const [componentInfoCarNoteNotTransportNoRego, setComponentInfoCarNoteNotTransportNoRego] = useState("");
+  const [componentInfoCarNoteOtherTransportNoRego, setComponentInfoCarNoteOtherTransportNoRego] = useState("");
+
   const [carRego, setCarRego] = useState("");
   const [carModel, setCarModel] = useState("");
   const [carClaim, setCarClaim] = useState("");
@@ -416,12 +423,23 @@ const ComponentB = () => {
     const infoCarNoteNotTransport = `${vendorInvoicePurpose} \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no:${carClaim}`;
     const infoCarNoteStorage = `${vendorInvoicePurpose} for ${StorageInputValue} \n\nRego: ${carRego}\nMake: ${carModel}\nClaim no: ${carClaim}`;
     
+    // no rego description
+    const infoCarNoteNoRego = `Transport service \n\nCollect From: ${carCollect}\nDeliver To: ${carTowTo}\nTow Operator: ${vendorName}`;
+    const infoCarNoteOtherTransoteNoRego = `Transport service/${vendorInvoicePurpose}  \n\nCollect From: ${carCollect}\nDeliver To: ${carTowTo}\nTow Operator: ${vendorName}`;
+    const infoCarNoteNotTransportoteNoRego = `${vendorInvoicePurpose}`;
+    const infoCarNoteStorageoteNoRego = `${vendorInvoicePurpose} for ${StorageInputValue}`;
+    
     setComponentInfo(info);
     setComponentInfo2(info2);
     setComponentInfoCarNote(infoCarNote)
     setComponentInfoCarNoteNotTransport(infoCarNoteNotTransport)
     setComponentInfoCarNoteStorage(infoCarNoteStorage)
     setComponentInfoCarNoteOtherTransport(infoCarNoteOtherTrans)
+    // no rego description
+    setComponentInfoCarNoteNoRego(infoCarNoteNoRego)
+    setComponentInfoCarNoteNotTransportNoRego(infoCarNoteNotTransportoteNoRego)
+    setComponentInfoCarNoteStorageNoRego(infoCarNoteStorageoteNoRego)
+    setComponentInfoCarNoteOtherTransportNoRego(infoCarNoteOtherTransoteNoRego)
     // update visible for storage for 
     if (vendorInvoicePurpose.toLowerCase().includes('storage')) {
       setStorageVisible(true);
@@ -799,6 +817,23 @@ const ComponentB = () => {
       >Copy</button>
 
           <button onClick={handleCarInfoReset}>Reset</button>
+
+          <button 
+          style={{ backgroundColor: "#f5655b" }}
+          onClick={() => {
+            const lowerCasePurpose = vendorInvoicePurpose.toLowerCase().trim();
+            console.log("Purpose:", lowerCasePurpose); // 调试用
+            if (lowerCasePurpose.includes('drop off') || lowerCasePurpose.includes('a2b')) {
+              handleCopy(componentInfoCarNoteOtherTransportNoRego.toUpperCase());
+            } else if (lowerCasePurpose.includes('transport')) {
+              handleCopy(componentInfoCarNoteNoRego.toUpperCase());
+            } else if (lowerCasePurpose.includes('storage')) {
+              handleCopy(componentInfoCarNoteStorageNoRego.toUpperCase());
+            } else {
+              handleCopy(componentInfoCarNoteNotTransportNoRego.toUpperCase());
+            }
+          }}
+      >Copy NoReg</button>
 
       </Col>
     </Row>
