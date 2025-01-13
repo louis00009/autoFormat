@@ -135,7 +135,7 @@ const App = () => {
   useEffect(() => {
     calculateBaf(salePriceInclGST);
     if (calculatorType === "salvage" || calculatorType === "typeC") {
-      setMarkup(13.75);
+      setMarkup(14.75);
     } else if (calculatorType === "typeB") {
       setMarkup(16.75);
     } else if (calculatorType === "typeD") {

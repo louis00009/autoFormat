@@ -712,7 +712,8 @@ const ComponentB = () => {
             icon={<SearchOutlined />}
             onClick={() => {
               // Construct the search URL
-              const searchUrl = `http://139.159.151.95:3979/cardetails/searchcar?rego=${carRego}`;
+              const searchUrl = `http://134.175.121.28:4100/cardetails/searchcar?rego=${carRego}`;
+              // const searchUrl = `http://139.159.151.95:3979/cardetails/searchcar?rego=${carRego}`;
 
               // Send the request
               fetch(searchUrl)
