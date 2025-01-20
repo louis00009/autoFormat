@@ -382,6 +382,9 @@ const ComponentB = () => {
     payoutVendor.toLowerCase() === "inter hannover australian branch",
     payoutVendor.toLowerCase() === "associated general and dealer underwriting agency pty ltd (agd)",
     payoutVendor.toLowerCase() === "inter hannover (argis)",
+    payoutVendor.toLowerCase() === "inter hannover australian branch / armada",
+    payoutVendor.toLowerCase() === "inter hannover australian branch",
+    payoutVendor.toLowerCase() === "armada",
   ];
 
   const unsecuredCopyToClipboard = () => {
