@@ -375,6 +375,13 @@ const ComponentB = () => {
     payoutVendor.toLowerCase() === "fuse fleet underwriting pty ltd",
     payoutVendor.toLowerCase() === "fuse fleet",
     payoutVendor.toLowerCase() === "fuse",
+    payoutVendor.toLowerCase() === "hdi global specialty (ford insure)",
+    payoutVendor.toLowerCase() === "hdi global (agd)",
+    payoutVendor.toLowerCase() === "hdi global specialty (insurance facilitators)",
+    payoutVendor.toLowerCase() === "hdi global specialty (one underwriting)",
+    payoutVendor.toLowerCase() === "inter hannover australian branch",
+    payoutVendor.toLowerCase() === "associated general and dealer underwriting agency pty ltd (agd)",
+    payoutVendor.toLowerCase() === "inter hannover (argis)",
   ];
 
   const unsecuredCopyToClipboard = () => {
